@@ -27,6 +27,10 @@
 <?php
   require "nav.php"
   ?>
+    
+    <br><br>
+<h2 class="panier"><img src="flash.png" width="40" height="40"/> Vente flash de la semaine <img src="flash.png" width="40" height="40"/></h2>
+    <br><br>
   
   <div class="bd-example">
 
@@ -87,7 +91,7 @@
 
   </div>
 
-</div>
+</div><br><br>
 
   <?php
   require "footer.php"

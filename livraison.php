@@ -19,9 +19,9 @@ require "nav.php";
 	<div class="container">
 		<div class="row">
 
-			<div class=""></div>
-			<div class="">
-				<h4>Votre adresse de livraison</h4>
+
+			<div class="livraison">
+				<h4>Votre adresse de livraison</h4><br/>
                 
                     <h6>Identité:</h6>
 					<div class="form-group">
@@ -56,7 +56,7 @@ require "nav.php";
             <div class="paiment">
             
             <div>
-                    <h4>Votre moyen de paiement</h4>
+                    <h4>Votre moyen de paiement</h4><br/>
                 
 					<div class="form-group">
 						<input type="radio" name="card" value="visa" id="visac" /> <label for="visac"><img src=visa.png width="80" height="50"/></label><br />
@@ -69,7 +69,7 @@ require "nav.php";
 
 					<div class="form-group">
 						<input type="number" name="numberCard" class="form-control form-control-sm" placeholder="numero de carte">
-						<input type="date" name="exp" class="form-control form-control-sm" placeholder="date d'expiration">	
+						<input type="month" name="exp" class="form-control form-control-sm" placeholder="date d'expiration">	
 						<input type="number" name="cripto" class="form-control form-control-sm" placeholder="cryptogramme">				
                         
                         
@@ -86,9 +86,9 @@ require "nav.php";
 				
 	</div>	
         <br/>
-        <br/>
+
         
-         <button type="submit" class="btn btn-success" name="order"><a href="validationCommande.php">Commander !</a></button>
+         <button type="submit" class="btn btn-success livr" name="order"><a href="validationCommande.php">Commander !</a></button>
 	</form>
         <br/>
         <br/>

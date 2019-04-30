@@ -9,11 +9,10 @@ require "nav.php";
     <br/>
     <br/>
     <br/>
-	<h2>Merci d'avoir commandé chez nous !</h2>
-    <h5>Vous recevrez bientot un email de confirmation sur votre boite mail.</h5>
+	<h2 class="titre">Merci d'avoir commandé chez nous !</h2><br/>
+    <h5 class="commande2">Vous recevrez bientot un email de confirmation sur votre boite mail.</h5><br/><br/>
     
-    <button type="button" class="btn btn-sm btn-light"><a href="accueil.php">Retour à l'accueil</a></button>		
-
+    <button type="button" class="btn btn-success retour"><a href="accueil.php">Retour à l'accueil</a></button>		
 
 	<div class="container">
 		<div class="row">
