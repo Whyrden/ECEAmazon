@@ -3,7 +3,7 @@ define('db_server','localhost');
 define('db_username','root');
 define('db_pass','');
 
-$database="loginsystem";
+$database="eceamazon.sql";
 
 $db_connect=mysqli_connect(db_server,db_username,db_pass,$database);
 
