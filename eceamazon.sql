@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 30, 2019 at 12:29 PM
+-- Generation Time: Apr 30, 2019 at 01:55 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -25,14 +25,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `achats`
+--
+
+DROP TABLE IF EXISTS `achats`;
+CREATE TABLE IF NOT EXISTS `achats` (
+  `id_achat` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin`
 --
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `username_admin` text NOT NULL,
+  `username_admin` varchar(255) NOT NULL,
   `password` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carte_bancaire`
+--
+
+DROP TABLE IF EXISTS `carte_bancaire`;
+CREATE TABLE IF NOT EXISTS `carte_bancaire` (
+  `proprietaire` varchar(255) NOT NULL,
+  `numero` int(11) DEFAULT NULL,
+  `type` text,
+  `expiration` date DEFAULT NULL,
+  `code` int(11) DEFAULT NULL,
+  `utilisateur` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -78,6 +105,21 @@ CREATE TABLE IF NOT EXISTS `items` (
   `description` text,
   `nb_ventes` int(11) DEFAULT NULL,
   `modele` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id_panier` int(11) NOT NULL,
+  `proprietaire` text,
+  `id_achat` int(11) DEFAULT NULL,
+  `prix` int(11) DEFAULT NULL,
+  `quantite` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
