@@ -6,20 +6,25 @@ require "nav.php";
 	<!--Le menu avec les différents modèles-->
 	<ul class="nav justify-content-center">
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Hommes</button>		
+			<button type="button" class="btn btn-sm btn-light"> Football</button>		
 		</li>
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Femmes</button>		
+			<button type="button" class="btn btn-sm btn-light"> Danse</button>		
 		</li>
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Enfants</button>		
+			<button type="button" class="btn btn-sm btn-light"> Taekwondo</button>		
 		</li>
+		<li class="nav-item">
+			<button type="button" class="btn btn-sm btn-light"> Natation</button>		
+		</li>
+		
 			
 	</ul>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-12">
+				
 				
 				
 				
