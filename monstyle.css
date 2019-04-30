@@ -95,3 +95,100 @@ body{
 	margin: auto;
 
 }
+
+.paiment, .livraison{
+    margin-left: 15%;
+}
+
+.inscrip1, .inscrip2{
+    margin-left: 45%;
+}
+
+.livr{
+    margin-left: 40%;
+}
+
+.livr > a:link, .livr > a, .retour > a:link, .retour >a{
+    text-decoration: none;  
+    color: white;
+}
+
+.titre, .panier{
+    font-size: 40px;
+    text-align: center;
+}
+
+.commande2{
+    font-size: 25px;
+    text-align: center;
+    color: dimgrey;
+}
+
+.retour{
+    margin-left: 42%;
+}
+
+.retour2{
+    margin-left: 46%;
+}
+
+.retour3{
+    margin-left: 34%;
+}
+
+
+table {
+    border: medium solid #3B7CFF;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+
+}
+
+th {
+
+    border: thin solid #3B7CFF;
+    width: 50%;
+    padding: 5px;
+    background-color: #D0E3FA;
+    background-image: url(sky.jpg);
+}
+
+td {
+
+    border: thin solid #3B7CFF;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    background-color: #F5FAFF;
+}
+
+.compte1{
+    margin-left: 30%;
+}
+
+.ast{
+    text-align: center;
+    font-size: 0.7em;
+    color: indianred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
