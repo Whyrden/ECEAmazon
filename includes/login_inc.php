@@ -14,7 +14,7 @@ if(isset($_POST['login_submit'])){
 
 	else{
 		//Vérifier si l'id est retrouvé dans la bdd
-		$sql="SELECT * FROM clients WHERE username_client='wyrden';";
+		$sql="SELECT * FROM clients WHERE username_client='$identifiant' AND password='$password'";
 		$stmt=mysqli_stmt_init($db_connect);
 		if(!mysqli_stmt_prepare($stmt,$sql)){
 			header("Location: ../login.php?error=sqlerror");
@@ -25,18 +25,16 @@ if(isset($_POST['login_submit'])){
 		else{
 			//Relier les saisies utilisateur (identifiant) à la bdd (stmt)
 			$resultat=mysqli_query($db_connect, $sql);
+			
 
 			if($data=mysqli_fetch_assoc($resultat)){
 
-				if($data['username_client']){
-					
-				}
-
-
+				print("Bienvenu");
+				print($data['username_client']);
 
 			}
 			else{
-				header("Location: ../login.php?error=sqlerror");
+				header("Location: ../login.php?error=mdperror");
 				exit();
 
 			}
