@@ -8,6 +8,7 @@ body{
  background-color: #073A75;
 }
 
+
 .navbar-brand{
 	color: #A2CEFF;
 }
@@ -26,6 +27,7 @@ body{
 .navbar-collapse {   
 	justify-content: flex-end; 
 }
+
 
 .header{
 	background-image: url('piano.jpg');
@@ -76,5 +78,20 @@ body{
 	text-transform: uppercase; 
 }
 
+.sidebar-nav{
+	position: absolute;
+	top: 0;
+	width: 250px;
+	margin: 0;
+	padding: 0;
+}
 
+.justify-content-center{
+	background-color: #333;
+	height: 50px;
+}
 
+.justify-content-center .nav-item{
+	margin: auto;
+
+}
