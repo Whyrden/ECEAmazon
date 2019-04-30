@@ -21,13 +21,19 @@
 		<div class="container">    
 			<div class="row">       
 				<div class="col-lg-8 col-md-8 col-sm-12">       
-					<h6 class="text-uppercase font-weight-bold">Informations additionnelles</h6> 
+					<h6 class="text-uppercase font-weight-bold">Informations additionnelles</h6>
+                    <p>
+                        <a href="https://www.facebook.com/"><img src="img/icon/facebook.png" height="40" width="40"/></a>             
+                        <a href="https://twitter.com/?lang=fr"><img src="img/icon/twitter.png" height="40" width="40"/></a>    
+                        <a href="https://www.instagram.com/?hl=fr"><img src="img/icon/instagram.png" height="40" width="40"/></a>
+                        
+                    </p>
 				</div>   
 
 				<div class="col-lg-4 col-md-4 col-sm-12">       
 					<h6 class="text-uppercase font-weight-bold">Contact</h6>       
 					<p>37, quai de Grenelle, 75015 Paris, France <br>             
-						ECEAmazon@ece.fr <br>             
+                        <a href="mailto:eceamazon@ece.fr">ECEAmazon@ece.fr</a><br>
 						+33 01 01 01 01 01 <br>             
 				      </p>     
 				</div>   

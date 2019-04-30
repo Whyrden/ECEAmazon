@@ -6,10 +6,10 @@ require "nav.php";
 <main>
 
     <br><br><h2 class="panier">Inscrivez-vous</h2> <br>
-    <form class="inscrip" action="includes/signup_inc.php" method="POST">
+    <form class="inscrip form-horizontal" action="includes/signup_inc.php" method="POST">
 	<div class="container">
 		<div class="row">
-                
+
 			     
                     <div class="col-md-5">
                         <div class="inscrip1">

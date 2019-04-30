@@ -4,27 +4,57 @@ require "nav.php";
 
 <main>
 	<!--Le menu avec les différents modèles-->
-	<nav class="nav flex-column">
- 	 	<a class="nav-link active" href="#">Pop</a>
-  		<a class="nav-link" href="#">Rock</a>
-  		<a class="nav-link" href="#">Rap</a>
-  		<a class="nav-link " href="#" >Animes</a>
-	</nav>
+
+    
+    <ul class="nav justify-content-center bg-warning">
+		<li class="nav-item">
+			<button type="button" class="btn btn-sm btn-primary active"><a href="pop.php"> Pop</a></button>		
+		</li>
+		<li class="nav-item">
+			<button type="button" class="btn btn-sm btn-primary "><a href="rock.php">Rock</a></button>		
+		</li>
+		<li class="nav-item">
+			<button type="button" class="btn btn-sm btn-primary"><a href="rap.php">Rap</a></button>		
+		</li>
+		<li class="nav-item">
+			<button type="button" class="btn btn-sm btn-primary"><a href="animes.php">Animes</a></button>		
+		</li>
+		
+			
+	</ul>
+    
+    <br><br>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-12">
-							
+			<div class="roman-liv">
 				
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12">
-				
-				
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12">
+				<img src="img/musique/kpop.png" class="img-article" width="208" height="208"/>
+                <br><br><h6 class="titre-article">F(x) - 40€</h6>
+                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 				
 				
 			</div>
+            
+            <div class="col-sm-1"></div>
+            
+			<div class="roman-liv">
+				
+                <img src="img/musique/kpop.png" class="img-article" height="208" width="208"/>
+                <br><br><h6 class="titre-article"> F(x) - 40€</h6>
+               <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+				
+			</div>
+            
+            <div class="col-sm-1"></div>
+
+            <div class=roman-liv>
+				<img src="img/musique/kpop.png" class="img-article" height="208" width="208"/>
+                <br><br><h6 class="titre-article"> F(x) - 40€</h6>
+               <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+			</div>
+			
+		</div>
 			
 		</div>
 		

@@ -22,7 +22,7 @@
 
 	<!--barre de navigation-->
 	<nav class="navbar navbar-expand-md">
-		<a class="navbar-brand" href="accueil.php">ECE Amazon</a>
+		<a class="navbar-brand" href="accueil.php">ECE Amazon  <img src="img/icon/logo.png" widht="72" height="27"/></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -74,7 +74,7 @@
 				else{
 					echo '<li class="nav-item">
 						<a href="login.php"><button class="btn btn-sm btn-light">Se connecter</button></a>
-						<a href="signup.php"><button class="btn btn-sm btn-primary">S inscrire</button></a>
+						<a href="signup.php"><button class="btn btn-sm btn-primary">Inscription</button></a>
 						</li>';
 
 				}

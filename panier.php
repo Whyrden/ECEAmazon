@@ -4,7 +4,7 @@ require "nav.php";
 
 <main>
 <br/><br>
-<h2 class="panier"><img src="cart.png" height="30" width="30"/>  Votre panier <img src="cart.png" height="30" width="30"/></h2>
+<h2 class="panier"><img src="img/icon/cart.png" height="30" width="30"/>  Votre panier <img src="img/icon/cart.png" height="30" width="30"/></h2>
 				
     <br><br>
     
@@ -19,7 +19,7 @@ require "nav.php";
     </tr>
     <tr>
         <td>Album f(x)</td>
-        <td><img src="kpop.png" width="30" height="30"</td>
+        <td><img src="img/musique/kpop.png" width="30" height="30"</td>
         <td>Musique</td>
         <td>15€</td>
         <td>1</td>
@@ -28,7 +28,7 @@ require "nav.php";
         
     <tr>
         <td>Jean bleu</td>
-        <td><img src="jean.jpg" width="30" height="30"</td>
+        <td><img src="img/vetements/jean.jpg" width="30" height="30"</td>
         <td>Vetements</td>
         <td>30€</td>
         <td>1</td>

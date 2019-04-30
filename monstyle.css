@@ -63,6 +63,7 @@ body{
 	color: #fff;
 	font-size: 1.3rem;
 	line-height: 1.5;
+    text-align: center;
 }
 
 .features {   
@@ -110,6 +111,11 @@ body{
 
 .livr > a:link, .livr > a, .retour > a:link, .retour >a{
     text-decoration: none;  
+    color: white;
+}
+
+button > a:link, button > a{
+    text-decoration: none;
     color: white;
 }
 
@@ -172,6 +178,31 @@ td {
     font-size: 0.7em;
     color: indianred;
 }
+
+.titre-article{
+    margin-left: 32%;
+}
+
+.bouton-article{
+    margin-left: 25%;
+}
+
+.img-article{
+    margin-left: 15%;
+    margin-top: 6%;
+}
+
+.roman-liv{
+    width: 25%;
+    height: 440px;
+    color: slategrey;
+    background-color: #D2D5D9;
+}
+
+.best-sell{
+    margin-left: 32%;
+}
+
 
 
 

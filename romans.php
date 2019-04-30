@@ -1,4 +1,5 @@
-<!-- Au lieu de renvoyer sur des pages quand on choisit une categories, utiliser les differentes bdd pour charger les images ? -->
+<!-- En hard en attendant la bdd-->
+
 <?php
 require "nav.php";
 ?>
@@ -7,7 +8,7 @@ require "nav.php";
 	<!--Le menu avec les différents modèles-->
 	<ul class="nav justify-content-center bg-warning">
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-primary"><a href="romans.php"> Romans</a></button>		
+			<button type="button" class="btn btn-sm btn-primary active"><a href="romans.php"> Romans</a></button>		
 		</li>
 		<li class="nav-item">
 			<button type="button" class="btn btn-sm btn-primary "><a href="mangas.php">Mangas</a></button>		
@@ -21,11 +22,13 @@ require "nav.php";
 		
 			
 	</ul>
-    <br><br><h1 class="panier">Nos best-sellers du mois</h1>
+    
+    <br><br>
+    
     <div class="container">
 		<div class="row">
             
-            <div class="roman-liv">
+			<div class="roman-liv">
 				
 				<img src="img/roman/eragon.jpg" class="img-article" width="208" height="299"/>
                 <br><br><h6 class="titre-article">Eragon - 15€</h6>
@@ -38,8 +41,8 @@ require "nav.php";
             
 			<div class="roman-liv">
 				
-                <img src="img/roman/snk.jpeg" class="img-article" height="312" width="208"/>
-                <br><br><h6 class="titre-article"> SnK Tome 26 - 7.95€</h6>
+                <img src="img/roman/harrypotter.jpg" class="img-article" height="314" width="208"/>
+                <br><br><h6 class="titre-article"> Harry Potter - 45€</h6>
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 				
 			</div>
@@ -51,11 +54,12 @@ require "nav.php";
                 <br><br><h6 class="titre-article"> Harry Potter - 45€</h6>
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 			</div>
-            
-        </div>
-    </div>
-	
-<br><br><br><br><br>
+			
+		</div>
+		
+	</div>
+	<br><br>
+
 </main>
 
 <?php

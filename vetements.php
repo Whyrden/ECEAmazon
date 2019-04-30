@@ -4,15 +4,16 @@ require "nav.php";
 
 <main>
 	<!--Le menu avec les différents modèles-->
-	<ul class="nav justify-content-center">
+    
+    <ul class="nav justify-content-center bg-warning">
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Hommes</button>		
+			<button type="button" class="btn btn-sm btn-primary"><a href="hommes.php"> Hommes</a></button>		
 		</li>
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Femmes</button>		
+			<button type="button" class="btn btn-sm btn-primary "><a href="femmes.php">Femmes</a></button>		
 		</li>
 		<li class="nav-item">
-			<button type="button" class="btn btn-sm btn-light"> Enfants</button>		
+			<button type="button" class="btn btn-sm btn-primary"><a href="enfants.php">Enfants</a></button>		
 		</li>
 			
 	</ul>

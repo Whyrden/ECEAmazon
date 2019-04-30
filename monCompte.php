@@ -6,7 +6,7 @@ require "nav.php";
 	
     <br/>
     <br/>
-    <h2 class="titre"><img src="boy.png" width="40" height="40"/>Votre compte<img src="girl.png" width="40" height="40"/></h2>
+    <h2 class="titre"><img src="img/icon/boy.png" width="40" height="40"/>Votre compte<img src="img/icon/girl.png" width="40" height="40"/></h2>
     <br><br><br>
     <!--inserer info bdd-->
     
@@ -14,7 +14,7 @@ require "nav.php";
 		<div class="row">
             
             <div class="compte1">
-        <img src="girl.png" width=150 height=150/>
+        <img src="img/icon/girl.png" width=150 height=150/>
     </div>
     <div class="compte2">
 
