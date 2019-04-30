@@ -29,12 +29,21 @@ if(isset($_POST['login_submit'])){
 
 			if($data=mysqli_fetch_assoc($resultat)){
 
-				print("Bienvenu");
+				print("Bienvenue");
 				print($data['username_client']);
 
+				//Ouvrir une session
+				session_start();
+
+				//Declaration des variables de session
+				$_SESSION['username']=$data['username_client'];
+				$_SESSION['password']=$data['password'];
+
+				header("Location: ../accueil.php?login=loginsuccess");
+				exit();
 			}
 			else{
-				header("Location: ../login.php?error=mdperror");
+				header("Location: ../login.php?error=incorrectInfo");
 				exit();
 
 			}

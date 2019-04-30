@@ -1,3 +1,7 @@
+<?php
+	session_start(); //Pour que la session soit ouverte sur toutes les pages
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,10 +62,26 @@
 					<a class="nav-link" href="vente.php">Vendre</a>				
 				</li>
 
-				<li class="nav-item">
-					<a href="login.php"><button class="btn btn-sm btn-light">Se connecter</button></a>
-					<a href="signup.php"><button class="btn btn-sm btn-primary">S'inscrire</button></a>
-				</li>
+
+				<?php
+				if(isset($_SESSION['username']))
+				{
+					echo '<li class="nav-item">
+							<a href="includes/logout_inc.php"><button class="btn btn-sm btn-danger">Se deconnecter</button></a>				
+						  </li>';
+
+				}
+				else{
+					echo '<li class="nav-item">
+						<a href="login.php"><button class="btn btn-sm btn-light">Se connecter</button></a>
+						<a href="signup.php"><button class="btn btn-sm btn-primary">S inscrire</button></a>
+						</li>';
+
+				}
+				?>
+
+				
+
 				
 			</ul>
 		
