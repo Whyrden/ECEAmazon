@@ -40,7 +40,11 @@ if(isset($_POST['login_submit'])){
 				$_SESSION['prenom']=$data['prenom'];
 				$_SESSION['naissance']=$data['date_naissance'];
 				$_SESSION['email']=$data['email'];
+				$_SESSION['adresse']=$data['adresse1'];
+				$_SESSION['codePostal']=$data['code_postal'];
 				$_SESSION['ville']=$data['ville'];
+				$_SESSION['pays']=$data['pays'];
+				$_SESSION['telephone']=$data['telephone'];
 
 				header("Location: ../accueil.php?login=loginsuccess");
 				exit();

@@ -26,7 +26,9 @@ require "nav.php";
             echo "Prenom: ".$_SESSION['prenom'],'<br>';
             echo "Date de naissance: ".$_SESSION['naissance'],'<br>';
             echo "Email: ".$_SESSION['email'],'<br>';
-            echo "Ville: ".$_SESSION['ville'],'<br>';
+            echo "Adresse: ".$_SESSION['adresse'];echo" ".$_SESSION['codePostal'];echo" ".$_SESSION['ville'];echo" ".$_SESSION['pays'],'<br>';
+            echo "Telephone: ".$_SESSION['telephone'],'<br>';
+            
         }
         ?>
             

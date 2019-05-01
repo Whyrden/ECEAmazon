@@ -38,7 +38,7 @@ if(isset($_POST['signup_submit'])){
 
 //Ajouter à la database si formulaire correct
 	else{
-		$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays')";
+		$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`,`ville`,`code_postal`,`date_naissance`,`adresse1`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays','$ville','$codePostale','$dateNaissance','$adresse')";
 		$stmt=mysqli_stmt_init($db_connect);
 
 
