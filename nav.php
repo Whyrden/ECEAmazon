@@ -45,18 +45,19 @@
 						<a class="dropdown-item" href="sports.php">Sports</a>
 					</div>								
 				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="panier.php">Mon panier<img src="img/icon/cart.png" width="20" height="20"/></a>					
+                
+                <li class="nav-item">
+					<a class="nav-link" href="ventesFlash.php">Ventes flash</a>				
 				</li>
-
-				<li class="nav-item">
+                
+                <li class="nav-item">
 					<a class="nav-link" href="monCompte.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="ventesFlash.php">Ventes flash</a>				
+					<a class="nav-link" href="panier.php"><img src="img/icon/cart.png" width="25" height="25" style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"/></a>					
 				</li>
+				
 
 				<li class="nav-item">
 					<a class="nav-link" href="vente.php">Vendre</a>				
