@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 01, 2019 at 09:48 AM
+-- Generation Time: May 01, 2019 at 10:09 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `achats`;
 CREATE TABLE IF NOT EXISTS `achats` (
-  `id_achat` int(11) NOT NULL
+  `id_achat` int(11) NOT NULL,
+  PRIMARY KEY (`id_achat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(255) NOT NULL,
   `password` text NOT NULL,
   `nom` text,
-  `prenom` text
+  `prenom` text,
+  PRIMARY KEY (`username_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,11 +58,12 @@ CREATE TABLE IF NOT EXISTS `admin` (
 DROP TABLE IF EXISTS `carte_bancaire`;
 CREATE TABLE IF NOT EXISTS `carte_bancaire` (
   `proprietaire` varchar(255) NOT NULL,
-  `numero` int(11) DEFAULT NULL,
-  `type` text,
-  `expiration` date DEFAULT NULL,
-  `code` int(11) DEFAULT NULL,
-  `utilisateur` varchar(255) DEFAULT NULL
+  `numero` int(11) NOT NULL,
+  `type` text NOT NULL,
+  `expiration` date NOT NULL,
+  `code` int(11) NOT NULL,
+  `utilisateur` varchar(255) NOT NULL,
+  PRIMARY KEY (`proprietaire`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -72,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
 DROP TABLE IF EXISTS `clients`;
 CREATE TABLE IF NOT EXISTS `clients` (
   `username_client` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `pays` text,
   `adresse1` text,
   `adresse2` text,
@@ -80,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `ville` text,
   `telephone` int(10) NOT NULL,
   `date_naissance` date DEFAULT NULL,
-  `email` text,
-  `nom` text,
-  `prenom` text,
+  `email` text NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
   PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -91,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
 --
 
 INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', NULL, NULL);
+('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', '', '');
 
 -- --------------------------------------------------------
 
@@ -102,13 +105,14 @@ INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adres
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id_item` int(11) NOT NULL,
-  `nom_item` text,
+  `nom_item` text NOT NULL,
   `image` text,
-  `vendeur` text,
-  `categorie` text,
+  `vendeur` text NOT NULL,
+  `categorie` text NOT NULL,
   `description` text,
-  `nb_ventes` int(11) DEFAULT NULL,
-  `modele` text
+  `nb_ventes` int(11) NOT NULL DEFAULT '0',
+  `modele` text,
+  PRIMARY KEY (`id_item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -120,10 +124,11 @@ CREATE TABLE IF NOT EXISTS `items` (
 DROP TABLE IF EXISTS `panier`;
 CREATE TABLE IF NOT EXISTS `panier` (
   `id_panier` int(11) NOT NULL,
-  `proprietaire` text,
+  `proprietaire` text NOT NULL,
   `id_achat` int(11) DEFAULT NULL,
-  `prix` int(11) DEFAULT NULL,
-  `quantite` int(11) DEFAULT NULL
+  `prix` int(11) NOT NULL DEFAULT '0',
+  `quantite` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_panier`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -135,11 +140,11 @@ CREATE TABLE IF NOT EXISTS `panier` (
 DROP TABLE IF EXISTS `vendeurs`;
 CREATE TABLE IF NOT EXISTS `vendeurs` (
   `username_vendeur` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `photo_profil` text,
   `photo_fond` text,
   `description` text,
-  `email` text,
+  `email` text NOT NULL,
   `nom` text,
   `prenom` text,
   PRIMARY KEY (`username_vendeur`)
