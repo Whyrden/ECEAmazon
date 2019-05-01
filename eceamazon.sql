@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 01 mai 2019 à 10:59
+-- Généré le :  mer. 01 mai 2019 à 12:59
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -44,6 +44,8 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(255) NOT NULL,
   `password` text NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
   PRIMARY KEY (`username_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -58,8 +60,8 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
   `proprietaire` varchar(255) NOT NULL,
   `numero` int(11) NOT NULL,
   `type` text,
-  `expiration` date DEFAULT NULL,
-  `code` int(11) DEFAULT NULL,
+  `expiration` date NOT NULL,
+  `code` int(11) NOT NULL,
   `utilisateur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -73,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
 DROP TABLE IF EXISTS `clients`;
 CREATE TABLE IF NOT EXISTS `clients` (
   `username_client` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `pays` text,
   `adresse1` text,
   `adresse2` text,
@@ -81,7 +83,9 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `ville` text,
   `telephone` int(10) NOT NULL,
   `date_naissance` date DEFAULT NULL,
-  `email` text,
+  `email` text NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
   PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
 -- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`) VALUES
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com');
+INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
+('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis');
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,7 @@ DROP TABLE IF EXISTS `panier`;
 CREATE TABLE IF NOT EXISTS `panier` (
   `id_panier` int(11) NOT NULL,
   `proprietaire` text,
-  `id_achat` int(11) DEFAULT NULL,
+  `id_achat` int(11) NOT NULL,
   `prix` int(11) DEFAULT NULL,
   `quantite` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_panier`)
@@ -136,11 +140,13 @@ CREATE TABLE IF NOT EXISTS `panier` (
 DROP TABLE IF EXISTS `vendeurs`;
 CREATE TABLE IF NOT EXISTS `vendeurs` (
   `username_vendeur` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `photo_profil` text,
   `photo_fond` text,
   `description` text,
-  `email` text,
+  `email` text NOT NULL,
+  `nom` text,
+  `prenom` text,
   PRIMARY KEY (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
