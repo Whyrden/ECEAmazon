@@ -9,10 +9,15 @@ require "nav.php";
         if($_GET['error']=="noUser"){
             echo "<div class='alert alert-primary' role='alert'>
                  <a href='login.php' class='alert-link'>Connectez-vous </a> ou <a href='signup.php' class='alert-link'>Inscrivez-vous </a>
+                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
                 </div>";
         }
     }
 ?>
+    
+
 
 <br/><br>
 <h2 class="panier"><img src="img/icon/cart.png" height="30" width="30"/>  Votre panier <img src="img/icon/cart.png" height="30" width="30"/></h2>
