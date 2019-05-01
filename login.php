@@ -14,11 +14,13 @@ require "nav.php";
 				
 				<form action="includes/login_inc.php" method="POST">
 					<div class="form-group">
-						<input type="text" name="identifiant" class="form-control form-control-sm" placeholder="Username">					
+                        <label for="id1" class="control-label">Identifiant</label>
+						<input type="text" id="id1" name="identifiant" class="form-control form-control-sm" placeholder="Username">					
 					</div>
 
 					<div class="form-group">
-						<input type="password" name="password" class="form-control form-control-sm" placeholder="Mot de passe">	
+                        <label for="pw" class="control-label">Mot de passe</label>
+						<input type="password" id="pw" name="password" class="form-control form-control-sm" placeholder="Mot de passe">	
 						<a href="#" style="font-size: 0.7em">Mot de passe oublié?</a>				
 					</div>
 
@@ -28,7 +30,7 @@ require "nav.php";
 				
 			</div>			
 		</div>		
-	</div>	<br><br><br><br><br><br><br><br><br>
+	</div>	<br><br><br><br><br><br><br>
 	
 </main>
 
