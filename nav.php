@@ -47,11 +47,11 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="panier.php">Mon panier</a>					
+					<a class="nav-link" href="panier.php">Mon panier<img src="img/icon/cart.png" width="20" height="20"/></a>					
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="monCompte.php">Mon compte</a>				
+					<a class="nav-link" href="monCompte.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
 				</li>
 
 				<li class="nav-item">

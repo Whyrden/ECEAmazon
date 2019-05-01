@@ -31,51 +31,54 @@
     <br><br>
 <h2 class="panier"><img src="img/icon/flash.png" width="40" height="40"/> Vente flash de la semaine <img src="img/icon/flash.png" width="40" height="40"/></h2>
     <br><br>
+    
+    <!-- Contient toutes les ventes flash-->
+    
+    <div class="container">
+		<div class="row">
+            
+    <!-- Contient les ventes flash cat livre-->
+    
+    <div class="roman-liv">
+        <h4 style="color: slategret; margin-left: 40%;">Livre</h4>
   
   <div class="bd-example">
 
-  <div id="venteflash" class="carousel slide" data-ride="carousel"  style="width: 400px; margin: 0 auto">
+  <div id="venteflash" class="carousel slide" data-ride="carousel" >
 
     <ol class="carousel-indicators">
       <li data-target="#venteflash" data-slide-to="0" class="active"></li>
       <li data-target="#venteflash" data-slide-to="1"></li>
       <li data-target="#venteflash" data-slide-to="2"></li>
-      <li data-target="#venteflash" data-slide-to="3"></li>
     </ol>
 
     <div class="carousel-inner">
 
       <div class="carousel-item active">
-        <img src="eragon.jpg" class="d-block w-100" alt="bestsellerlivre">
+        <img src="img/roman/eragon.jpg" class="img-article" alt="bestsellerlivre1" width="208" height="299">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Livres</h5>
-          <p>MUST READ OMG</p>
+          <h5 class="carousel-titre">Eragon</h5>
+          <p class="carousel-descrip">MUST READ OMG</p>
         </div>
       </div>
 
       <div class="carousel-item">
-        <img src="kpop.png" class="d-block w-100" alt="bestsellermusique">
+        <img src="img/roman/harrypotter.jpg" class="img-article" alt="bestsellerlivre2" height="314" width="208">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Musique</h5>
+          <h5 class="carousel-titre">Harry Potter</h5>
           <p>INCROYABLE</p>
         </div>
       </div>
 
       <div class="carousel-item">
-        <img src="jean.jpg" class="d-block w-100" alt="...">
+        <img src="img/roman/snk.jpeg" class="img-article" alt="bestsellerlivre3" height="314" width="208">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Vêtements</h5>
-          <p>TROBO</p>
+          <h5 class="carousel-titre">SnK</h5>
+          <p class="carousel-descrip">TROBO</p>
         </div>
         </div>
 
-      <div class="carousel-item">
-        <img src="kimono.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Sports et loisirs</h5>
-          <p>WOW</p>
-        </div>
-        </div>
+
 
     </div>
 
@@ -91,7 +94,145 @@
 
   </div>
 
-</div><br><br>
+        </div>
+            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+            </div>
+            
+            
+    <!--Separateur categorie-->
+    <div class="col-sm-1"></div>
+            
+            
+        <!-- Contient les ventes flash cat musique-->
+    
+    <div class="roman-liv">
+        <h4 style="color: slategret; margin-left: 40%;">Musique</h4>
+  
+  <div class="bd-example">
+
+  <div id="venteflash2" class="carousel slide" data-ride="carousel" >
+
+    <ol class="carousel-indicators">
+      <li data-target="#venteflash2" data-slide-to="0" class="active"></li>
+      <li data-target="#venteflash2" data-slide-to="1"></li>
+      <li data-target="#venteflash2" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="img/musique/kpop.png" class="img-article" alt="bestsellerlivre" width="208" height="208">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">Eragon</h5>
+          <p class="carousel-descrip">MUST READ OMG</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/musique/kpop.png" class="img-article" alt="bestsellermusique" height="208" width="208">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">Harry Potter</h5>
+          <p>INCROYABLE</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/musique/kpop.png" class="img-article" alt="..." height="208" width="208">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">SnK</h5>
+          <p class="carousel-descrip">TROBO</p>
+        </div>
+        </div>
+
+
+
+    </div>
+
+    <a class="carousel-control-prev" href="#venteflash2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="carousel-control-next" href="#venteflash2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+
+        </div>
+            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+            </div>
+            
+            
+            
+        <!--Separateur categorie-->
+    <div class="col-sm-1"></div>
+            
+            
+        <!-- Contient les ventes flash cat vetement-->
+    
+    <div class="roman-liv">
+        <h4 style="color: slategret; margin-left: 40%;">Vetements</h4>
+  
+  <div class="bd-example">
+
+  <div id="venteflash3" class="carousel slide" data-ride="carousel" >
+
+    <ol class="carousel-indicators">
+      <li data-target="#venteflash3" data-slide-to="0" class="active"></li>
+      <li data-target="#venteflash3" data-slide-to="1"></li>
+      <li data-target="#venteflash3" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="img/vetements/jean.jpg" class="img-article" alt="bestsellerlivre" width="208" height="277">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">Eragon</h5>
+          <p class="carousel-descrip">MUST READ OMG</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/vetements/jean.jpg" class="img-article" alt="bestsellermusique" height="277" width="208">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">Harry Potter</h5>
+          <p>INCROYABLE</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/vetements/jean.jpg" class="img-article" alt="..." height="277" width="208">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="carousel-titre">SnK</h5>
+          <p class="carousel-descrip">TROBO</p>
+        </div>
+        </div>
+
+
+
+    </div>
+
+    <a class="carousel-control-prev" href="#venteflash3" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="carousel-control-next" href="#venteflash3" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+
+        </div>
+            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+            </div>
+    
+    </div></div>
+    <br><br>
 
   <?php
   require "footer.php"

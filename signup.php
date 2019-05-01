@@ -20,32 +20,53 @@ require "nav.php";
                         <div class="inscrip1">
 
 				            <div class="form-group">
-					           <input type="text" name="identifiant" class="form-control form-control-sm" placeholder="Username*">
+                                <label for="ident" class="control-label">Identifiant</label>
+					           <input type="text" name="identifiant" id="ident" class="form-control form-control-sm" placeholder="Username*">
                             </div>
+
                             <div class="form-group">
-                                <input type="text" name="mail" class="form-control form-control-sm" placeholder="E-mail*">
+                                <label for="email" class="control-label">Adresse mail</label>
+                                <input type="text" name="mail" id="email" class="form-control form-control-sm" placeholder="E-mail*">
                                 <?php
                                      if(isset($_GET['error']) && $_GET['error']=="invalidmail"){
                                         echo "<p class='ast'>Veuillez saisir un mail valide </p>";
                                      }
                                 ?>
+
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-sm" placeholder="Mot de passe*">
+                                <label for="mdp" class="control-label">Mot de passe</label>
+                                <input type="password" name="password" id="mdp" class="form-control form-control-sm" placeholder="Mot de passe*">
                             </div>
+
                             <div class="form-group">
-					           <input type="password" name="confirm_password" class="form-control form-control-sm" placeholder="Confirmer mot de passe*">
+                                <label for="okmdp" class="control-label">Confirmer votre mot de passe</label>
+					           <input type="password" name="confirm_password" id="okmdp" class="form-control form-control-sm" placeholder="Confirmer mot de passe*">
                                <?php
                                      if(isset($_GET['error']) && $_GET['error']=="passwordcheck"){
-                                        echo "<p class='ast'>La saisie ne correspond pas au mot de passe saisi</p>";
+                                        echo "<p class='ast'>Le champ ne correspond pas au mot de passe saisi</p>";
                                      }
                                 ?>
+
                             </div>
                             <div class="form-group">
-					           <input type="text" name="nom" class="form-control form-control-sm" placeholder="Nom*">
+                                <label for="namee" class="control-label">Nom</label>
+					           <input type="text" name="nom" id="namee" class="form-control form-control-sm" placeholder="Nom*">
                             </div>
                             <div class="form-group">
-					           <input type="text" name="prenom" class="form-control form-control-sm" placeholder="Prenom*">      
+                                <label for="prenome" class="control-label">Prénom</label>
+					           <input type="text" name="prenom" id="prenome" class="form-control form-control-sm" placeholder="Prenom*">      
+                            </div>
+                            
+                            <div>
+                                <label for="inlineRadio1" class="control-label">Sexe</label><br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Femme
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Homme
+                                </label>
+                                
                             </div>
                         </div>
 
@@ -56,25 +77,44 @@ require "nav.php";
                     <div class="col-md-5">
                         <div class="inscrip2">
                             <div class="form-group">
-                                <input type="date" name="dateNaissance" class="form-control form-control-sm" placeholder="Date de naissance*">
+                                <label for="birthDate" class="control-label">Date de naissance</label><br>
+                                <input type="date" name="dateNaissance" id="birthDate" class="form-control form-control-sm" placeholder="Date de naissance*">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="pays" class="form-control form-control-sm" placeholder="Pays*">
+                                <label for="pays">   Pays    </label><br>
+                                <select name="pays" id="pays">
+                                    <option value="france">France</option>
+                                    <option value="espagne">Espagne</option>
+                                    <option value="italie">Italie</option>
+                                    <option value="royaume-uni">Royaume-Uni</option>
+                                    <option value="canada">Canada</option>
+                                    <option value="etats-unis">États-Unis</option>
+                                    <option value="chine">Chine</option>
+                                    <option value="japon">Japon</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="adresse" class="form-control form-control-sm" placeholder="Adresse">
+                                <label for="ad" class="control-label">Adresse postale</label><br>
+                                <input type="text" name="adresse" id="ad" class="form-control form-control-sm" placeholder="Adresse">
                             </div>
                             <div class="form-group">
-                                <input type="number" name="codePostale" class="form-control form-control-sm" placeholder="Code postal">	
+                                <label for="postalcode" class="control-label">Code Postal</label><br>
+                                <input type="number" name="codePostale" id="postalcode" class="form-control form-control-sm" placeholder="Code postal">	
                             </div>
                             <div class="form-group">
-                                <input type="text" name="ville" class="form-control form-control-sm" placeholder="Ville">
+                                <label for="city" class="control-label">Ville</label><br>
+                                <input type="text" name="ville" id="city" class="form-control form-control-sm" placeholder="Ville">
                             </div>
                             <div class="form-group">
-                                <input type="number" name="portable" class="form-control form-control-sm" placeholder="Numéro de téléphone  portable*">	
+                                <label for="cellNumber" class="control-label">Numero de téléphone</label><br>
+                                <input type="number" name="portable" id="cellNumber" class="form-control form-control-sm" placeholder="Numéro de téléphone portable*">	
+                            </div>
                             
-                             
-                            </div></div>
+                            <div class="form-group">
+                                <label for="inputFile">Photo de profil</label>
+                                <input type="file" id="inputFile" class="pdp" >
+                            </div>
+                        </div>
                     </div>
 
 

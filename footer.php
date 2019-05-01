@@ -26,6 +26,7 @@
                         <a href="https://www.facebook.com/"><img src="img/icon/facebook.png" height="40" width="40"/></a>             
                         <a href="https://twitter.com/?lang=fr"><img src="img/icon/twitter.png" height="40" width="40"/></a>    
                         <a href="https://www.instagram.com/?hl=fr"><img src="img/icon/instagram.png" height="40" width="40"/></a>
+                        <br><br><a href="login.php">Je suis administrateur ?</a>
                         
                     </p>
 				</div>   
