@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 30, 2019 at 01:55 PM
+-- Generation Time: May 01, 2019 at 09:43 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -79,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `telephone` int(10) NOT NULL,
   `date_naissance` date DEFAULT NULL,
   `email` text,
+  `nom` text,
+  `prenom` text,
   PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`) VALUES
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com');
+INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
+('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', NULL, NULL);
 
 -- --------------------------------------------------------
 
