@@ -10,7 +10,14 @@ require "nav.php";
     <title>Livraison et paiement</title>
 
 </head>
+
 <body>
+  <?php
+  if(!isset($_SESSION['username'])){
+    header("Location: panier.php?error=noUser");
+    exit();
+  }
+  ?>
         <br/>
         <br/>
         <br/>

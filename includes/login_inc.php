@@ -13,6 +13,7 @@ if(isset($_POST['login_submit'])){
 	}
 
 	else{
+		$hashedPsw=password_hash($password,PASSWORD_DEFAULT);
 		//Vérifier si l'id est retrouvé dans la bdd
 		$sql="SELECT * FROM clients WHERE username_client='$identifiant' AND password='$password'";
 		$stmt=mysqli_stmt_init($db_connect);
@@ -29,15 +30,17 @@ if(isset($_POST['login_submit'])){
 
 			if($data=mysqli_fetch_assoc($resultat)){
 
-				print("Bienvenue");
-				print($data['username_client']);
 
 				//Ouvrir une session
 				session_start();
 
 				//Declaration des variables de session
 				$_SESSION['username']=$data['username_client'];
-				$_SESSION['password']=$data['password'];
+				$_SESSION['nom']=$data['nom'];
+				$_SESSION['prenom']=$data['prenom'];
+				$_SESSION['naissance']=$data['date_naissance'];
+				$_SESSION['email']=$data['email'];
+				$_SESSION['ville']=$data['ville'];
 
 				header("Location: ../accueil.php?login=loginsuccess");
 				exit();

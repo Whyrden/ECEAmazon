@@ -3,6 +3,17 @@ require "nav.php";
 ?>
 
 <main>
+    <?php
+    if(isset($_GET['error'])){
+
+        if($_GET['error']=="noUser"){
+            echo "<div class='alert alert-primary' role='alert'>
+                 <a href='login.php' class='alert-link'>Connectez-vous </a> ou <a href='signup.php' class='alert-link'>Inscrivez-vous </a>
+                </div>";
+        }
+    }
+?>
+
 <br/><br>
 <h2 class="panier"><img src="img/icon/cart.png" height="30" width="30"/>  Votre panier <img src="img/icon/cart.png" height="30" width="30"/></h2>
 				
@@ -44,11 +55,7 @@ require "nav.php";
 
     </table> <br><br>
     
-    <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
-
-
-	
-	
+    <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>	
 
 </main>
 

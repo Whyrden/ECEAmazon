@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 30, 2019 at 01:55 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 01 mai 2019 à 12:59
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,58 +19,63 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eceamazon`
+-- Base de données :  `eceamazon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `achats`
+-- Structure de la table `achats`
 --
 
 DROP TABLE IF EXISTS `achats`;
 CREATE TABLE IF NOT EXISTS `achats` (
-  `id_achat` int(11) NOT NULL
+  `id_achat` int(11) NOT NULL,
+  PRIMARY KEY (`id_achat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structure de la table `admin`
 --
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(255) NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  PRIMARY KEY (`username_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carte_bancaire`
+-- Structure de la table `carte_bancaire`
 --
 
 DROP TABLE IF EXISTS `carte_bancaire`;
 CREATE TABLE IF NOT EXISTS `carte_bancaire` (
   `proprietaire` varchar(255) NOT NULL,
-  `numero` int(11) DEFAULT NULL,
+  `numero` int(11) NOT NULL,
   `type` text,
-  `expiration` date DEFAULT NULL,
-  `code` int(11) DEFAULT NULL,
-  `utilisateur` varchar(255) DEFAULT NULL
+  `expiration` date NOT NULL,
+  `code` int(11) NOT NULL,
+  `utilisateur` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clients`
+-- Structure de la table `clients`
 --
 
 DROP TABLE IF EXISTS `clients`;
 CREATE TABLE IF NOT EXISTS `clients` (
   `username_client` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `pays` text,
   `adresse1` text,
   `adresse2` text,
@@ -78,21 +83,23 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `ville` text,
   `telephone` int(10) NOT NULL,
   `date_naissance` date DEFAULT NULL,
-  `email` text,
+  `email` text NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
   PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `clients`
+-- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`) VALUES
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com');
+INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
+('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Structure de la table `items`
 --
 
 DROP TABLE IF EXISTS `items`;
@@ -104,38 +111,42 @@ CREATE TABLE IF NOT EXISTS `items` (
   `categorie` text,
   `description` text,
   `nb_ventes` int(11) DEFAULT NULL,
-  `modele` text
+  `modele` text,
+  PRIMARY KEY (`id_item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `panier`
+-- Structure de la table `panier`
 --
 
 DROP TABLE IF EXISTS `panier`;
 CREATE TABLE IF NOT EXISTS `panier` (
   `id_panier` int(11) NOT NULL,
   `proprietaire` text,
-  `id_achat` int(11) DEFAULT NULL,
+  `id_achat` int(11) NOT NULL,
   `prix` int(11) DEFAULT NULL,
-  `quantite` int(11) DEFAULT NULL
+  `quantite` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_panier`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendeurs`
+-- Structure de la table `vendeurs`
 --
 
 DROP TABLE IF EXISTS `vendeurs`;
 CREATE TABLE IF NOT EXISTS `vendeurs` (
   `username_vendeur` varchar(255) NOT NULL,
-  `password` text,
+  `password` text NOT NULL,
   `photo_profil` text,
   `photo_fond` text,
   `description` text,
-  `email` text,
+  `email` text NOT NULL,
+  `nom` text,
+  `prenom` text,
   PRIMARY KEY (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;

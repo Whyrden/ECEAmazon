@@ -19,7 +19,16 @@ require "nav.php";
     <div class="compte2">
 
         <br>
-        <p> Nom: Salmeron  <br/> Prenom: Océane <br/> Age: 21 ans <br/> Ville: Nogent-sur-Marne <br/> Adresse mail : salmeron.oceane@gmail.com <br/> </p>
+        <?php
+        if(isset($_SESSION['username'])){
+            echo "Nom d'utilisateur: ".$_SESSION['username'],'<br>';
+            echo "Nom: ".$_SESSION['nom'],'<br>';
+            echo "Prenom: ".$_SESSION['prenom'],'<br>';
+            echo "Date de naissance: ".$_SESSION['naissance'],'<br>';
+            echo "Email: ".$_SESSION['email'],'<br>';
+            echo "Ville: ".$_SESSION['ville'],'<br>';
+        }
+        ?>
             
     
     </div>
