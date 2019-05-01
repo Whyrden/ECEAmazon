@@ -14,8 +14,20 @@ if(isset($_POST['login_submit'])){
 
 	else{
 		$hashedPsw=password_hash($password,PASSWORD_DEFAULT);
-		//Vérifier si l'id est retrouvé dans la bdd
+
+		//Vérifier si l'id est retrouvé dans les différentes tables en fonction du statut de l'utilisateur
+		if(isset($_POST['loginAcheteur'])){
 		$sql="SELECT * FROM clients WHERE username_client='$identifiant' AND password='$password'";
+		}
+
+		if(isset($_POST['loginVendeur'])){
+		$sql="SELECT * FROM vendeurs WHERE username_vendeur='$identifiant' AND password='$password'";
+		}
+
+		if(isset($_POST['loginAdmin'])){
+		$sql="SELECT * FROM admin WHERE username_admin='$identifiant' AND password='$password'";
+		}
+
 		$stmt=mysqli_stmt_init($db_connect);
 		if(!mysqli_stmt_prepare($stmt,$sql)){
 			header("Location: ../login.php?error=sqlerror");
@@ -33,6 +45,7 @@ if(isset($_POST['login_submit'])){
 
 				//Ouvrir une session
 				session_start();
+				if(isset($_POST['loginAcheteur'])){
 
 				//Declaration des variables de session
 				$_SESSION['username']=$data['username_client'];
@@ -45,6 +58,19 @@ if(isset($_POST['login_submit'])){
 				$_SESSION['ville']=$data['ville'];
 				$_SESSION['pays']=$data['pays'];
 				$_SESSION['telephone']=$data['telephone'];
+			}
+
+			else if(isset($_POST['loginVendeur'])){
+				$_SESSION['username']=$data['username_vendeur'];
+				$_SESSION['nom']=$data['nom'];
+				$_SESSION['prenom']=$data['prenom'];
+				$_SESSION['email']=$data['email'];
+			}
+			else if(isset($_POST['loginAdmin'])){
+				$_SESSION['username']=$data['username_admin'];
+				$_SESSION['nom']=$data['nom'];
+				$_SESSION['prenom']=$data['prenom'];
+			}
 
 				header("Location: ../accueil.php?login=loginsuccess");
 				exit();
