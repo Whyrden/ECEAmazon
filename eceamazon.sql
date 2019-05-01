@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 01, 2019 at 09:43 AM
+-- Generation Time: May 01, 2019 at 09:48 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `achats` (
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `username_admin` varchar(255) NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `nom` text,
+  `prenom` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -138,6 +140,8 @@ CREATE TABLE IF NOT EXISTS `vendeurs` (
   `photo_fond` text,
   `description` text,
   `email` text,
+  `nom` text,
+  `prenom` text,
   PRIMARY KEY (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
