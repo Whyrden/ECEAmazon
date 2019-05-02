@@ -54,7 +54,7 @@ require "nav.php";
 
     </table> <br><br>
     
-        <form class="form-inline promo30">
+        <form class="form-inline panier-promo">
         <div class="form-group mx-sm-3 mb-2">
             <input type="text" class="form-control" id="promo" placeholder="Code promo">
         </div>
