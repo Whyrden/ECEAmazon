@@ -1,56 +1,11 @@
-<!DOCTYPE html>
-<html>
-    
-    <head>
-        	<title>Ajouter un article - ECE amazon</title>
-	<meta charset="utf-8">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">    
-
-	<!--Bootstraps css--> 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
-
-	<!--Jquery first then Bootstraps js-->          
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-	<!--my CSS-->
-	<link rel="stylesheet" type="text/css" href="monstyle.css"> 
-    
-    <script type="text/javascript">
-        
-        function Choix(form) {
-            
-            var i = form.categorie.selectedIndex;
-
-            
-            if (i == 0) {
-                return;
-            }
-            switch (i) {
-                case 1 : var txt = new Array ('Roman','Manga','B-D','Science'); break;
-                case 2 : var txt = new Array ('Pop','Rock','Rap','Anime'); break;
-                case 3 : var txt = new Array ('Hommes','Femmes','Enfants','none'); break;
-                case 4 : var txt = new Array ('Taekwondo','Danse','Football','Natation'); break;
-            }
-            form.categorie.selectedIndex = 0;
-            for (i=0;i<4;i++) {
-                form.sscategorie.options[i+1].text=txt[i];
-
-            }
-        } 
-</script>
-        
-    </script>
-    
-    </head>
-
-<!--Formulaire d'ajout d'article-->
-<body>
-    
     <?php
 require "nav.php";
 ?>
+
+<!--Formulaire d'ajout d'article-->
+<main>
+    
+
     
 
 
@@ -122,14 +77,16 @@ require "nav.php";
 				
 			</div>			
 		</div>		
-	</div>	<br><br><br>
+		<br><br><br>
 
     
     <br><br><br><br>
 
+
+	
+</main>
+
 <?php
 require "footer.php";
 ?>
-	
-</body>
 

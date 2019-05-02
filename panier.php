@@ -24,6 +24,8 @@ require "nav.php";
 				
     <br><br>
     
+    
+    
     <table>
     <tr>
         <td>Article</td>
@@ -39,18 +41,18 @@ require "nav.php";
         <td>Album f(x)</td>
         <td><img src="img/musique/kpop.png" width="30" height="30"</td>
         <td>Musique</td>
-        <td>15€</td>
-        <td>1</td>
-        <td>15€</td>
+        <td id="prixi1">15€</td>
+        <td id="qt1">1</td>
+        <td id="prixf1">15</td>
     </tr>
         
     <tr>
         <td>Jean bleu</td>
         <td><img src="img/vetements/jean.jpg" width="30" height="30"</td>
         <td>Vetements</td>
-        <td>30€</td>
-        <td>1</td>
-        <td>30€</td>
+        <td id="prixi2">30€</td>
+        <td id="qt2">1</td>
+        <td id="prixf2">30</td>
     </tr>
         
 
@@ -60,10 +62,10 @@ require "nav.php";
         <div class="form-group mx-sm-3 mb-2">
             <input type="text" class="form-control" id="promo" placeholder="Code promo">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Appliquer</button>
+        <button type="button" class="btn btn-primary mb-2" onClick="codePromo()">Appliquer</button>
     </form>
     
-        <p class="retour">Total : 45€</p>
+        <p class="retour">Total : <span id="result">...</span>€</p>
         
     </tr>
     
