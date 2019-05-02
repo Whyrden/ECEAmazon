@@ -25,15 +25,6 @@ require "nav.php";
     <div class="container">
 		<div class="row">
             
-            <div class="roman-liv">
-				
-				<img src="img/roman/eragon.jpg" class="img-article" width="208" height="299"/>
-                <br><br><h6 class="titre-article">Eragon - 15€</h6>
-                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
-				
-				
-			</div>
-            
             <div class="col-sm-1"></div>
             
 			<div class="roman-liv">

@@ -27,7 +27,14 @@ require "nav.php";
             echo "Date de naissance: ".$_SESSION['naissance'],'<br>';
             echo "Email: ".$_SESSION['email'],'<br>';
             echo "Adresse: ".$_SESSION['adresse'];echo" ".$_SESSION['codePostal'];echo" ".$_SESSION['ville'];echo" ".$_SESSION['pays'],'<br>';
-            echo "Telephone: ".$_SESSION['telephone'],'<br>';
+            echo "Telephone: ".$_SESSION['telephone'],'<br><br><br>';
+
+            //Afficher les données de la cb
+            echo "Numéro de carte: ".$_SESSION['numero'],'<br>';
+            echo "Type: ".$_SESSION['type'],'<br>';
+            echo "Date d'expiration: ".$_SESSION['expiration'],'<br>';
+            echo "Code: ".$_SESSION['code'],'<br>';
+            echo "Proprietaire: ". $_SESSION['proprietaire'];
             
         }
         ?>

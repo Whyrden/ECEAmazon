@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 02 mai 2019 à 09:44
+-- Généré le :  jeu. 02 mai 2019 à 13:23
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -36,8 +36,15 @@ CREATE TABLE IF NOT EXISTS `achats` (
   `prix` int(11) NOT NULL,
   `id_panier` int(11) NOT NULL,
   PRIMARY KEY (`id_achat`),
-  FOREIGN KEY (`id_panier`) REFERENCES `panier`(`id_panier`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `id_panier` (`id_panier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `achats`
+--
+
+INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`) VALUES
+(1, 'Harry Potter', 1, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -55,6 +62,28 @@ CREATE TABLE IF NOT EXISTS `admin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+
+--
+-- Structure de la table `carte_bancaire`
+--
+
+DROP TABLE IF EXISTS `carte_bancaire`;
+CREATE TABLE IF NOT EXISTS `carte_bancaire` (
+  `numero` int(11) NOT NULL,
+  `type` text,
+  `expiration` date NOT NULL,
+  `code` int(11) NOT NULL,
+  `username_client` varchar(255) NOT NULL,
+  PRIMARY KEY (`numero`),
+  KEY `cb/client` (`username_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `carte_bancaire`
+--
+
+INSERT INTO `carte_bancaire` (`numero`, `type`, `expiration`, `code`, `username_client`) VALUES
+(1, 'cb', '2021-01-01', 0, 'Wyrden');
 
 -- --------------------------------------------------------
 
@@ -78,8 +107,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `prenom` text NOT NULL,
   `id_panier` int(11) NOT NULL,
   `id_carte_bancaire` int(11) NOT NULL,
-  PRIMARY KEY (`username_client`),
-
+  PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -91,21 +119,6 @@ INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adres
 
 -- --------------------------------------------------------
 
--- Structure de la table `carte_bancaire`
---
-
-DROP TABLE IF EXISTS `carte_bancaire`;
-CREATE TABLE IF NOT EXISTS `carte_bancaire` (
-  `numero` int(11) NOT NULL,
-  `type` text,
-  `expiration` date NOT NULL,
-  `code` int(11) NOT NULL,
-  `username_client` varchar(255) NOT NULL,
-  PRIMARY KEY (`numero`),
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
 --
 -- Structure de la table `items`
 --
@@ -113,17 +126,24 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id_item` int(11) NOT NULL,
+  `username_vendeur` varchar(255) NOT NULL,
   `nom_item` text,
   `image` text,
-  `vendeur` text,
   `categorie` text,
   `description` text,
-  `nb_ventes` int(11) DEFAULT NULL,
+  `nb_ventes` int(11),
   `modele` text,
-  `prix` int(11) DEFAULT NULL,
-  `username_vendeur` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_item`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `prix` int(11) NOT NULL,
+  PRIMARY KEY (`id_item`),
+  KEY `username_vendeur` (`username_vendeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `items`
+--
+
+INSERT INTO `items` (`id_item`, `username_vendeur`, `nom_item`, `image`, `categorie`, `description`, `nb_ventes`, `modele`, `prix`) VALUES
+(1, NULL, 'Harry Potter', NULL, 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5);
 
 -- --------------------------------------------------------
 
@@ -134,10 +154,18 @@ CREATE TABLE IF NOT EXISTS `items` (
 DROP TABLE IF EXISTS `panier`;
 CREATE TABLE IF NOT EXISTS `panier` (
   `id_panier` int(11) NOT NULL,
-  `username_client` varchar(255) DEFAULT NULL,
+  `username_client` varchar(255) NOT NULL,
   `prix_total` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_panier`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_panier`),
+  KEY `username_client` (`username_client`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`id_panier`, `username_client`, `prix_total`) VALUES
+(1, 'Wyrden', 20);
 
 -- --------------------------------------------------------
 
@@ -158,6 +186,34 @@ CREATE TABLE IF NOT EXISTS `vendeurs` (
   `username_admin` varchar(255) NOT NULL,
   PRIMARY KEY (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `achats`
+--
+ALTER TABLE `achats`
+  ADD CONSTRAINT `achats_ibfk_1` FOREIGN KEY (`id_panier`) REFERENCES `panier` (`id_panier`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `carte_bancaire`
+--
+ALTER TABLE `carte_bancaire`
+  ADD CONSTRAINT `cb/client` FOREIGN KEY (`username_client`) REFERENCES `clients` (`username_client`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username_vendeur`) REFERENCES `vendeurs` (`username_vendeur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD CONSTRAINT `panier_ibfk_1` FOREIGN KEY (`username_client`) REFERENCES `clients` (`username_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

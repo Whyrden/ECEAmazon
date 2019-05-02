@@ -52,7 +52,7 @@ if(isset($_POST['login_submit'])){
 				session_start();
 				if(isset($_POST['loginAcheteur'])){
 
-				//Declaration des variables de session
+				//Declaration des variables de session (champs de l'utilisateur)
 				$_SESSION['username']=$data['username_client'];
 				$_SESSION['nom']=$data['nom'];
 				$_SESSION['prenom']=$data['prenom'];
@@ -63,7 +63,54 @@ if(isset($_POST['login_submit'])){
 				$_SESSION['ville']=$data['ville'];
 				$_SESSION['pays']=$data['pays'];
 				$_SESSION['telephone']=$data['telephone'];
-			}
+
+
+
+				//Recuperer les infos de la cb de l'utilisateur aussi
+				$sql2="SELECT * FROM carte_bancaire WHERE username_client='$data['username_client']'";			
+				if(!mysqli_stmt_prepare($stmt,$sql2)){
+					header("Location: ../login.php?error=sqlerror");
+					exit();
+					}
+
+				else{
+					
+					$resultat2=mysqli_query($db_connect, $sql2);
+
+					if($data2=mysqli_fetch_assoc($resultat2)){
+						$_SESSION['numero']=$data2['numero'];
+						$_SESSION['type']=$data2['type'];
+						$_SESSION['expiration']=$data2['expiration'];
+						$_SESSION['code']=$data2['code'];
+						$_SESSION['proprietaire']=$data2['username_client'];
+
+						}	
+
+					}
+
+					//Recuperer les infos du panier aussi
+					$sql3="SELECT * FROM panier WHERE username_client='Wyrden'";
+					if(!mysqli_stmt_prepare($stmt,$sql2)){
+					header("Location: ../login.php?error=sqlerror");
+					exit();
+					}
+
+					else{
+						$resultat3=mysqli_query($db_connect,$sql3);
+
+						if($data3=mysqli_fetch_assoc($resultat3)){
+						$_SESSION['Proprietaire']=$data2['username_client'];
+						$_SESSION['Prix total']=$data3['prix_total'];
+
+						}
+
+					}
+
+
+
+
+				}
+
 
 			else if(isset($_POST['loginVendeur'])){
 				$_SESSION['username']=$data['username_vendeur'];
@@ -71,6 +118,7 @@ if(isset($_POST['login_submit'])){
 				$_SESSION['prenom']=$data['prenom'];
 				$_SESSION['email']=$data['email'];
 			}
+
 			else if(isset($_POST['loginAdmin'])){
 				$_SESSION['username']=$data['username_admin'];
 				$_SESSION['nom']=$data['nom'];
@@ -80,6 +128,7 @@ if(isset($_POST['login_submit'])){
 				header("Location: ../accueil.php?login=loginsuccess");
 				exit();
 			}
+
 			else{
 				header("Location: ../login.php?error=incorrectInfo");
 				exit();
