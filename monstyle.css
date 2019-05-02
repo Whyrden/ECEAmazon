@@ -30,7 +30,7 @@ body{
 
 
 .header{
-	background-image: url('piano.jpg');
+	background-image: url('frenchdays.png');
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -202,6 +202,19 @@ td {
 .best-sell{
     margin-left: 32%;
 }
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%778899' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%778899' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.panier-promo{
+    margin-left: 37%;
+}
+
 
 
 

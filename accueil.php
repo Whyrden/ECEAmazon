@@ -27,8 +27,8 @@
 	
 
 	<?php
-	require "header.php";
-	?>
+    require "carouselAccueil.php"
+    ?>
 
 	<?php
 	require "footer.php";
