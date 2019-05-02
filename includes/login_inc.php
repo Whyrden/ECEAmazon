@@ -54,6 +54,8 @@ if(isset($_POST['login_submit'])){
 
 				//Declaration des variables de session (champs de l'utilisateur)
 				$_SESSION['username']=$data['username_client'];
+				$current_username=$_SESSION['username'];
+
 				$_SESSION['nom']=$data['nom'];
 				$_SESSION['prenom']=$data['prenom'];
 				$_SESSION['naissance']=$data['date_naissance'];
@@ -67,7 +69,7 @@ if(isset($_POST['login_submit'])){
 
 
 				//Recuperer les infos de la cb de l'utilisateur aussi
-				$sql2="SELECT * FROM carte_bancaire WHERE username_client='$data['username_client']'";			
+				$sql2="SELECT * FROM carte_bancaire WHERE username_client='$current_username'";			
 				if(!mysqli_stmt_prepare($stmt,$sql2)){
 					header("Location: ../login.php?error=sqlerror");
 					exit();
@@ -89,25 +91,48 @@ if(isset($_POST['login_submit'])){
 					}
 
 					//Recuperer les infos du panier aussi
-					$sql3="SELECT * FROM panier WHERE username_client='Wyrden'";
-					if(!mysqli_stmt_prepare($stmt,$sql2)){
+					$sql3="SELECT * FROM panier WHERE username_client='$current_username'";
+
+					if(!mysqli_stmt_prepare($stmt,$sql3)){
 					header("Location: ../login.php?error=sqlerror");
 					exit();
 					}
 
 					else{
-						$resultat3=mysqli_query($db_connect,$sql3);
+					
+						$resultat3=mysqli_query($db_connect, $sql3);
 
 						if($data3=mysqli_fetch_assoc($resultat3)){
-						$_SESSION['Proprietaire']=$data2['username_client'];
-						$_SESSION['Prix total']=$data3['prix_total'];
+							$_SESSION['id_panier']=$data3['id_panier'];
+							$current_panier=$_SESSION['id_panier'];
 
+							$_SESSION['proprietaire']=$data3['username_client'];
+							$_SESSION['prix_total']=$data3['prix_total'];
+							}	
+
+						//Puis charger toutes les commandes qui sont associées au panier
+						$sql4="SELECT * FROM achats WHERE id_panier='$current_panier'";
+
+						if(!mysqli_stmt_prepare($stmt,$sql4)){
+						header("Location: ../login.php?error=sqlerror");
+						exit();
+						}	
+
+						else{
+							$resultat4=mysqli_query($db_connect, $sql4);
+
+							while($data4=mysqli_fetch_assoc($db_connect, $resultat4)){
+								$_SESSION['id_achat']=$data4['id_achat'];
+								$_SESSION['nom_item']=$data4['nom_item'];
+								$_SESSION['quantite']=$data4['quantite'];
+								$_SESSION['prix']=$data4['prix'];
+								$_SESSION['categorie']=$data4['categorie'];
+								$_SESSION['id_panier']=$data4['id_panier'];
+
+
+							}
 						}
-
 					}
-
-
-
 
 				}
 

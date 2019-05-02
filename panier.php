@@ -34,6 +34,8 @@ require "nav.php";
         <td>Total</td>
     </tr>
     <tr>
+      
+
         <td>Album f(x)</td>
         <td><img src="img/musique/kpop.png" width="30" height="30"</td>
         <td>Musique</td>
@@ -51,17 +53,22 @@ require "nav.php";
         <td>30€</td>
     </tr>
         
-    <tr>
-        
-        <td>Total</td>
-        <td>45€</td>
-        
-    </tr>
 
     </table> <br><br>
     
-    <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>	
-
+        <form class="form-inline panier-promo">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="promo" placeholder="Code promo">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Appliquer</button>
+    </form>
+    
+        <p class="retour">Total : 45€</p>
+        
+    </tr>
+    
+    <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
+    
 </main>
 
 <?php

@@ -11,7 +11,7 @@ if(isset($_POST['signup_submit'])){
 	$adresse=isset($_POST['adresse'])? $_POST["adresse"]:"";
 	$nom=isset($_POST['nom'])? $_POST["nom"]:"";
 	$prenom=isset($_POST['prenom'])? $_POST["prenom"]:"";
-	$dateNaissance=isset($_POST['dateNaissance'])? $_POST["dateNaissance"]:"";
+	$dateNaissance=isset($_POST['dateNaissance'])? $_POST["dateNaissance"]:"2020-01-01";
 	$pays=isset($_POST['pays'])? $_POST["pays"]:"";
 	$codePostale=isset($_POST['codePostale'])? $_POST["codePostale"]:"";
 	$ville=isset($_POST['ville'])? $_POST["ville"]:"";
