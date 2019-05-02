@@ -60,10 +60,10 @@ require "nav.php";
         <div class="form-group mx-sm-3 mb-2">
             <input type="text" class="form-control" id="promo" placeholder="Code promo">
         </div>
-        <button type="submit" class="btn btn-primary mb-2" onclick="codePromo()">Appliquer</button>
+        <button type="button" class="btn btn-primary mb-2" onClick="codePromo()">Appliquer</button>
     </form>
     
-        <p class="retour">Total : <span id="result"></span></p>
+        <p class="retour">Total : <span id="result">...</span>€</p>
         
     </tr>
     

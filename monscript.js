@@ -17,13 +17,21 @@ function Choix(form) {
 
 function codePromo(){
     
-    var prixinit=parseInt(document.getElementById("prixf1").value)+parseInt(document.getElementById("prixf2"));
+    var prixinit=parseInt(document.getElementById("prixf1").textContent)+parseInt(document.getElementById("prixf2").textContent);
     
     var code=document.getElementById("promo").value;
     console.log(prixinit);
+    console.log(code);
+    if(code=="FRENCH25"){
+        prixinit=prixinit*0.75;
+    }
     
-    if(code=="oce"){
-        prixinit=prixinit-2;
+    else if(code=="gratosbabe"){
+        prixinit=0;
+    }
+    
+    else{
+        prixinit=prixinit;
     }
     
     document.getElementById("result").innerHTML=prixinit;
