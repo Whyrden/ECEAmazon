@@ -6,6 +6,15 @@ require "nav.php";
 <main>
 
     <br><br><h2 class="panier">Connectez-vous</h2><br>
+    <?php
+    if(isset($_GET['error'])){
+    	if ($_GET['error']=="noStatus") {
+    		 echo "<p class='ast'>Veuillez sélectionner un utilisateur valide </p>";
+    		# code...
+    	}
+
+    }
+    ?>
 	<div class="container">
 		<div class="row">
 

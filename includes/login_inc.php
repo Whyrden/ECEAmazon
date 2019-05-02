@@ -20,12 +20,17 @@ if(isset($_POST['login_submit'])){
 		$sql="SELECT * FROM clients WHERE username_client='$identifiant' AND password='$password'";
 		}
 
-		if(isset($_POST['loginVendeur'])){
+		else if(isset($_POST['loginVendeur'])){
 		$sql="SELECT * FROM vendeurs WHERE username_vendeur='$identifiant' AND password='$password'";
 		}
 
-		if(isset($_POST['loginAdmin'])){
+		else if(isset($_POST['loginAdmin'])){
 		$sql="SELECT * FROM admin WHERE username_admin='$identifiant' AND password='$password'";
+		}
+
+		else{
+			header("Location: ../login.php?error=noStatus");
+			exit();
 		}
 
 		$stmt=mysqli_stmt_init($db_connect);
