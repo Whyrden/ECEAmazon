@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PROJET WEB DYNAMIQUE</title>
-	<meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">    
 
-	<!--Bootstraps css--> 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
-
-	<!--Jquery first then Bootstraps js-->          
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-	<!--my CSS-->
-	<link rel="stylesheet" type="text/css" href="monstyle.css"> 
-
- 
-</head>
-
-    <body>
+    <main>
     
       <div id="carouselAccueil" class="carousel slide" data-ride="carousel">
         
@@ -31,13 +12,13 @@
           
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="frenchdays.png" alt="First slide">
+                <img class="d-block w-100" src="frenchdays.png" alt="First promo">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="vendeur.png" alt="Second slide">
+                <img class="d-block w-100" src="vendeur.png" alt="Second promo">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="piano.jpg" alt="Third slide">
+                <img class="d-block w-100" src="piano.jpg" alt="Third promo">
             </div>
         </div>
           
@@ -52,6 +33,5 @@
         </a>
     </div>
     
- </body>
+ </main>
     
-</html>

@@ -15,6 +15,9 @@
 
 	<!--my CSS-->
 	<link rel="stylesheet" type="text/css" href="monstyle.css"> 
+    
+    <!-- Script JS-->
+    <script type="text/javascript" src="monscript.js"></script>
 
  
 </head>
