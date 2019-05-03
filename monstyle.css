@@ -216,7 +216,14 @@ td {
 }
 
 
+.hola{
+    border: none;
+    background-color:slategrey; 
+}
 
+.qt-box{
+    margin-left: 37%;
+}
 
 
 
