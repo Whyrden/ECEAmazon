@@ -71,7 +71,9 @@ require "nav.php";
         </div>
         <button type="button" class="btn btn-primary mb-2" onClick="codePromo()">Appliquer</button>
     </form>
-    
+
+
+        <p class="retour">Quantité totale :<?php if(!empty($_SESSION['quantite_totale']))echo $_SESSION['quantite_totale']; ?></p>
         <p class="retour">Total : <span id="result"><?php if(!empty($_SESSION['prix_total']))echo $_SESSION['prix_total']; ?></span>€</p>
         
     

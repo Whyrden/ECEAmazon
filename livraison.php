@@ -13,9 +13,15 @@ require "nav.php";
 
 <body>
   <?php
+  //Si pas d'utilisateur, renvoyer au panier
   if(!isset($_SESSION['username_client'])){
     header("Location: panier.php?error=noUser");
     exit();
+  }
+
+  //Sinon si panier vide, renvoyer aussi au panier
+  else if(){
+
   }
   ?>
         <br/>

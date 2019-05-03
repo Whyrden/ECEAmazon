@@ -1,6 +1,6 @@
 <?php
-//Appelé lorsque le client appuie sur panier
-//chargement du panier du client
+//Appelé lorsque le client appuie sur panier.
+//chargement du panier (s'il existe) du client 
 session_start();
 
 if(isset($_SESSION['username_client'])){
@@ -13,8 +13,8 @@ if(isset($_SESSION['username_client'])){
 				$stmt=mysqli_stmt_init($db_connect);
 
 				if(!mysqli_stmt_prepare($stmt,$sql3)){
-				header("Location: ../panier.php?error=noCartFound");
-				exit();
+					header("Location: ../panier.php?error=noCartFound");
+					exit();
 					}
 
 				else{
@@ -58,11 +58,13 @@ if(isset($_SESSION['username_client'])){
 								$total_panier=0;
 								foreach ($_SESSION['achats']as $key => $values) {
 									$total_panier+=$values['prix_commande'];
+									$total_quantite+=$values['quantite'];
 
 								}
 
 								//Puis mettre à jour le prix total du panier
-								$sql5="UPDATE panier SET prix_total='$total_panier' WHERE id_panier='$current_panier'";
+								$sql5="UPDATE panier SET prix_total='$total_panier', quantite_totale='$total_quantite' WHERE id_panier='$current_panier'";
+
 
 								if(!mysqli_stmt_prepare($stmt,$sql5)){
 									header("Location: ../panier.php?error=errorsql");
@@ -74,9 +76,10 @@ if(isset($_SESSION['username_client'])){
 										//Execution de la requête
 										if(mysqli_query($db_connect,$sql5)){
 										$_SESSION['prix_total']=$total_panier;
+										$_SESSION['quantite_totale']=$total_quantite;
 										}//end if
 										else{
-											header("Location:../panier.php?panier=prixnotupdated");
+											header("Location:../panier.php?panier=prixAndQuantiteNotUpdated");
 											exit();
 
 										}

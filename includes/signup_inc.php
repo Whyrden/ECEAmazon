@@ -56,22 +56,51 @@ if(isset($_POST['signup_submit'])){
 				}
 			}
 
-		$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`,`ville`,`code_postal`,`date_naissance`,`adresse1`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays','$ville','$codePostale','$dateNaissance','$adresse')";
+			//Ajout dans la table clients
+			$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`,`ville`,`code_postal`,`date_naissance`,`adresse1`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays','$ville','$codePostale','$dateNaissance','$adresse')";
 
 
 			if(!mysqli_stmt_prepare($stmt,$sql)){
 				header("Location: ../signup.php?error=sqlerror");
 				exit();
-			}
+			}//endif
 			else{
 
 				//EXecution de la requete
-				if(mysqli_query($db_connect,$sql)){
+				mysqli_query($db_connect,$sql);
+							
+			}//endelse
+
+			//Crée un panier aussi (pour l'id, on prend cun aléatoire)
+
+			$id=0;
+			$sql="SELECT id_panier FROM panier WHERE id_panier=$id";
+			if(!mysqli_stmt_prepare($stmt,$sql)){
+				header("Location: ../signup.php?error=sqlerror");
+				exit();
+			}//endif
+
+			else{
+				$resultat=mysqli_query($db_connect,$sql);
+				while($data=mysqli_fetch_assoc($resultat)){
+					$id=rand(1,255);
+				}
+			}
+			
+
+			//Puis inserer l'id dans le panier fraîchement crée
+			$sql6="INSERT INTO `panier`(`id_panier`,`username_client`) VALUES($id,'$identifiant')";
+
+			if(mysqli_query($db_connect,$sql6)){
 				header("Location: ../signup.php?signup=success");
 				exit();
 			}
-			
+			else{
+				header("Location: ../signup.php?error=sqlerror");
+				exit();
+
 			}
+
 		
 	
 
