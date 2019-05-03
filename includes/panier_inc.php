@@ -53,14 +53,51 @@ if(isset($_SESSION['username_client'])){
 								$i++;
 								
 							}
-							echo "".$_SESSION['achats'][1];
+
+							if(!empty($_SESSION['achats'])){
+								$total_panier=0;
+								foreach ($_SESSION['achats']as $key => $values) {
+									$total_panier+=$values['prix_commande'];
+
+								}
+
+								//Puis mettre à jour le prix total du panier
+								$sql5="UPDATE panier SET prix_total='$total_panier' WHERE id_panier='$current_panier'";
+
+								if(!mysqli_stmt_prepare($stmt,$sql5)){
+									header("Location: ../panier.php?error=errorsql");
+									exit();
+									}//end if
+
+								else{
+
+										//Execution de la requête
+										if(mysqli_query($db_connect,$sql5)){
+										$_SESSION['prix_total']=$total_panier;
+										}//end if
+										else{
+											header("Location:../panier.php?panier=prixnotupdated");
+											exit();
+
+										}
 
 
-							//header("Location: ../panier.php?panier=success");
-							//exit();
+									}//end else
+
+								}//end if $_SESSION['achats'] not empty
+
+							else{
+								header("Location: ../panier.php?panier=noPanier");
+								exit();
+
+							}
 
 
-						}
+							header("Location: ../panier.php?panier=success");
+							exit();
+
+
+						}//end else $sql4 exécutée 
 
 
 					}

@@ -28,34 +28,40 @@ require "nav.php";
     
     
     <table>
-    <tr>
-        <td>Article</td>
-        <td>Image</td>
-        <td>Categorie</td>
-        <td>Prix unitaire</td>
-        <td>Quantité</td>
-        <td>Total</td>
-    </tr>
-    <tr>
 
-
-        <td>Album f(x)</td>
-        <td><img src="img/musique/kpop.png" width="30" height="30"</td>
-        <td>Musique</td>
-        <td id="prixi1">15€</td>
-        <td id="qt1">1</td>
-        <td id="prixf1">15</td>
-    </tr>
-        
     <tr>
-        <td>Jean bleu</td>
-        <td><img src="img/vetements/jean.jpg" width="30" height="30"</td>
-        <td>Vetements</td>
-        <td id="prixi2">30€</td>
-        <td id="qt2">1</td>
-        <td id="prixf2">30</td>
+        <th>Article</th>
+        <th>Image</th>
+        <th>Categorie</th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th>Total</th>
     </tr>
-        
+
+        <?php
+
+        if(!empty($_SESSION['achats'])){
+            foreach ($_SESSION['achats'] as $key => $values) {
+                # code...
+                ?>
+                
+
+                <tr>
+                    <td><?php echo $values['nom_item']; ?></td>
+                    <td><?php echo "vide"; ?></td>
+                    <td><?php echo $values['categorie']; ?></td>
+                    <td><?php echo $values['prix_commande']; ?></td>
+                    <td><?php echo $values['quantite']; ?></td>
+                    <td><?php echo $values['prix_commande']; ?></td>
+                </tr>
+
+        <?php
+            }
+
+        }
+        ?>
+
+       
 
     </table> <br><br>
     
@@ -66,13 +72,13 @@ require "nav.php";
         <button type="button" class="btn btn-primary mb-2" onClick="codePromo()">Appliquer</button>
     </form>
     
-        <p class="retour">Total : <span id="result">...</span>€</p>
+        <p class="retour">Total : <span id="result"><?php echo $_SESSION['prix_total']; ?></span>€</p>
         
-
     
     <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
     
 </main>
+
 
 <?php
 require "footer.php";

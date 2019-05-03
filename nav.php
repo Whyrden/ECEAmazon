@@ -55,7 +55,21 @@
 				</li>
                 
                 <li class="nav-item">
-					<a class="nav-link" href="monCompte.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
+					<?php
+                if (isset($_SESSION['nom']) and !isset($_SESSION['username_vendeur'])){
+
+					echo '<li class="nav-item">
+							<a class="nav-link" href="monCompte.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>		
+						  </li>';
+
+				}
+                if(isset($_SESSION['username_vendeur']))
+				{
+					echo '<li class="nav-item">
+							<a class="nav-link" href="monComptevendeur.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
+						  </li>';
+				}
+				?>					
 				</li>
 
 				<li class="nav-item">
@@ -67,21 +81,19 @@
 					<a class="nav-link" href="vente.php">Vendre</a>				
 				</li>
 
-
+				
 				<?php
 				if(isset($_SESSION['username_client']) || isset($_SESSION['username_vendeur']) || isset($_SESSION['username_admin']))
 				{
 					echo '<li class="nav-item">
 							<a href="includes/logout_inc.php"><button class="btn btn-sm btn-danger">Se deconnecter</button></a>				
 						  </li>';
-
 				}
 				else{
 					echo '<li class="nav-item">
 						<a href="login.php"><button class="btn btn-sm btn-light">Se connecter</button></a>
 						<a href="signup.php"><button class="btn btn-sm btn-primary">Inscription</button></a>
 						</li>';
-
 				}
 				?>
 
