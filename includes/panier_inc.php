@@ -38,18 +38,29 @@ if(isset($_SESSION['username'])){
 
 						else{
 							$resultat4=mysqli_query($db_connect, $sql4);
+							$i=0;
 
-							while($data4=mysqli_fetch_assoc($db_connect, $resultat4)){
-								$_SESSION['id_achat']=$data4['id_achat'];
-								$_SESSION['nom_item']=$data4['nom_item'];
-								$_SESSION['quantite']=$data4['quantite'];
-								$_SESSION['prix_commande']=$data4['prix'];
-								$_SESSION['categorie']=$data4['categorie'];
-								$_SESSION['id_panier']=$data4['id_panier'];
+							while($data4=mysqli_fetch_assoc($resultat4)){
+								$_SESSION['id_achat+i']=$data4['id_achat'];
+								$_SESSION['nom_item+i']=$data4['nom_item'];
+								$_SESSION['quantite+i']=$data4['quantite'];
+								$_SESSION['prix_commande+i']=$data4['prix'];
+								$_SESSION['categorie+i']=$data4['categorie'];
+								$_SESSION['id_panier+i']=$data4['id_panier'];
+
+								$i++;
 							}
 
-							header("Location: ../panier.php?panier=success");
-							exit();
+							echo " ".$_SESSION['id_achat+i'];
+							echo " ".$_SESSION['nom_item+i'];
+							echo " ".$_SESSION['quantite+i'];
+							echo " ".$_SESSION['prix_commande+i'];
+							echo " ".$_SESSION['id_panier+i'];
+
+							//header("Location: ../panier.php?panier=success");
+							//exit();
+
+
 
 						}
 
