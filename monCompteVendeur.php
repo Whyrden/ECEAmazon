@@ -26,8 +26,8 @@ require "nav.php";
        
 
        <?php
-        if(isset($_SESSION['username'])){
-            echo "Nom d'utilisateur: ".$_SESSION['username'],'<br>';
+        if(isset($_SESSION['username_vendeur'])){
+            echo "Nom d'utilisateur: ".$_SESSION['username_vendeur'],'<br>';
             echo "Nom: ".$_SESSION['nom'],'<br>';
             echo "Prenom: ".$_SESSION['prenom'],'<br>';
             echo "Email: ".$_SESSION['email'],'<br>';
@@ -66,94 +66,53 @@ require "nav.php";
 				</table>
 
 				</form>
+<!--gestion des items du vendeur-->
+<h2>Ajouter un objet à la vente :</h2>
+
+<form class="inscrip form-horizontal" action="includes/moncompteVendeur_inc.php" method="POST">
+	<div class="container">
+		<div class="row">			     
+                    <div class="col-md-5">
+
+				            <div class="form-group">
+                                <label for="nom" class="control-label">Nom de l'objet</label>
+					           <input type="text" name="nom_item" class="form-control form-control-sm" placeholder="Nom*">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prix" class="control-label">Prix</label>
+                                <input type="number" name="prix" id="mdp" class="form-control form-control-sm" placeholder="Prix*">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="categorie">   Catégorie    </label><br>
+                                <select name="pays" id="pays">
+                                    <option value="livre">Livre</option>
+                                    <option value="musique">Musique</option>
+                                    <option value="vetement">Vêtement</option>
+                                    <option value="sport">Sport</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mdp" class="control-label">Description</label>
+                                <input type="text" name="description" id="mdp" class="form-control form-control-sm" placeholder="Description*">
+                            </div>
+
+							<div class="form-group">
+                                <label for="mdp" class="control-label">Modèle</label>
+                                <input type="text" name="modele" id="mdp" class="form-control form-control-sm" placeholder="Modèle">
+                            </div>
+
+                             <p class="ast">Les champs avec * sont obligatoires.</p>
+        					<button type="submit" class="btn btn-success retour2" name="item_submit">Soumettre un objet</button>
+                    </div>
+         </div>
+     </div>
+</form>
 
 
 
-<form action="monCompteVendeur.php" method="post" enctype="multipart/form-data">
-				<table>
-					<tr>
-						<td>Décorez votre page de profil !</td>
-						<td><input type="file" name="image_fond"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
- 						<input type="submit" name="button2" value="Téléchargez"></td>
-					</tr>
-				</table>
-
-				</form>
-
-			</div>
-		</div>
-	</div>
-
-</main>
-
-<?php
-
-if(isset($_FILES['photo_profil'])){
-//"images" = subdirectory for images in www directory
-$target_dir = "img/photoprofil/";
-$target_file = $target_dir . basename($_FILES["photo_profil"]["name"]);
-$uploadOk = 1;
-
-//file extension in lower case
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-// Vérifier si le fichier image est une image réelle ou une image fausse
-if(isset($_POST["button1"])) {
-	$target_dir = "img/photoprofil/";
-	$target_file = $target_dir . basename($_FILES["photo_profil"]["name"]);
- 	$check = getimagesize($_FILES["photo_profil"]["tmp_name"]);
- 	if($check !== false) {
- 		echo "Le fichier est une image - " . $check["mime"] . ".";
- 		$uploadOk = 1;
- 		} else {
-			 echo "Le fichier n'est pas une image.";
- 			 $uploadOk = 0;
- 				}
-}
-
-// Vérifier la taille du fichier
-if (isset($_FILES["photo_profil"]["size"]) > 500000) {
- echo "<br>" . "Désolé, votre fichier est trop volumineux.";
- $uploadOk = 0;
-}
-
-// Autoriser certains formats de fichier
-if (($imageFileType == "jpg") || ($imageFileType == "png") || ($imageFileType == "jpeg")
- || ($imageFileType == "gif")) {
- echo "<br>" . "Fichier autorisé. Format = JPG | JPEG| PNG | GIF.";
- $uploadOk = 1;
-} else {
- echo "<br>" . "Désolé. Seuls fichiers en format JPG, JPEG, PNG, GIF sont autorisés.";
- $uploadOk = 0;
-}
-
-// Vérifiez si $uploadOk est défini comme 0 par une erreur
-if ($uploadOk == 0) {
- echo "<br>" . "Désolé, votre fichier n'a pas été téléchargé.";
-
-// si tout est correct, télécharger le fichier
-} 
-
-else
- {
- 	if (move_uploaded_file($_FILES["photo_profil"]["tmp_name"], $target_file)) 
- 	{
- 		echo "<br>" . "Le fichier ". basename( $_FILES["photo_profil"]["name"]). " a été
-		téléchargé.";
-
-		$_POST["photo_profil"]= $_FILES["photo_profil"]["name"];
- 	}	
- 	else 
- 	{
- 		echo "<br>" . "Désolé, une erreur s'est produite lors de l'envoi de votre
-		fichier.";
-	}
- }
-}
-?>
 
 <br><br><br><br><br><br><br>
 
