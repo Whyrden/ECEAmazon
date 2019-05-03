@@ -31,6 +31,15 @@ require "nav.php";
 				
                 <img src="img/roman/snk.jpeg" class="img-article" height="312" width="208"/>
                 <br><br><h6 class="titre-article"> SnK Tome 26 - 7.95€</h6>
+                
+                <div class="qt-box">
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" id="quantite-art"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                </div>
+                
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart"><a href="includes/addTocart.php">Ajouter au panier</a></button>
 				
 			</div>
@@ -40,6 +49,13 @@ require "nav.php";
             <div class=roman-liv>
 				<img src="img/roman/harrypotter.jpg" class="img-article" height="314" width="208"/>
                 <br><br><h6 class="titre-article"> Harry Potter - 45€</h6>
+                <div class="qt-box">
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" id="quantite-art"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                </div>
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart"><a href="includes/addTocart.php">Ajouter au panier</a></button>
 			</div>
             

@@ -184,7 +184,7 @@ td {
 }
 
 .bouton-article{
-    margin-left: 25%;
+    margin-left: 22%;
 }
 
 .img-article{
@@ -194,7 +194,7 @@ td {
 
 .roman-liv{
     width: 25%;
-    height: 440px;
+    height: 460px;
     color: slategrey;
     background-color: #D2D5D9;
 }
@@ -216,7 +216,22 @@ td {
 }
 
 
+.btn-qt{
+    border: none; 
+    background-color:slategrey; 
+    border-radius:5px;
+}
 
+.qt-box{
+    margin-left: 33%;
+}
+
+#quantite-art{
+    width:35px; 
+    text-align:center; 
+    border-radius:5px; 
+    border:2px solid slategrey;
+}
 
 
 
