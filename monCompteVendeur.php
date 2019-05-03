@@ -26,8 +26,8 @@ require "nav.php";
        
 
        <?php
-        if(isset($_SESSION['username'])){
-            echo "Nom d'utilisateur: ".$_SESSION['username'],'<br>';
+        if(isset($_SESSION['username_vendeur'])){
+            echo "Nom d'utilisateur: ".$_SESSION['username_vendeur'],'<br>';
             echo "Nom: ".$_SESSION['nom'],'<br>';
             echo "Prenom: ".$_SESSION['prenom'],'<br>';
             echo "Email: ".$_SESSION['email'],'<br>';
