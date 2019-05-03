@@ -13,7 +13,7 @@ require "nav.php";
 
 <body>
   <?php
-  if(!isset($_SESSION['username'])){
+  if(!isset($_SESSION['username_client'])){
     header("Location: panier.php?error=noUser");
     exit();
   }

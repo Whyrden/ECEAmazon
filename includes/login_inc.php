@@ -53,7 +53,7 @@ if(isset($_POST['login_submit'])){
 				if(isset($_POST['loginAcheteur'])){
 
 				//Declaration des variables de session (champs de l'utilisateur)
-				$_SESSION['username']=$data['username_client'];
+				$_SESSION['username_client']=$data['username_client'];
 				$current_username=$_SESSION['username'];
 
 				$_SESSION['nom']=$data['nom'];
@@ -94,14 +94,14 @@ if(isset($_POST['login_submit'])){
 
 
 				else if(isset($_POST['loginVendeur'])){
-					$_SESSION['username']=$data['username_vendeur'];
+					$_SESSION['username_vendeur']=$data['username_vendeur'];
 					$_SESSION['nom']=$data['nom'];
 					$_SESSION['prenom']=$data['prenom'];
 					$_SESSION['email']=$data['email'];
 				}//end else if loginvendeur
 
 				else if(isset($_POST['loginAdmin'])){
-					$_SESSION['username']=$data['username_admin'];
+					$_SESSION['username_admin']=$data['username_admin'];
 					$_SESSION['nom']=$data['nom'];
 					$_SESSION['prenom']=$data['prenom'];
 				}//end else if loginAdmin

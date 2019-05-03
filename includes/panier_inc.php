@@ -38,18 +38,23 @@ if(isset($_SESSION['username'])){
 
 						else{
 							$resultat4=mysqli_query($db_connect, $sql4);
+							$i=1;
 
-							while($data4=mysqli_fetch_assoc($db_connect, $resultat4)){
+							while($data4=mysqli_fetch_array($resultat4)){
 								$_SESSION['id_achat']=$data4['id_achat'];
 								$_SESSION['nom_item']=$data4['nom_item'];
 								$_SESSION['quantite']=$data4['quantite'];
 								$_SESSION['prix_commande']=$data4['prix'];
 								$_SESSION['categorie']=$data4['categorie'];
 								$_SESSION['id_panier']=$data4['id_panier'];
+								$i++;
 							}
+
 
 							header("Location: ../panier.php?panier=success");
 							exit();
+
+
 
 						}
 

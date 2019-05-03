@@ -22,6 +22,11 @@ require "nav.php";
 				            <div class="form-group">
                                 <label for="ident" class="control-label">Identifiant</label>
 					           <input type="text" name="identifiant" id="ident" class="form-control form-control-sm" placeholder="Username*">
+                               <?php
+                               if(isset($_GET['error'])  && $_GET['error']=="existingUser"){
+                                echo "<p class='ast'>L'identifiant existe déjà. </p>";
+                               }
+                               ?>
                             </div>
 
                             <div class="form-group">

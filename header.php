@@ -20,13 +20,14 @@
 
 				<!--Check si une session est ouverte-->
 				<?php
-				if(isset($_SESSION['username'])){
-					echo "<p> Content de vous revoir! </p>".$_SESSION['username'];
-
-
+				if(isset($_SESSION['username_client'])){
+					echo "<p> Content de vous revoir! </p>".$_SESSION['username_client'];
 				}
-				else{
-
+				else if(isset($_SESSION['username_vendeur'])){
+					echo "<p> Content de vous revoir! </p>".$_SESSION['username_vendeur'];
+				}
+				else if(isset($_SESSION['username_admin'])){
+					echo "<p> Content de vous revoir! </p>".$_SESSION['username_admin'];
 				}
 
 				?>               

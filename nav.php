@@ -69,7 +69,7 @@
 
 
 				<?php
-				if(isset($_SESSION['username']))
+				if(isset($_SESSION['username_client']) || isset($_SESSION['username_vendeur']) || isset($_SESSION['username_admin']))
 				{
 					echo '<li class="nav-item">
 							<a href="includes/logout_inc.php"><button class="btn btn-sm btn-danger">Se deconnecter</button></a>				

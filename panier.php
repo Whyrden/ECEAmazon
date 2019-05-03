@@ -18,7 +18,6 @@ require "nav.php";
         }
     }
 ?>
-    
 
 
 <br/><br>
@@ -38,7 +37,7 @@ require "nav.php";
         <td>Total</td>
     </tr>
     <tr>
-      
+
 
         <td>Album f(x)</td>
         <td><img src="img/musique/kpop.png" width="30" height="30"</td>

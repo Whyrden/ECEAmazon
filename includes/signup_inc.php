@@ -38,26 +38,40 @@ if(isset($_POST['signup_submit'])){
 
 //Ajouter à la database si formulaire correct
 	else{
-		$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`,`ville`,`code_postal`,`date_naissance`,`adresse1`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays','$ville','$codePostale','$dateNaissance','$adresse')";
+
+		//Si l'username exist, renvoyer à singup.php
+		$sqlCheck="SELECT username_client FROM clients WHERE username_client='$identifiant' ";
 		$stmt=mysqli_stmt_init($db_connect);
 
+			if(!mysqli_stmt_prepare($stmt,$sqlCheck)){
+				header("Location: ../signup.php?error=sqlerror");
+				exit();
 
-		if(!mysqli_stmt_prepare($stmt,$sql)){
-			header("Location: ../login.php?error=sqlerror");
-			exit();
-		}
-		else{
+			}
+			else{
+				$resultat=mysqli_query($db_connect, $sqlCheck);
+				if($data=mysqli_fetch_assoc($resultat)){
+					header("Location: ../signup.php?error=existingUser");
+					exit();
+				}
+			}
 
-			//EXecution de la requete
-			if(mysqli_query($db_connect,$sql)){
-			header("Location: ../signup.php?signup=success");
-			exit();
-		}
+		$sql="INSERT INTO `clients`(`username_client`,`password`,`email`,`telephone`,`nom`,`prenom`,`pays`,`ville`,`code_postal`,`date_naissance`,`adresse1`) VALUES ('$identifiant','$password','$mail','$portable','$nom','$prenom','$pays','$ville','$codePostale','$dateNaissance','$adresse')";
 
-				
 
-		
-		}
+			if(!mysqli_stmt_prepare($stmt,$sql)){
+				header("Location: ../signup.php?error=sqlerror");
+				exit();
+			}
+			else{
+
+				//EXecution de la requete
+				if(mysqli_query($db_connect,$sql)){
+				header("Location: ../signup.php?signup=success");
+				exit();
+			}
+			
+			}
 		
 	
 
