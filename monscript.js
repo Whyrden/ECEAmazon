@@ -50,3 +50,49 @@ function calcPrixInit(){
     
     
 }
+
+
+function calcQuantiteMoins(){
+    
+    var quantite=document.getElementById("quantite-art").value;
+    var newQuantite=document.getElementById("quantite-art");
+    newQuantite = parseInt(newQuantite.value,10);
+    
+    
+    if (quantite>=2){
+        newQuantite--;
+        document.getElementById("quantite-art").value=newQuantite; 
+    }
+    
+    console.log(newQuantite);
+    
+}
+
+function calcQuantitePlus(){
+    
+    var quantite=document.getElementById("quantite-art").value;
+    var newQuantite=document.getElementById("quantite-art");
+    newQuantite = parseInt(newQuantite.value,10);
+    
+    if (quantite<100){
+        newQuantite++;
+        document.getElementById("quantite-art").value=newQuantite;
+    }
+    
+    console.log(newQuantite);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
