@@ -3,10 +3,10 @@
 //chargement du panier du client
 session_start();
 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['username_client'])){
 	require"db_handle_inc.php";
 
-	$current_username1=$_SESSION['username'];
+	$current_username1=$_SESSION['username_client'];
 
 	//Recuperer les infos du panier aussi
 				$sql3="SELECT * FROM panier WHERE username_client='$current_username1'";
@@ -38,6 +38,7 @@ if(isset($_SESSION['username'])){
 
 						else{
 							$resultat4=mysqli_query($db_connect, $sql4);
+
 							$i=1;
 
 							while($data4=mysqli_fetch_array($resultat4)){
@@ -53,7 +54,6 @@ if(isset($_SESSION['username'])){
 
 							header("Location: ../panier.php?panier=success");
 							exit();
-
 
 
 						}
