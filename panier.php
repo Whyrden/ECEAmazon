@@ -4,6 +4,8 @@ require "nav.php";
 
 <main>
     <?php
+
+    //Affiche un msg qui invite l'utilsateur à se co ou s'inscrire
     if(isset($_GET['error'])){
 
         if($_GET['error']=="noUser"){
@@ -67,7 +69,7 @@ require "nav.php";
     
         <p class="retour">Total : <span id="result">...</span>€</p>
         
-    </tr>
+
     
     <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
     

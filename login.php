@@ -35,15 +35,15 @@ require "nav.php";
 
 					<div class="form-group">
 						<label class="chekcbox-inline">
-                        <input type="checkbox" name="loginAcheteur" id="inlineCheckbox1" value="option1"> Acheteur
+                        <input type="radio" name="loginAcheteur" value="option1"> Acheteur
                         </label>
 
                         <label class="checkbox-inline">
-                        <input type="checkbox" name="loginVendeur" id="inlineCheckbox2" value="option2"> Vendeur
+                        <input type="radio" name="loginVendeur"  value="option2"> Vendeur
                         </label>
 
                         <label class="checkbox-inline">
-                        <input type="checkbox" name="loginAdmin" id="inlineCheckbox3" value="option3"> Admin
+                        <input type="radio" name="loginAdmin"  value="option3"> Admin
                         </label>
 						
 					</div>

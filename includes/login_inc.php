@@ -89,79 +89,37 @@ if(isset($_POST['login_submit'])){
 						}	
 
 					}
+					} //End if loginacheteur
 
-					//Recuperer les infos du panier aussi
-					$sql3="SELECT * FROM panier WHERE username_client='$current_username'";
 
-					if(!mysqli_stmt_prepare($stmt,$sql3)){
-					header("Location: ../login.php?error=sqlerror");
+
+				else if(isset($_POST['loginVendeur'])){
+					$_SESSION['username']=$data['username_vendeur'];
+					$_SESSION['nom']=$data['nom'];
+					$_SESSION['prenom']=$data['prenom'];
+					$_SESSION['email']=$data['email'];
+				}//end else if loginvendeur
+
+				else if(isset($_POST['loginAdmin'])){
+					$_SESSION['username']=$data['username_admin'];
+					$_SESSION['nom']=$data['nom'];
+					$_SESSION['prenom']=$data['prenom'];
+				}//end else if loginAdmin
+
+
+				else{
+					header("Location: ../login.php?error=incorrectInfo");
 					exit();
-					}
 
-					else{
-					
-						$resultat3=mysqli_query($db_connect, $sql3);
+				}//end othercase
 
-						if($data3=mysqli_fetch_assoc($resultat3)){
-							$_SESSION['id_panier']=$data3['id_panier'];
-							$current_panier=$_SESSION['id_panier'];
-
-							$_SESSION['proprietaire']=$data3['username_client'];
-							$_SESSION['prix_total']=$data3['prix_total'];
-							}	
-
-						//Puis charger toutes les commandes qui sont associées au panier
-						$sql4="SELECT * FROM achats WHERE id_panier='$current_panier'";
-
-						if(!mysqli_stmt_prepare($stmt,$sql4)){
-						header("Location: ../login.php?error=sqlerror");
-						exit();
-						}	
-
-						else{
-							$resultat4=mysqli_query($db_connect, $sql4);
-
-							while($data4=mysqli_fetch_assoc($db_connect, $resultat4)){
-								$_SESSION['id_achat']=$data4['id_achat'];
-								$_SESSION['nom_item']=$data4['nom_item'];
-								$_SESSION['quantite']=$data4['quantite'];
-								$_SESSION['prix']=$data4['prix'];
-								$_SESSION['categorie']=$data4['categorie'];
-								$_SESSION['id_panier']=$data4['id_panier'];
-
-
-							}
-						}
-					}
-
-				}
-
-
-			else if(isset($_POST['loginVendeur'])){
-				$_SESSION['username']=$data['username_vendeur'];
-				$_SESSION['nom']=$data['nom'];
-				$_SESSION['prenom']=$data['prenom'];
-				$_SESSION['email']=$data['email'];
-			}
-
-			else if(isset($_POST['loginAdmin'])){
-				$_SESSION['username']=$data['username_admin'];
-				$_SESSION['nom']=$data['nom'];
-				$_SESSION['prenom']=$data['prenom'];
-			}
-
-				header("Location: ../accueil.php?login=loginsuccess");
+				header("Location: ../accueil.php?login=loginsuccess");	
 				exit();
-			}
+		}//end if data fetch result
 
-			else{
-				header("Location: ../login.php?error=incorrectInfo");
-				exit();
+	}//end if mysqli_stmt_prepare==false
 
-			}
-		}
-	}
-
+}
 }
 
 else{

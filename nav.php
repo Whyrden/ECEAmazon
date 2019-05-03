@@ -59,7 +59,7 @@
 				</li>
 
 				<li class="nav-item">
-					<a class="nav-link" href="panier.php"><img src="img/icon/cart.png" width="25" height="25" style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"/></a>					
+					<a class="nav-link" href="includes/panier_inc.php"><img src="img/icon/cart.png" width="25" height="25" style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"/></a>					
 				</li>
 				
 
