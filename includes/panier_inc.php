@@ -54,23 +54,6 @@ if(isset($_SESSION['username_client'])){
 
 							header("Location: ../panier.php?panier=success");
 							exit();
-							$i=0;
-
-							while($data4=mysqli_fetch_assoc($resultat4)){
-								$_SESSION['id_achat']=$data4['id_achat'];
-								$_SESSION['nom_item']=$data4['nom_item'];
-								$_SESSION['quantite']=$data4['quantite'];
-								$_SESSION['prix_commande']=$data4['prix'];
-								$_SESSION['categorie']=$data4['categorie'];
-								$_SESSION['id_panier']=$data4['id_panier'];
-
-								$i++;
-							}
-
-
-							header("Location: ../panier.php?panier=success");
-							exit();
-
 
 
 						}
