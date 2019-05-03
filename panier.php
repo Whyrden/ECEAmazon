@@ -72,7 +72,7 @@ require "nav.php";
         <button type="button" class="btn btn-primary mb-2" onClick="codePromo()">Appliquer</button>
     </form>
     
-        <p class="retour">Total : <span id="result"><?php echo $_SESSION['prix_total']; ?></span>€</p>
+        <p class="retour">Total : <span id="result"><?php if(!empty($_SESSION['$prix_total']))echo $_SESSION['prix_total']; ?></span>€</p>
         
     
     <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
