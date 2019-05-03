@@ -21,7 +21,7 @@ require "nav.php";
         <br>
         <?php
         if(isset($_SESSION['username_client'])){
-            echo "Nom d'utilisateur: ".$_SESSION['username'],'<br>';
+            echo "Nom d'utilisateur: ".$_SESSION['username_client'],'<br>';
             echo "Nom: ".$_SESSION['nom'],'<br>';
             echo "Prenom: ".$_SESSION['prenom'],'<br>';
             echo "Date de naissance: ".$_SESSION['naissance'],'<br>';
@@ -36,6 +36,9 @@ require "nav.php";
             echo "Code: ".$_SESSION['code'],'<br>';
             echo "Proprietaire: ". $_SESSION['proprietaire'];
             
+        }
+        else{
+
         }
         ?>
             

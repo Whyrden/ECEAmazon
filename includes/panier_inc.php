@@ -42,18 +42,22 @@ if(isset($_SESSION['username_client'])){
 							$i=1;
 
 							while($data4=mysqli_fetch_array($resultat4)){
-								$_SESSION['id_achat']=$data4['id_achat'];
-								$_SESSION['nom_item']=$data4['nom_item'];
-								$_SESSION['quantite']=$data4['quantite'];
-								$_SESSION['prix_commande']=$data4['prix'];
-								$_SESSION['categorie']=$data4['categorie'];
-								$_SESSION['id_panier']=$data4['id_panier'];
+								$achat_array = array('id_achat' =>$data4['id_achat'],
+								 'nom_item'=>$data4['nom_item'],
+								 'quantite'=>$data4['quantite'],
+								 'prix_commande'=>$data4['prix'],
+								 'categorie'=>$data4['categorie'],
+								 'id_panier'=>$data4['id_panier']);
+
+								$_SESSION['achats'][$i]=$achat_array;
 								$i++;
+								
 							}
+							echo "".$_SESSION['achats'][1];
 
 
-							header("Location: ../panier.php?panier=success");
-							exit();
+							//header("Location: ../panier.php?panier=success");
+							//exit();
 
 
 						}

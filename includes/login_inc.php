@@ -54,7 +54,7 @@ if(isset($_POST['login_submit'])){
 
 				//Declaration des variables de session (champs de l'utilisateur)
 				$_SESSION['username_client']=$data['username_client'];
-				$current_username=$_SESSION['username'];
+				$current_username=$_SESSION['username_client'];
 
 				$_SESSION['nom']=$data['nom'];
 				$_SESSION['prenom']=$data['prenom'];
