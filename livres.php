@@ -33,11 +33,11 @@ require "nav.php";
                 <br><br><h6 class="titre-article"> SnK Tome 26 - 7.95€</h6>
                 
                 <div class="qt-box">
-                    <button type="button" id="qt-moins" class="btn-qt" style="border: none; background-color:slategrey; border-radius:5px;"><img src="img/icon/minus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-moins" class="btn-qt"><img src="minus.png" height="15" width="15"/></button>
                     
-                    <input type="text" value="1" id="quantite-art" style="width:35px; text-align:center; border-radius:5px; border:2px solid slategrey"/>
+                    <input type="text" value="1" id="quantite-art"/>
                     
-                    <button type="button" id="qt-plus" class="btn-qt"style="border: none; background-color:slategrey; border-radius:5px;"><img src="img/icon/plus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-plus" class="btn-qt"><img src="plus.png" height="15" width="15"/></button>
                 </div>
                 
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart"><a href="includes/addTocart.php">Ajouter au panier</a></button>
