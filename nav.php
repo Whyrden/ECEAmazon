@@ -56,7 +56,7 @@
                 
                 <li class="nav-item">
 					<?php
-                if (isset($_SESSION['nom']) and !isset($_SESSION['username_vendeur'])){
+                if (isset($_SESSION['nom']) and !isset($_SESSION['username_vendeur']) and !isset($_SESSION['username_admin'])){
 
 					echo '<li class="nav-item">
 							<a class="nav-link" href="monCompte.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>		
@@ -69,6 +69,15 @@
 							<a class="nav-link" href="monComptevendeur.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
 						  </li>';
 				}
+                    
+                if(isset($_SESSION['username_admin']))
+				{
+					echo '<li class="nav-item">
+							<a class="nav-link" href="monCompteAdmin.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
+						  </li>';
+				}
+                  
+                
 				?>					
 				</li>
 

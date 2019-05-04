@@ -180,7 +180,7 @@ td {
 }
 
 .titre-article{
-    margin-left: 32%;
+    text-align: center;
 }
 
 .bouton-article{
@@ -197,6 +197,7 @@ td {
     height: 460px;
     color: slategrey;
     background-color: #D2D5D9;
+    border-radius: 7px;
 }
 
 .best-sell{
