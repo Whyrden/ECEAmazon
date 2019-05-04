@@ -31,6 +31,13 @@ require "nav.php";
 				
 				<img src="img/musique/kpop.png" class="img-article" width="208" height="208"/>
                 <br><br><h6 class="titre-article">F(x) - 40€</h6>
+                 <div class="qt-box">
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(3)"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" class="quantite-art" id="q3"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(3)"><img src="plus.png" height="15" width="15"/></button>
+                </div>
                 <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 				
 				
@@ -43,11 +50,11 @@ require "nav.php";
                 <img src="img/musique/kpop.png" class="img-article" height="208" width="208"/>
                 <br><br><h6 class="titre-article"> F(x) - 40€</h6>
                 <div class="qt-box">
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(1)"><img src="minus.png" height="15" width="15"/></button>
                     
-                    <input type="text" value="1" id="quantite-art"/>
+                    <input type="text" value="1" class="quantite-art" id="q1"/>
                     
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(1)"><img src="plus.png" height="15" width="15"/></button>
                 </div>
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 				
@@ -59,11 +66,11 @@ require "nav.php";
 				<img src="img/musique/kpop.png" class="img-article" height="208" width="208"/>
                 <br><br><h6 class="titre-article"> F(x) - 40€</h6>
                 <div class="qt-box">
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(2)"><img src="minus.png" height="15" width="15"/></button>
                     
-                    <input type="text" value="1" id="quantite-art"/>
+                    <input type="text" value="1" class="quantite-art" id="q2"/>
                     
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(2)"><img src="plus.png" height="15" width="15"/></button>
                 </div>
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
 			</div>
