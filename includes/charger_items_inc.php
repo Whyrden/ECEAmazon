@@ -1,5 +1,6 @@
 <?php
 
+
 //Chargement des items dans la page des ventes en fonction des catégories
 session_start();
 require"db_handle_inc.php";
@@ -41,12 +42,13 @@ if(mysqli_num_rows($resultat)>0){
 		$i++;
 
 	}
-	foreach ($_SESSION['items'] as $key => $value) {
+	/*foreach ($_SESSION['items'] as $key => $value) {
 		# code...
 		echo "".$value['nom_item'];
 		echo "".$value['id_item'];
-	}
-		header("Location: ../livres.php?chargementItemsOK");
+	}*/
+	
+		header("Location: ../market.php?chargementItemsOK");
 		exit();
 
 }

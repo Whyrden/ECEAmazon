@@ -67,18 +67,18 @@ require"charger_panier_inc.php";
 								}//end if $_SESSION['achats'] not empty
 
 							else{
-								header("Location: ../livres.php?panier=noPanier");
+								header("Location: {$_SERVER['HTTP_REFERER']}?error=nopanier");
 								exit();
 
 							}
 
-							header("Location: ../livres.php?addtocart=success");
+							header("Location: {$_SERVER['HTTP_REFERER']}?addToCart=success");
 							exit();
 				
 
 			}
 			else{
-				header("Location: ../livres.php?error=sqlerror");
+				header("Location: {$_SERVER['HTTP_REFERER']}?error=errorsql");
 				exit();
 			
 
