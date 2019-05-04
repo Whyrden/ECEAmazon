@@ -89,6 +89,8 @@ if(isset($_POST['login_submit'])){
 						}	
 
 					}
+
+					
 					} //End if loginacheteur
 
 
@@ -116,6 +118,12 @@ if(isset($_POST['login_submit'])){
 				header("Location: ../accueil.php?login=loginsuccess");	
 				exit();
 		}//end if data fetch result
+
+		else{
+					header("Location: ../login.php?error=incorrectInfo");
+					exit();
+
+				}//end if data fetch result==false
 
 	}//end if mysqli_stmt_prepare==false
 

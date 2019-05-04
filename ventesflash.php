@@ -94,8 +94,16 @@
 
   </div>
 
-        </div>
-            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+        </div><br>
+        <div class="qt-box">
+            
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" id="quantite-art"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                </div>
+            <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
             </div>
             
             
@@ -161,7 +169,16 @@
   </div>
 
         </div>
-            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+            <br>
+            <div class="qt-box">
+            
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" id="quantite-art"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                </div>
+            <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
             </div>
             
             
@@ -228,7 +245,16 @@
   </div>
 
         </div>
-            <br><button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+        <br>
+        <div class="qt-box">
+            
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    
+                    <input type="text" value="1" id="quantite-art"/>
+                    
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                </div>
+        <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
             </div>
     
     </div></div>

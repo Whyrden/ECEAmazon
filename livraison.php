@@ -12,18 +12,7 @@ require "nav.php";
 </head>
 
 <body>
-  <?php
-  //Si pas d'utilisateur, renvoyer au panier
-  if(!isset($_SESSION['username_client'])){
-    header("Location: panier.php?error=noUser");
-    exit();
-  }
 
-  //Sinon si panier vide, renvoyer aussi au panier
-  else if(){
-
-  }
-  ?>
         <br/>
         <br/>
     
@@ -31,7 +20,6 @@ require "nav.php";
 	<div class="container">
 		<div class="row">
             
-
 			<div class="livraison">
 				<h4>Votre adresse de livraison</h4><br/>
                 
