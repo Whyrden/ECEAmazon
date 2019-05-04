@@ -10,13 +10,14 @@ require "nav.php";
 
 
     <br><h2 class="panier">Ajouter un article</h2><br>
+
+<form class="inscrip form-horizontal" action="includes/moncompteVendeur_inc.php" method="POST">
 	<div class="container">
 		<div class="row">
 
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
 				
-				<form >
 					<div class="form-group">
                         <label for="cat">Categorie*</label><br>
                             <select name="categorie" id="cat" OnChange="Choix(this.form)">
@@ -57,7 +58,17 @@ require "nav.php";
                                 <div class="input-group-text" id="btnGroupAddon">€</div>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="des-crip" class="control-label">Description*</label>
+                        <input type="text" name="description" id="des-crip" class="form-control form-control-sm" placeholder="Description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modele" class="control-label">Modèle</label>
+                        <input type="text" name="modele" id="modele" class="form-control form-control-sm" placeholder="Modèle">
+                    </div>
                     
                     <div class="form-group">
                                 <label for="inputFile">Photo de l'article*</label>
@@ -73,10 +84,11 @@ require "nav.php";
                     
 					<button type="submit" class="btn btn-success retour2" name="add_success">Ajouter !</button>
 					
-				</form>
+				
 				
 			</div>			
 		</div>		
+        </form>
 		<br><br><br>
 
     
