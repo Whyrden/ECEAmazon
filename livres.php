@@ -28,6 +28,7 @@ require "nav.php";
             <div class="col-sm-1"></div>
             
 			<?php
+			if(!empty($_SESSION['items'])){
             foreach ($_SESSION['items'] as $key => $value) {
             	# code...
             ?>
@@ -37,22 +38,24 @@ require "nav.php";
 				
                 <img src="<?php echo $value['image']; ?>" class="img-article" height="312" width="208"/>
                 <br><br><h6 class="titre-article"> <?php if(!empty($value['nom_item']))echo $value['nom_item'];?></h6>
+                <h6 class="titre-article"> <?php if(!empty($value['prix']))echo $value['prix'];?>€</h6>
                 
                 <div class="qt-box">
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins()"><img src="minus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(1)"><img src="minus.png" height="15" width="15"/></button>
                     
-                    <input type="text" value="1" id="quantite-art"/>
+                    <input type="text" value="1" class="quantite-art" id="q1"/>
                     
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus()"><img src="plus.png" height="15" width="15"/></button>
+                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(1)"><img src="plus.png" height="15" width="15"/></button>
                 </div>
                 
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart"><a href="includes/addTocart.php">Ajouter au panier</a></button>				
 			</div> 
 
+
 			<?php
 			}
+		}
 			?>
-            
             
         </div>
     </div>

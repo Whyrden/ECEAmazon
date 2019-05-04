@@ -227,7 +227,7 @@ td {
     margin-left: 33%;
 }
 
-#quantite-art{
+.quantite-art{
     width:35px; 
     text-align:center; 
     border-radius:5px; 

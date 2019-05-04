@@ -42,12 +42,14 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Catégorie</a>
 
-					<div class="dropdown-menu" >
-						<a class="dropdown-item" href="livres.php">Livres</a>
-						<a class="dropdown-item" href="musiques.php">Musiques</a>
-						<a class="dropdown-item" href="vetements.php">Vêtements</a>
-						<a class="dropdown-item" href="sports.php">Sports</a>
-					</div>								
+					<form method="POST" action="includes/charger_items_inc.php">
+					<div class="dropdown-menu">
+						<button class="dropdown-item" name="livres">Livres</button>
+						<button class="dropdown-item" name="musiques">Musiques</button>
+						<button class="dropdown-item" name="vetements">Vetements</button>
+						<button class="dropdown-item" name="sports">Sports</button>
+					</div>		
+					</form>						
 				</li>
                 
                 <li class="nav-item">

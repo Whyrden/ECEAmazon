@@ -52,31 +52,34 @@ function calcPrixInit(){
 }
 
 
-function calcQuantiteMoins(){
+function calcQuantiteMoins(nb){
     
-    var quantite=document.getElementById("quantite-art").value;
-    var newQuantite=document.getElementById("quantite-art");
+    var monId = 'q'+nb;
+    console.log(monId);
+    var quantite=document.getElementById(monId).value;
+    var newQuantite=document.getElementById(monId);
     newQuantite = parseInt(newQuantite.value,10);
     
     
     if (quantite>=2){
         newQuantite--;
-        document.getElementById("quantite-art").value=newQuantite; 
+        document.getElementById(monId).value=newQuantite; 
     }
     
     console.log(newQuantite);
     
 }
 
-function calcQuantitePlus(){
+function calcQuantitePlus(nb){
     
-    var quantite=document.getElementById("quantite-art").value;
-    var newQuantite=document.getElementById("quantite-art");
+    var monId= 'q'+nb;
+    var quantite=document.getElementById(monId).value;
+    var newQuantite=document.getElementById(monId);
     newQuantite = parseInt(newQuantite.value,10);
     
     if (quantite<100){
         newQuantite++;
-        document.getElementById("quantite-art").value=newQuantite;
+        document.getElementById(monId).value=newQuantite;
     }
     
     console.log(newQuantite);

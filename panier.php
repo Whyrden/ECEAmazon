@@ -40,7 +40,7 @@ require "nav.php";
 
         <?php
 
-        if(!empty($_SESSION['achats'])){
+        if(!empty($_SESSION['achats'])){//Affiche toutes les commandes du panier, ligne par ligne
             foreach ($_SESSION['achats'] as $key => $values) {
                 # code...
                 ?>
