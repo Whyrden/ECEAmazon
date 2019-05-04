@@ -80,7 +80,6 @@ require"charger_panier_inc.php";
 			else{
 				header("Location: ../livres.php?error=sqlerror");
 				exit();
-				echo "panier:".$current_panier;
 			
 
 			}

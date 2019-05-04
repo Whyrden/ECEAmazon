@@ -59,13 +59,11 @@ else
 
 		$_POST["photo_profil"]= $_FILES["photo_profil"]["name"];
 					header("Location: ../moncompteVendeur.php?error=sqlerror");
-			exit();
  	}	
  	else 
  	{
  		echo "<br>" . "Désolé, une erreur s'est produite lors de l'envoi de votre
 		fichier.";
-
 	}
  }
 }
@@ -88,12 +86,8 @@ if(isset($_FILES['photo_profil']['name'])) {
 		if(mysqli_query($db_connect,$sql)){
 			header("Location: ../moncompteVendeur.php?actualisation=success");
 			exit();
-		}
+		}	
 }
-else{
-	header("Location: ../moncompteVendeur.php?error=nodetect");
-	exit();
-}	
 
 if(isset($_FILES['image_fond']['name'])) {
 
@@ -117,4 +111,6 @@ else{
 	header("Location: ../moncompteVendeur.php?error=nodetect");
 	exit();
 }	
+	
+
 ?>

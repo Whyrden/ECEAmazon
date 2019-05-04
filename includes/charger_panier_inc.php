@@ -8,11 +8,11 @@ if(isset($_SESSION['username_client'])){
 	
 	$current_username1=$_SESSION['username_client'];
 }
-else if(!isset($_SESSION['username_client'])){
+else if(!isset($_SESSION['username_client']) && !isset($_SESSION['username_vendeur']) && !isset($_SESSION['username_admin'])){
 	$current_username1='tampon';
 }
 else{
-	header("Location: ../panier.php?error=noCartFound");
+	header("Location: ../accueil.php?error=noCartFound");
 	exit();
 }
 
