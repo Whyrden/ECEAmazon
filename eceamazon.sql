@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 02 mai 2019 à 13:23
+-- Généré le :  sam. 04 mai 2019 à 19:33
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `achats` (
   `quantite` int(11) NOT NULL,
   `prix` int(11) NOT NULL,
   `id_panier` int(11) NOT NULL,
+  `categorie` text,
   PRIMARY KEY (`id_achat`),
   KEY `id_panier` (`id_panier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,8 +44,12 @@ CREATE TABLE IF NOT EXISTS `achats` (
 -- Déchargement des données de la table `achats`
 --
 
-INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`) VALUES
-(1, 'Harry Potter', 1, 6, 1);
+INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`, `categorie`) VALUES
+(0, 'Harry Potter', 1, 5, 1, 'Fantastique'),
+(1, 'Harry Potter', 7, 35, 4, 'Fantastique'),
+(2, 'DBZ', 2, 40, 4, 'livre'),
+(3, 'DDU DU DDU DU', 6, 65, 1, 'musique'),
+(4, 'Mein Kampf', 14, 65, 4, 'livre');
 
 -- --------------------------------------------------------
 
@@ -60,6 +65,13 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `prenom` text NOT NULL,
   PRIMARY KEY (`username_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`username_admin`, `password`, `nom`, `prenom`) VALUES
+('Oceane', 'aze', 'Oceane', 'Salmeron');
 
 -- --------------------------------------------------------
 
@@ -83,7 +95,8 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
 --
 
 INSERT INTO `carte_bancaire` (`numero`, `type`, `expiration`, `code`, `username_client`) VALUES
-(1, 'cb', '2021-01-01', 0, 'Wyrden');
+(1, 'cb', '2021-01-01', 0, 'Wyrden'),
+(2, 'cb', '2021-01-12', 1234, 'kevin');
 
 -- --------------------------------------------------------
 
@@ -105,8 +118,6 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `email` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
-  `id_panier` int(11) NOT NULL,
-  `id_carte_bancaire` int(11) NOT NULL,
   PRIMARY KEY (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -114,8 +125,11 @@ CREATE TABLE IF NOT EXISTS `clients` (
 -- Déchargement des données de la table `clients`
 --
 
-INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`, `id_panier`, `id_carte_bancaire`) VALUES
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis', 0, 0);
+INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
+('kevin', 'aze', 'espagne', 'xxx', NULL, 93120, 'LA COURNEUVE', 782618723, '2019-05-02', 'kevinkann@hotmail.fr', 'KANN', 'Kevin'),
+('oceane', 'aze', 'france', 'xxx', NULL, 93120, 'LA COURNEUVE', 101010101, '2019-05-03', 'kevinkann@hotmail.fr', 'KANN', 'Kevin'),
+('tampon', 'azer', 'canada', 'xxx', NULL, 0, 'xxx', 101010101, '2019-05-03', 'tampon@gmail.com', 'tampon', 'tampon'),
+('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis');
 
 -- --------------------------------------------------------
 
@@ -126,14 +140,14 @@ INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adres
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id_item` int(11) NOT NULL,
-  `username_vendeur` varchar(255) NOT NULL,
   `nom_item` text,
   `image` text,
   `categorie` text,
   `description` text,
-  `nb_ventes` int(11),
+  `nb_ventes` int(11) DEFAULT NULL,
   `modele` text,
   `prix` int(11) NOT NULL,
+  `username_vendeur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_item`),
   KEY `username_vendeur` (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -142,8 +156,11 @@ CREATE TABLE IF NOT EXISTS `items` (
 -- Déchargement des données de la table `items`
 --
 
-INSERT INTO `items` (`id_item`, `username_vendeur`, `nom_item`, `image`, `categorie`, `description`, `nb_ventes`, `modele`, `prix`) VALUES
-(1, NULL, 'Harry Potter', NULL, 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5);
+INSERT INTO `items` (`id_item`, `nom_item`, `image`, `categorie`, `description`, `nb_ventes`, `modele`, `prix`, `username_vendeur`) VALUES
+(1, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5, 'kvnknn'),
+(2, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5, 'kvnknn'),
+(4, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique légendaire', 0, 'pop', 30, 'kvnknn'),
+(5, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique légendaire', 0, 'pop', 30, 'kvnknn');
 
 -- --------------------------------------------------------
 
@@ -156,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `id_panier` int(11) NOT NULL,
   `username_client` varchar(255) NOT NULL,
   `prix_total` int(11) DEFAULT NULL,
+  `quantite_totale` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_panier`),
   KEY `username_client` (`username_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -164,8 +182,11 @@ CREATE TABLE IF NOT EXISTS `panier` (
 -- Déchargement des données de la table `panier`
 --
 
-INSERT INTO `panier` (`id_panier`, `username_client`, `prix_total`) VALUES
-(1, 'Wyrden', 20);
+INSERT INTO `panier` (`id_panier`, `username_client`, `prix_total`, `quantite_totale`) VALUES
+(0, 'tampon', 15, 3),
+(1, 'kevin', 70, 7),
+(4, 'Wyrden', 140, 23),
+(36, 'oceane', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -188,6 +209,13 @@ CREATE TABLE IF NOT EXISTS `vendeurs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Déchargement des données de la table `vendeurs`
+--
+
+INSERT INTO `vendeurs` (`username_vendeur`, `password`, `photo_profil`, `photo_fond`, `description`, `email`, `nom`, `prenom`, `username_admin`) VALUES
+('kvnknn', 'aze', NULL, NULL, 'Kevin le boss', 'kevinkann@ece.fr', 'Kann', 'Kevin', '');
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -207,7 +235,7 @@ ALTER TABLE `carte_bancaire`
 -- Contraintes pour la table `items`
 --
 ALTER TABLE `items`
-  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username_vendeur`) REFERENCES `vendeurs` (`username_vendeur`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`username_vendeur`) REFERENCES `vendeurs` (`username_vendeur`);
 
 --
 -- Contraintes pour la table `panier`
