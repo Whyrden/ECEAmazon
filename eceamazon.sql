@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 04 mai 2019 à 19:33
+-- Généré le :  Dim 05 mai 2019 à 00:35
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -45,11 +45,14 @@ CREATE TABLE IF NOT EXISTS `achats` (
 --
 
 INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`, `categorie`) VALUES
-(0, 'Harry Potter', 1, 5, 1, 'Fantastique'),
-(1, 'Harry Potter', 7, 35, 4, 'Fantastique'),
+(0, 'Harry Potter', 1, 5, 1, 'livre'),
+(1, 'Harry Potter', 7, 35, 4, 'livre'),
 (2, 'DBZ', 2, 40, 4, 'livre'),
 (3, 'DDU DU DDU DU', 6, 65, 1, 'musique'),
-(4, 'Mein Kampf', 14, 65, 4, 'livre');
+(4, 'Mein Kampf', 14, 65, 4, 'livre'),
+(373, 'Harry Potter', 4, 20, 1, 'Livre'),
+(803, 'Harry Potter', 2, 10, 1, 'Livre'),
+(885, 'Mein Kampf', 1, 30, 1, 'livre');
 
 -- --------------------------------------------------------
 
@@ -157,10 +160,12 @@ CREATE TABLE IF NOT EXISTS `items` (
 --
 
 INSERT INTO `items` (`id_item`, `nom_item`, `image`, `categorie`, `description`, `nb_ventes`, `modele`, `prix`, `username_vendeur`) VALUES
-(1, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5, 'kvnknn'),
-(2, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualité', NULL, 'Fantastique', 5, 'kvnknn'),
-(4, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique légendaire', 0, 'pop', 30, 'kvnknn'),
-(5, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique légendaire', 0, 'pop', 30, 'kvnknn');
+(1, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualite', NULL, 'Roman', 5, 'kvnknn'),
+(2, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualite', NULL, 'Roman', 5, 'kvnknn'),
+(4, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique legendaire', 0, 'pop', 30, 'kvnknn'),
+(5, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique legendaire', 0, 'pop', 30, 'kvnknn'),
+(6, 'Mein Kampf', 'img/livre/meinkampf.jpg', 'livre', 'Hitler retrace son combat contre la race juive et prone la grande Allemagne', NULL, NULL, 30, 'kvnknn'),
+(7, 'Shingeki no kyojin', 'img/livre/snk.jpeg', 'livre', 'Histoire de guerriers combattant des titans', NULL, 'manga', 7, 'kvnknn');
 
 -- --------------------------------------------------------
 
@@ -184,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
 
 INSERT INTO `panier` (`id_panier`, `username_client`, `prix_total`, `quantite_totale`) VALUES
 (0, 'tampon', 15, 3),
-(1, 'kevin', 70, 7),
+(1, 'kevin', 130, 14),
 (4, 'Wyrden', 140, 23),
 (36, 'oceane', NULL, NULL);
 

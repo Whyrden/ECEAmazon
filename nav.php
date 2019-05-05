@@ -68,8 +68,11 @@
                 if(isset($_SESSION['username_vendeur']))
 				{
 					echo '<li class="nav-item">
-							<a class="nav-link" href="monComptevendeur.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>				
-						  </li>';
+							<a class="nav-link" href="monComptevendeur.php">Mon compte<img src="img/icon/boy.png" width="20" height="20"/></a>	
+							</li>
+							<li class="nav-item">
+							<a class="nav-link" href="vente.php">Vendre</a>		
+							</li>';
 				}
                     
                 if(isset($_SESSION['username_admin']))
@@ -79,18 +82,16 @@
 						  </li>';
 				}
                   
-                
+            
+            	if (isset($_SESSION['nom']) and !isset($_SESSION['username_vendeur'])and !isset($_SESSION['username_admin'])){
+
+					echo '<li class="nav-item">
+							<a class="nav-link" href="includes/panier_inc.php"><img src="img/icon/cart.png" width="25" height="25" style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"/></a>					
+						  </li>';
+
+				}
 				?>					
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="includes/panier_inc.php"><img src="img/icon/cart.png" width="25" height="25" style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"/></a>					
-				</li>
 				
-
-				<li class="nav-item">
-					<a class="nav-link" href="vente.php">Vendre</a>				
-				</li>
 
 				
 				<?php
@@ -104,6 +105,7 @@
 					echo '<li class="nav-item">
 						<a href="login.php"><button class="btn btn-sm btn-light">Se connecter</button></a>
 						<a href="signup.php"><button class="btn btn-sm btn-primary">Inscription</button></a>
+						<a href="signupVendeur.php"><button class="btn btn-sm btn-primary">Inscription Vendeur</button></a>
 						</li>';
 				}
 				?>
