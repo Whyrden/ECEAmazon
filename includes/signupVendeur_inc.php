@@ -10,7 +10,7 @@ if(isset($_POST['signupVendeur_submit'])){
 	$confirm_password=isset($_POST['confirm_password'])? $_POST["confirm_password"]:"";
 	$nom=isset($_POST['nom'])? $_POST["nom"]:"";
 	$prenom=isset($_POST['prenom'])? $_POST["prenom"]:"";
-	$description=isset($_POST['description'])? $_POST["description"]:"";
+	//$description=isset($_POST['description'])? $_POST["description"]:"";
 
 //Formulaire invalide si...
 	//Un des champs obligatoires est vide
@@ -33,43 +33,35 @@ if(isset($_POST['signupVendeur_submit'])){
 
 //Ajouter à la database si formulaire correct
 	else{
-
-		//Si l'username exist, renvoyer à singupvendeur.php
-		$sqlCheck="SELECT username_vendeur FROM vendeurs WHERE username_vendeur='$identifiant'";
+		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`photo_profil`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','boy.png')";
 		$stmt=mysqli_stmt_init($db_connect);
 
-			if(!mysqli_stmt_prepare($stmt,$sqlCheck)){
-				header("Location: ../signupVendeur.php?error=sqlerror");
-				exit();
 
-			}
-			else{
-				$resultat=mysqli_query($db_connect, $sqlCheck);
-				if($data=mysqli_fetch_assoc($resultat)){
-					header("Location: ../signupVendeur.php?error=existingUser");
-					exit();
-				}
-			}
-
-		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`description`,`photo_profil`,`photo_fond`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','$description','boy.png','boy.png')";
-
-
-		//EXecution de la requete
-		if(mysqli_query($db_connect,$sql)){
-			header("Location: ../signupVendeur.php?signupVendeur=success");
+		if(!mysqli_stmt_prepare($stmt,$sql)){
+			header("Location: ../loginVendeur.php?error=sqlerror");
 			exit();
-			
 		}
 		else{
-			header("Location: ../signupVendeur.php?signupVendeur=fail");
+
+			//EXecution de la requete
+			if(mysqli_query($db_connect,$sql)){
+			header("Location: ../signupVendeur.php?signupVendeur=success");
 			exit();
 		}
 
+				
+
+		
+		}
+		
+	
+
 	}
+
 }
 
 else{
-	header("Location: ../signupVendeur.php");
+	header("Location: ../signup.php");
 	exit();
 }
 	
