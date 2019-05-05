@@ -124,7 +124,7 @@ require "nav.php";
                 
                     <div class="form-group">
                         <label for="expCard" class="control-label">Date d'expiration</label>
-						<input type="month" name="exp" id="expCard" class="form-control form-control-sm">
+						<input type="date" name="exp" id="expCard" class="form-control form-control-sm">
                     </div>
                 
                     <div class="form-group">
@@ -134,7 +134,7 @@ require "nav.php";
                 
                     <div class="form-group">
                         <label for="cript" class="control-label">Code de sécurité</label>
-						<input type="number" name="cripto" id="cript" class="form-control form-control-sm">
+						<input type="number" name="crypto" id="cript" class="form-control form-control-sm">
                     </div>
                                                                    
 					</div>

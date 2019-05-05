@@ -99,7 +99,7 @@ require "nav.php";
         <p class="retour">Total : <span id="result"><?php if(!empty($_SESSION['prix_total']))echo $_SESSION['prix_total']; ?></span>€</p>
         
     
-    <button type="button" class="btn btn-success retour"><a href="livraison.php">Valider les achats</a></button>
+    <button type="button" class="btn btn-success retour"><a href="includes/livraison_inc.php">Valider les achats</a></button>
     
 </main>
 
