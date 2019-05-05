@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!--Bootstraps css--> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
-
-  <!--Jquery first then Bootstraps js-->          
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-  <!--my CSS-->
-  <link rel="stylesheet" type="text/css" href="monstyle.css"> 
-</head>
-</html>
-
 <?php
 require "nav.php";
 ?>
@@ -73,7 +58,12 @@ require "nav.php";
         
         <div style="margin-left:35%;">
         <!--Gestionnaire de vendeurs-->
-<button type="button" class="btn btn-success " name="manage-people"><a href="gererVendeurs.php">Gerer les vendeurs</a></button>
+            <form method="POST" action="includes/charger_vendeurs_inc.php">
+                <div>
+                    <button type="submit" class="btn btn-success " name="manage-people">Gerer les vendeurs</button>
+                </div>
+
+            </form>
          
                 
 <!--Gere les items-->
