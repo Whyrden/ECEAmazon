@@ -27,6 +27,25 @@
 <?php
   require "nav.php"
   ?>
+		<form method="POST" action="includes/charger_flash_inc.php">
+    
+    <ul class="nav justify-content-center bg-danger">
+        
+		<li class="nav-item">
+			<button type="submit" name="livre" class="btn btn-sm btn-light">Livres</button>		
+		</li>
+		<li class='nav-item'>
+			<button type="submit" name="musique" class="btn btn-sm btn-light">Musiques</button>		
+		</li>
+		<li class='nav-item'>
+			<button type="submit" name="vetement" class="btn btn-sm btn-light">Vetements</button>		
+		</li>
+		<li class='nav-item'>
+			<button type="submit"  name="sport" class="btn btn-sm btn-light">Sports</button>		
+		</li>
+    </ul>
+        </form>
+            
     
     <br><br>
 <h2 class="panier"><img src="img/icon/flash.png" width="40" height="40"/> Vente flash de la semaine <img src="img/icon/flash.png" width="40" height="40"/></h2>
@@ -37,49 +56,48 @@
     <div class="container">
 		<div class="row">
             
-    <!-- Contient les ventes flash cat livre-->
+    <!-- Contient les ventes flash cat -->
+            
     
+    
+    <div class="roman-liv2" style="margin-left:37%;">
     <div class="roman-liv">
-        <h4 style="color: slategret; margin-left: 40%;">Livre</h4>
   
   <div class="bd-example">
 
   <div id="venteflash" class="carousel slide" data-ride="carousel" >
 
-    <ol class="carousel-indicators">
-      <li data-target="#venteflash" data-slide-to="0" class="active"></li>
-      <li data-target="#venteflash" data-slide-to="1"></li>
-      <li data-target="#venteflash" data-slide-to="2"></li>
-    </ol>
+
 
     <div class="carousel-inner">
 
-      <div class="carousel-item active">
-        <img src="img/roman/eragon.jpg" class="img-article" alt="bestsellerlivre1" width="208" height="299">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Eragon</h5>
-          <p class="carousel-descrip">MUST READ OMG</p>
-        </div>
+        
+        <?php
+			if(!empty($_SESSION['items'])){
+                $ctp2=0;
+                $ctp=0;
+            foreach ($_SESSION['items'] as $key => $value) {
+            	
+           
+                
+            ?>          
+      
+      <div class="carousel-item <?php if ($ctp2 === 0) { echo ' active';  } ?>">
+
+          <h5 class="carousel-titre" style="color:slategrey; text-align:center;"><?php if(!empty($value['nom_item']))echo $value['nom_item'];?></h5>
+        <img src="<?php echo $value['image']; ?>" class="img-article" alt="bestsellerlivre2" height="314" width="208">
+        
+        <h6 class="titre-article" ><?php if(!empty($value['prix']))echo $value['prix'];?>€</h6>
+        <h6 class="titre-article" ><?php if(!empty($value['description']))echo $value['description'];?></h6>
+
       </div>
-
-      <div class="carousel-item">
-        <img src="img/roman/harrypotter.jpg" class="img-article" alt="bestsellerlivre2" height="314" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Harry Potter</h5>
-          <p>INCROYABLE</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="img/roman/snk.jpeg" class="img-article" alt="bestsellerlivre3" height="314" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">SnK</h5>
-          <p class="carousel-descrip">TROBO</p>
-        </div>
-        </div>
-
-
-
+         			<?php
+              $ctp2++;  
+                $ctp++;
+			}
+		}
+			?>
+            
     </div>
 
     <a class="carousel-control-prev" href="#venteflash" role="button" data-slide="prev">
@@ -95,167 +113,44 @@
   </div>
 
         </div><br>
-        <div class="qt-box">
-            
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(1)"><img src="minus.png" height="15" width="15"/></button>
+        <!--Crée un formulaire invisible pour envoyer les données (nom de l'item, quantite, prix, categorie) de l'article au panier-->
+	            <form action="includes/addToCart_inc.php" method="POST">
+
+	            	<input type="hidden" name="image" value="<?php if(!empty($value['image'])) echo $value['image']; ?>" class="img-article" height="312" width="208">
+	            	<input type="hidden" name="nom_item" value="<?php if(!empty($value['nom_item']))echo $value['nom_item'];?>">
+	                <input type="hidden" name="prix" value="<?php if(!empty($value['prix']))echo $value['prix'];?>">
+	                <input type="hidden" name="categorie" value="<?php if(!empty($value['categorie']))echo $value['categorie'];?>">
                     
-                    <input type="text" value="1" class="quantite-art" id="q1"/>
+                    <?php $tmp=(string)$ctp;
+                    $maCle='q'.$tmp; ?>
                     
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(1)"><img src="plus.png" height="15" width="15"/></button>
-                </div>
-            <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
-            </div>
+	 	            <div class="qt-box">
+	                    <?php echo '<button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins('.$ctp.')"><img src="minus.png" height="15" width="15"/></button>'?>
+	                    
+	                    <?php echo '<input type="text" value="1" class="quantite-art" id="'.$maCle.'"/>'?>
+	                    
+	                    <?php echo '<button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus('.$ctp.')"><img src="plus.png" height="15" width="15"/></button>'?>
+	                </div>
+                    
+                    <?php
+                        $ctp++;
+                    ?>
+	                
+	               <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
+
+	           	</form>
+        </div><br></div>
             
+            
+            
+   
             
     <!--Separateur categorie-->
     <div class="col-sm-1"></div>
             
             
-        <!-- Contient les ventes flash cat musique-->
-    
-    <div class="roman-liv">
-        <h4 style="color: slategret; margin-left: 40%;">Musique</h4>
-  
-  <div class="bd-example">
-
-  <div id="venteflash2" class="carousel slide" data-ride="carousel" >
-
-    <ol class="carousel-indicators">
-      <li data-target="#venteflash2" data-slide-to="0" class="active"></li>
-      <li data-target="#venteflash2" data-slide-to="1"></li>
-      <li data-target="#venteflash2" data-slide-to="2"></li>
-    </ol>
-
-    <div class="carousel-inner">
-
-      <div class="carousel-item active">
-        <img src="img/musique/kpop.png" class="img-article" alt="bestsellerlivre" width="208" height="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Eragon</h5>
-          <p class="carousel-descrip">MUST READ OMG</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="img/musique/kpop.png" class="img-article" alt="bestsellermusique" height="208" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Harry Potter</h5>
-          <p>INCROYABLE</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="img/musique/kpop.png" class="img-article" alt="..." height="208" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">SnK</h5>
-          <p class="carousel-descrip">TROBO</p>
-        </div>
-        </div>
-
-
-
-    </div>
-
-    <a class="carousel-control-prev" href="#venteflash2" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-
-    <a class="carousel-control-next" href="#venteflash2" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
-  </div>
-
-        </div>
-            <br>
-            <div class="qt-box">
-            
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(2)"><img src="minus.png" height="15" width="15"/></button>
-                    
-                    <input type="text" value="1" class="quantite-art" id="q2"/>
-                    
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(2)"><img src="plus.png" height="15" width="15"/></button>
-                </div>
-            <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
-            </div>
-            
-            
-            
-        <!--Separateur categorie-->
-    <div class="col-sm-1"></div>
-            
-            
-        <!-- Contient les ventes flash cat vetement-->
-    
-    <div class="roman-liv">
-        <h4 style="color: slategret; margin-left: 40%;">Vetements</h4>
-  
-  <div class="bd-example">
-
-  <div id="venteflash3" class="carousel slide" data-ride="carousel" >
-
-    <ol class="carousel-indicators">
-      <li data-target="#venteflash3" data-slide-to="0" class="active"></li>
-      <li data-target="#venteflash3" data-slide-to="1"></li>
-      <li data-target="#venteflash3" data-slide-to="2"></li>
-    </ol>
-
-    <div class="carousel-inner">
-
-      <div class="carousel-item active">
-        <img src="img/vetements/jean.jpg" class="img-article" alt="bestsellerlivre" width="208" height="277">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Eragon</h5>
-          <p class="carousel-descrip">MUST READ OMG</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="img/vetements/jean.jpg" class="img-article" alt="bestsellermusique" height="277" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">Harry Potter</h5>
-          <p>INCROYABLE</p>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <img src="img/vetements/jean.jpg" class="img-article" alt="..." height="277" width="208">
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="carousel-titre">SnK</h5>
-          <p class="carousel-descrip">TROBO</p>
-        </div>
-        </div>
-
-
-
-    </div>
-
-    <a class="carousel-control-prev" href="#venteflash3" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-
-    <a class="carousel-control-next" href="#venteflash3" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
-  </div>
-
-        </div>
-        <br>
-        <div class="qt-box">
-            
-                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(3)"><img src="minus.png" height="15" width="15"/></button>
-                    
-                    <input type="text" value="1" class="quantite-art" id="q3"/>
-                    
-                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(3)"><img src="plus.png" height="15" width="15"/></button>
-                </div>
-        <button type="submit" class="btn btn-danger bouton-article" name="addToCart">Ajouter au panier</button>
-            </div>
+       
+       
     
     </div></div>
     <br><br>

@@ -52,8 +52,20 @@
 					</form>						
 				</li>
                 
-                <li class="nav-item">
-					<a class="nav-link" href="ventesFlash.php">Ventes flash</a>				
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Vente flash</a>
+
+                    <form method="POST" action="includes/charger_flash_inc.php">
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" name="livre" >Livres</button>	
+                            <button class="dropdown-item" name="musique" >Musiques</button>
+                            <button class="dropdown-item" name="vetement" >Vetements</button>	
+                            <button class="dropdown-item" name="sport" >Sports</button>	
+
+
+
+                        </div>
+                    </form>
 				</li>
                 
                 <li class="nav-item">

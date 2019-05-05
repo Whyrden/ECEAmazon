@@ -56,18 +56,21 @@ require "nav.php";
 </form>
         </div>
         
-        <div style="margin-left:35%;">
+        <div style="margin-left:37%;">
         <!--Gestionnaire de vendeurs-->
             <form method="POST" action="includes/charger_vendeurs_inc.php">
                 <div>
-                    <button type="submit" class="btn btn-success " name="manage-people">Gerer les vendeurs</button>
+                    <button type="submit" class="btn btn-success " name="manage-people" >Gerer les vendeurs</button>
+                    
+                    <!--Gere les items-->
+            <button type="button" class="btn btn-success " name="manage-items"><a href="gererArticles.php">Gerer les articles</a></button>
+
+                    
                 </div>
 
             </form>
          
                 
-<!--Gere les items-->
-<button type="button" class="btn btn-success " name="manage-items"><a href="gererArticles.php">Gerer les articles</a></button>
         </div>
     
         </div>

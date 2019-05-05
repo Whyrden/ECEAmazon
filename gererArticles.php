@@ -26,13 +26,8 @@ require "nav.php";
     ?>
             
             <div class="col-sm-1"></div>
-            
+            <div class="roman-liv2">
 			<div class="roman-liv">
-                
-
-                
-                
-                <!--<button type="submit" id="qt-moins" class="close" ><a href="includes/admin_inc.php?id_item=<//?php echo $data['id_item']; ?>"><img src="close.png" height="15" width="15"/></a></button>-->
                 
 				
                 <?php echo '<img src="' . $data['image'] . '" class="img-article" height="312" width="208"/>
@@ -51,7 +46,7 @@ require "nav.php";
                 
                <button type="submit" class="btn btn-danger bouton-article" name="addToCart"><a href="includes/admin_article_inc.php?id_item=<?php echo $data['id_item']; ?>">Supprimer du site</a></button>
 				
-			</div>
+                </div><br></div>
 
 
 <?php 
