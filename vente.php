@@ -90,8 +90,8 @@ require "nav.php";
                 ?>
 
                 <tr>
+                    <td><?php echo $values['id_item']; ?></td>
                     <td><?php echo $values['nom_item']; ?></td>
-                    <td><?php echo "vide"; ?></td>
                     <td><?php echo $values['categorie']; ?></td>
                     <td><?php echo $values['prix']; ?></td>
                     <td><?php echo $values['modele']; ?></td>

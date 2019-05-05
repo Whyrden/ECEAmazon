@@ -76,7 +76,7 @@ if(isset($_POST['login_submit'])){
 					$_SESSION['prenom']=$data['prenom'];
 					$_SESSION['email']=$data['email'];
 					$_SESSION['photo_profil']=$data['photo_profil'];
-					$_SESSION['image_fond']=$data['image_fond'];
+					$_SESSION['image_fond']=$data['photo_fond'];
 				}//end else if loginvendeur
 				else if(isset($_POST['loginAdmin'])){
 					$_SESSION['username_admin']=$data['username_admin'];

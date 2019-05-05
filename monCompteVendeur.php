@@ -6,6 +6,9 @@ require "nav.php";
     <?php
         $photoprofil = "img/photoprofil/".$_SESSION['photo_profil'];
     ?>  
+                    <div class="compte1">
+        <img src="includes/img/imagefond/<?php echo $_SESSION['image_fond'] ?>" width=600 height=150/>
+    </div>
 
      <br/>
     <br/>
@@ -18,7 +21,7 @@ require "nav.php";
         <div class="row">
             
             <div class="compte1">
-        <img src="<?php echo $photoprofil ?>" width=150 height=150/>
+        <img src="includes/img/photoprofil/<?php echo $_SESSION['photo_profil'] ?>" width=150 height=150/>
     </div>
     <div class="compte2">
 
@@ -67,6 +70,20 @@ require "nav.php";
 
                 </form>
 
+<form method="post" action="includes/monCompteVendeur_inc.php" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td>Sélectionnez une image de fond:</td>
+                        <td><input type="file" name="image_fond"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                        <input type="submit" name="button2" value="Téléchargez"></td>
+
+                    </tr>
+                </table>
+
+                </form>
 
 
 

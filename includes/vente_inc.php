@@ -25,6 +25,7 @@ if(isset($_POST['afficher_submit'])){
 
 							while($data4=mysqli_fetch_array($resultat4)){
 								$items_array = array('id_item' =>$data4['id_item'],
+								 'id_item'=>$data4['id_item'],
 								 'nom_item'=>$data4['nom_item'],
 								 'categorie'=>$data4['categorie'],
 								 'prix'=>$data4['prix'],
@@ -43,7 +44,7 @@ if(isset($_POST['afficher_submit'])){
 if(isset($_POST['suppr_submit'])){
 	$supprimer_item=$_POST['suppr_submit'];
 
-	$sqlsuppr ="DELETE from `items` WHERE id_item='$supprimer_item'";
+	$sqlsuppr ="DELETE from items WHERE id_item='$supprimer_item'";
 	$vendeursuppr = "SELECT username_vendeur FROM items WHERE id_item='$supprimer_item'";
 	$stmt=mysqli_stmt_init($db_connect);
 
@@ -103,7 +104,7 @@ if(isset($_POST['item_submit'])){
 
 //Ajouter à la database si formulaire correct
 
-		$sql="INSERT INTO `items`(`nom_item`,`categorie`,`description`,`modele`,`prix`,`username_vendeur`) VALUES ('$nom_item','$categorie','$description','$modele','$prix','$vendeur')";
+		$sql="INSERT INTO items`(nom_item`,`categorie`,`description`,`modele`,`prix`,`username_vendeur`) VALUES ('$nom_item','$categorie','$description','$modele','$prix','$vendeur')";
 		$stmt=mysqli_stmt_init($db_connect);
 
 
