@@ -1,7 +1,7 @@
 <?php
 
 
-//Chargement des items dans la page des ventes en fonction des catégories
+//Chargement des items dans la page des ventes en fonction des catégories et des modèles
 session_start();
 require"db_handle_inc.php";
 
@@ -10,15 +10,22 @@ require"db_handle_inc.php";
 //Puis charger toutes les commandes qui sont associées au panier trouvé
 if(isset($_POST['livres'])){
 $sql="SELECT * FROM items WHERE categorie='livre'";
+$item_categorie='livres';
 }
+
 else if(isset($_POST['musiques'])){
 $sql="SELECT * FROM items WHERE categorie='musique'";
+$item_categorie='musiques';
 }
+
 else if(isset($_POST['vetements'])){
 $sql="SELECT * FROM items WHERE categorie='vetement'";
+$item_categorie='vetements';
 }
+
 else if(isset($_POST['sports'])){
 $sql="SELECT * FROM items WHERE categorie='sport'";
+$item_categorie='sports';
 }
 
 
@@ -48,7 +55,7 @@ if(mysqli_num_rows($resultat)>0){
 		echo "".$value['id_item'];
 	}*/
 	
-		header("Location: ../market.php?chargementItemsOK");
+		header("Location: ../market.php?chargement=".$item_categorie);
 		exit();
 
 }

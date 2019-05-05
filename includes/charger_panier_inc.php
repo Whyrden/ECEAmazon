@@ -16,29 +16,29 @@ else{
 	exit();
 }
 
-			//Recuperer les infos du panier aussi
-				$sql3="SELECT * FROM panier WHERE username_client='$current_username1'";
-				$stmt=mysqli_stmt_init($db_connect);
+//Recuperer les infos du panier aussi
+	$sql3="SELECT * FROM panier WHERE username_client='$current_username1'";
+	$stmt=mysqli_stmt_init($db_connect);
 
-				if(!mysqli_stmt_prepare($stmt,$sql3)){
-					header("Location: ../panier.php?error=noCartFound");
-					exit();
-					}
+		if(!mysqli_stmt_prepare($stmt,$sql3)){
+			header("Location: ../panier.php?error=noCartFound");
+			exit();
+			}
 
-				else{
-					
-					$resultat3=mysqli_query($db_connect, $sql3);
-					if($data3=mysqli_fetch_assoc($resultat3)){
-						$_SESSION['id_panier']=$data3['id_panier'];
-						$current_panier=$_SESSION['id_panier'];
+		else{
+				$resultat3=mysqli_query($db_connect, $sql3);
+				if($data3=mysqli_fetch_assoc($resultat3)){
+				$_SESSION['id_panier']=$data3['id_panier'];
+				$current_panier=$_SESSION['id_panier'];
 
-						$_SESSION['proprietaire']=$data3['username_client'];
-						$_SESSION['prix_total']=$data3['prix_total'];
-						$_SESSION['quantite_totale']=$data3['quantite_totale'];
-						}	
+				$_SESSION['proprietaire']=$data3['username_client'];
+				$_SESSION['prix_total']=$data3['prix_total'];
+				$_SESSION['quantite_totale']=$data3['quantite_totale'];
+				}	
 
-						//Puis charger toutes les commandes qui sont associées au panier trouvé
-						$sql4="SELECT * FROM achats WHERE id_panier='$current_panier'";
+
+				//Puis charger toutes les commandes qui sont associées au panier trouvé
+				$sql4="SELECT * FROM achats WHERE id_panier='$current_panier'";
 
 						if(!mysqli_stmt_prepare($stmt,$sql4)){
 							header("Location: ../panier.php?error=noOrderFound");
@@ -75,39 +75,62 @@ else{
 
 						}
 
-								//Puis mettre à jour le prix total et la quantité totale du panier
-								$sql5="UPDATE panier SET prix_total='$total_panier', quantite_totale='$total_quantite' WHERE id_panier='$current_panier'";
+						//Promo de 25% avec le code promo ECEAmazon
+						$promo_activate=false;
+
+						if(isset($_POST['promo_activate']) && $_POST['code_promo']=="ECEAmazon"){
+							$total_panier=$total_panier*(1-25/100);
+							$promo_activate=true;
+
+						}
+						else if(isset($_POST['promo_activate']) && $_POST['code_promo']!="ECEAmazon"){
+							header("Location: ../panier.php?error=wrongCode");
+							exit();
+						}
 
 
-								if(!mysqli_stmt_prepare($stmt,$sql5)){
-									header("Location: ../panier.php?error=errorsql");
+
+						//Puis mettre à jour le prix total et la quantité totale du panier
+						$sql5="UPDATE panier SET prix_total='$total_panier', quantite_totale='$total_quantite' WHERE id_panier='$current_panier'";
+
+						if(!mysqli_stmt_prepare($stmt,$sql5)){
+							header("Location: ../panier.php?error=errorsql");
+							exit();
+							}//end if $sql5 executée
+
+						else{
+
+								//Execution de la requête
+								if(mysqli_query($db_connect,$sql5)){
+								$_SESSION['prix_total']=$total_panier;
+								$_SESSION['quantite_totale']=$total_quantite;
+
+								if($promo_activate==true){
+									header("Location: ../panier.php?promo=activated");
 									exit();
-									}//end if $sql5 executée
-
-								else{
-
-										//Execution de la requête
-										if(mysqli_query($db_connect,$sql5)){
-										$_SESSION['prix_total']=$total_panier;
-										$_SESSION['quantite_totale']=$total_quantite;
-										}//end if
-										else{
-											header("Location:../panier.php?panier=prixAndQuantiteNotUpdated");
-											exit();
-
-										}
-
-
-									}//end else $sql5 non executée
-
-								}//end if $_SESSION['achats'] not empty
-
-								else if(empty($_SESSION['achats'])){
-									header("Location: ../panier.php?achats=vide");
 
 								}
+								}//end if
+								else{
+									header("Location:../panier.php?panier=prixAndQuantiteNotUpdated");
+									exit();
+
+									}
 
 
-							}
+							}//end else $sql5 non executée
+
+					}//end if $_SESSION['achats'] not empty
+
+					else if(empty($_SESSION['achats'])){
+							header("Location: ../panier.php?achats=vide");
+							exit();
+
+						}
+
+
+							}//Endif $sql3 executed
+
+
 
 

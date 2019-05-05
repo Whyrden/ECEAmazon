@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Bootstraps css--> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
+
+  <!--Jquery first then Bootstraps js-->          
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <!--my CSS-->
+  <link rel="stylesheet" type="text/css" href="monstyle.css"> 
+</head>
+</html>
+
 <?php
 require "nav.php";
 ?>
@@ -32,10 +47,10 @@ require "nav.php";
                 if(isset($_SESSION['numero'])){
 
                 //Afficher les données de la cb
-                echo "Numéro de carte: ".$_SESSION['numero'],'<br>';
+                echo "Numéro de carte: xx".$_SESSION['numero']."xx",'<br>';
                 echo "Type: ".$_SESSION['type'],'<br>';
                 echo "Date d'expiration: ".$_SESSION['expiration'],'<br>';
-                echo "Code: ".$_SESSION['code'],'<br>';
+                //echo "Code: ".$_SESSION['code'],'<br>'; //On n'affiche pas le code secret quand même oh !!!
                 echo "Proprietaire: ". $_SESSION['proprietaire'];
                 }
 

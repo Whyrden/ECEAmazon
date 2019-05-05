@@ -3,17 +3,26 @@
 //Charger le panier courant
 require"charger_panier_inc.php";
 
-	//Ajout d'item si l'utilisateur est co et a un panier valide
-		$current_panier=$_SESSION['id_panier']; 
-		$current_item_name;
-		$current_item_price;
+		if(isset($_POST['addToCart'])){
+			$current_panier=$_SESSION['id_panier']; 
+			if(isset($_POST['nom_item']) && isset($_POST['prix']) && isset($_POST['categorie']) && isset($_POST['quantite'])){
+				$nom_item=$_POST['nom_item'];
+				$prix=$_POST['prix'];
+				$categorie=$_POST['categorie'];
+				$quantite=$_POST['quantite'];
+			}
+
+			else{
+				header("Location: ../market.php?champsItem=empty");
+				exit();
+			}
 
 				
 			$id=0;
 			$sql="SELECT id_achat FROM achats WHERE id_achat=$id";
 			$stmt=mysqli_stmt_init($db_connect);
 			if(!mysqli_stmt_prepare($stmt,$sql)){
-				header("Location: ../livres.php?error=sqlerror");
+				header("Location: ../market.php?error=sqlerror");
 				exit();
 			}//endif
 
@@ -25,7 +34,10 @@ require"charger_panier_inc.php";
 			}
 
 
-			$sql1="INSERT INTO achats (`id_achat`,`nom_item`,`quantite`,`prix`,`categorie`,`id_panier`) VALUES($id,'Harry Potter',1,5*1,'Fantastique',$current_panier)";
+
+			//Ajout d'une commande dans le panier
+			//Attention le prix d'un achat est le prix de l'item fois sa quantité selectionnée
+			$sql1="INSERT INTO achats (`id_achat`,`nom_item`,`quantite`,`prix`,`categorie`,`id_panier`) VALUES($id,'$nom_item',$quantite,$quantite*$prix,'$categorie',$current_panier)";
 
 			if(mysqli_query($db_connect,$sql1)){
 
@@ -44,7 +56,7 @@ require"charger_panier_inc.php";
 
 
 								if(!mysqli_stmt_prepare($stmt,$sql5)){
-									header("Location: ../livres.php?error=errorsql");
+									header("Location: ../market.php?error=errorsql");
 									exit();
 									}//end if
 
@@ -56,7 +68,7 @@ require"charger_panier_inc.php";
 										$_SESSION['quantite_totale']=$total_quantite;
 										}//end if
 										else{
-											header("Location: ../livres.php?panier=prixAndQuantiteNotUpdated");
+											header("Location: ../market.php?panier=prixAndQuantiteNotUpdated");
 											exit();
 
 										}
@@ -67,23 +79,30 @@ require"charger_panier_inc.php";
 								}//end if $_SESSION['achats'] not empty
 
 							else{
-								header("Location: {$_SERVER['HTTP_REFERER']}?error=nopanier");
+								header("Location: ../market.php?error=nopanier");
 								exit();
 
 							}
 
-							header("Location: {$_SERVER['HTTP_REFERER']}?addToCart=success");
+							header("Location: .../market.php?addToCart=success");
 							exit();
 				
 
 			}
 			else{
-				header("Location: {$_SERVER['HTTP_REFERER']}?error=errorsql");
+				header("Location: ../market.php?error=errorsql");
 				exit();
 			
 
 			}
+			
+		}
 
+		else if(!isset($_POST['addToCart'])){
+			header("Location: ../market.php?addToCart=fail");
+			exit();
+
+		}
 
 
 ?>
