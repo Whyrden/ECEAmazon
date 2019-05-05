@@ -193,7 +193,7 @@ td {
 }
 
 .roman-liv{
-    width: 25%;
+    width: 100%;
     height: 550px;
     color: slategrey;
     background-color: #D2D5D9;
@@ -205,6 +205,8 @@ td {
     width: 25%;
     height: 580px;
 }
+
+
 
 .best-sell{
     margin-left: 32%;

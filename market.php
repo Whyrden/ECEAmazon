@@ -107,13 +107,15 @@ require "nav.php";
                 $ctp=0;
             foreach ($_SESSION['items'] as $key => $value) {
             	# code...
+                
             ?>
             <div class="col-sm-1"></div>
-            
+            <div class="roman-liv2">
 			<div class="roman-liv">
-			<br><br>			
+			<br>	
+                <h6 class="titre-article"> <?php if(!empty($value['nom_item']))echo $value['nom_item'];?></h6>
 	            <img src="<?php echo $value['image']; ?>" class="img-article" height="312" width="208">
-	            <h6 class="titre-article"> <?php if(!empty($value['nom_item']))echo $value['nom_item'];?></h6>
+	            
 	            <h6 class="titre-article"> <?php if(!empty($value['description']))echo $value['description'];?></h6>
 	            <h6 class="titre-article"> <?php if(!empty($value['vendeur']))echo $value['vendeur'];?></h6>
 	            <h6 class="titre-article"> <?php if(!empty($value['prix']))echo $value['prix'];?>€</h6>
@@ -146,10 +148,11 @@ require "nav.php";
 	           	</form>
 
 	            		
-			</div>
+                </div><br></div>
 
 
 			<?php
+                
 			}
 		}
 			?>
