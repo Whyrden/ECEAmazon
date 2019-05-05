@@ -5,7 +5,7 @@ require "nav.php";
 
 <main>
 
-    <br><br><h1 class="panier">Tous les vendeurs</h1><br>
+    <br><br><h1 class="panier">Tous vos vendeurs vendeurs</h1><br>
     
     <table>
         <tr>
