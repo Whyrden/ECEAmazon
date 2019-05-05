@@ -66,7 +66,7 @@ require "nav.php";
                     <td><?php echo $values['nom_item']; ?></td>
                     <td><img src="<?php echo $values['image']; ?>" width="50" height="50"></td>
                     <td><?php echo $values['categorie']; ?></td>
-                    <td><?php echo $values['prix_commande']; ?></td>
+                    <td><?php echo $values['prix_commande']/$values['quantite']; ?></td>
                     <td><?php echo $values['quantite']; ?></td>
                     <td><?php echo $values['prix_commande']; ?></td>
                 </tr>

@@ -91,7 +91,7 @@ require"charger_panier_inc.php";
 
 			}
 			else{
-				header("Location: ../market.php?error=errorsql");
+				header("Location: ../market.php?error=insertToAchatsFail");
 				exit();
 			
 

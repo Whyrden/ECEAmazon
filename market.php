@@ -134,7 +134,7 @@ require "nav.php";
 	 	            <div class="qt-box">
 	                    <?php echo '<button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins('.$ctp.')"><img src="minus.png" height="15" width="15"/></button>'?>
 	                    
-	                    <?php echo '<input type="text" value="1" class="quantite-art" id="'.$maCle.'"/>'?>
+	                    <?php echo '<input type="text" value="1" name ="quantite" class="quantite-art" id="'.$maCle.'"/>'?>
 	                    
 	                    <?php echo '<button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus('.$ctp.')"><img src="plus.png" height="15" width="15"/></button>'?>
 	                </div>
@@ -142,6 +142,7 @@ require "nav.php";
                     <?php
                         $ctp++;
                     ?>
+
 	                
 	               <button type="submit" class="btn btn-success bouton-article" name="addToCart">Ajouter au panier</button>
 

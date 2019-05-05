@@ -11,6 +11,7 @@
 	//Si le client est identifié et appuie sur commander
 	else if(isset($_POST['order']) && isset($_SESSION['username_client'])){
 		$current_username=$_SESSION['username_client'];
+		$current_panier=$_SESSION['id_panier'];
 
 		require"db_handle_inc.php";
 		//Verifier que tous les champs sont correctement rentrés
@@ -46,6 +47,16 @@
 					$resultat=mysqli_query($db_connect,$sql);
 					if($data=mysqli_fetch_assoc($resultat)){
 						if($cardNumber==$data['numero'] && $code==$data['code'] && $exp=$data['expiration']){
+
+							//Vider le panier du client
+							$sql="DELETE FROM achats WHERE id_panier='$current_panier'";
+
+							if(!mysqli_query($db_connect,$sql)){
+								header("Location: ../livraison.php?error=cartnotEmptied");
+								exit();
+								
+							}
+
 							header("Location: ../validationCommande.php");
 							exit();
 
@@ -53,9 +64,6 @@
 						else{
 							header("Location: ../livraison.php?error=wrongCardInfo");
 							exit();
-							echo $_POST['numberCard'];
-							echo $_POST['exp'];
-							echo $_POST['crypto'];
 						}//end if wrong card infos
 					}//
 
