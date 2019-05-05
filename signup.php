@@ -71,11 +71,11 @@ require "nav.php";
                             </div>
                             <div class="form-group">
                                 <label for="namee" class="control-label">Nom</label>
-					           <input type="text" name="nom" id="namee" class="form-control form-control-sm" placeholder="Nom*">
+					           <input type="text" name="nom" id="name" class="form-control form-control-sm" placeholder="Nom*">
                             </div>
                             <div class="form-group">
                                 <label for="prenome" class="control-label">Prénom</label>
-					           <input type="text" name="prenom" id="prenome" class="form-control form-control-sm" placeholder="Prenom*">      
+					           <input type="text" name="prenom" id="prenom" class="form-control form-control-sm" placeholder="Prenom*">      
                             </div>
                             
                             <div>
@@ -97,13 +97,13 @@ require "nav.php";
                     <div class="col-md-5">
                         <div class="inscrip2">
                             <div class="form-group">
-                                <label for="birthDate" class="control-label">Date de naissance</label><br>
+                                <label for="birthDate" class="control-label">Date de naissance *</label><br>
                                 <input type="date" name="dateNaissance" id="birthDate" class="form-control form-control-sm" placeholder="Date de naissance*">
                             </div>
                             <div class="form-group">
                                 <label for="pays">   Pays    </label><br>
                                 <select name="pays" id="pays">
-                                    <option value="france">France</option>
+                                    <option selected="france">France</option>
                                     <option value="espagne">Espagne</option>
                                     <option value="italie">Italie</option>
                                     <option value="royaume-uni">Royaume-Uni</option>

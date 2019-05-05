@@ -11,15 +11,24 @@ if(isset($_POST['signup_submit'])){
 	$adresse=isset($_POST['adresse'])? $_POST["adresse"]:"";
 	$nom=isset($_POST['nom'])? $_POST["nom"]:"";
 	$prenom=isset($_POST['prenom'])? $_POST["prenom"]:"";
-	$dateNaissance=isset($_POST['dateNaissance'])? $_POST["dateNaissance"]:"2020-01-01";
-	$pays=isset($_POST['pays'])? $_POST["pays"]:"";
-	$codePostale=isset($_POST['codePostale'])? $_POST["codePostale"]:"";
-	$ville=isset($_POST['ville'])? $_POST["ville"]:"";
 	$portable=isset($_POST['portable'])? $_POST["portable"]:"";
+	$dateNaissance=isset($_POST['dateNaissance'])? $_POST["dateNaissance"]:"";
+
+	$pays=isset($_POST['pays'])? $_POST["pays"]:"";
+
+	if(isset($_POST['codePostale'])) {
+		$codePostale=$_POST['codePostale'];
+	}
+	else{
+		$codePostale=00000;
+
+	}
+	$ville=isset($_POST['ville'])? $_POST["ville"]:"";
+	
 
 //Formulaire invalide si...
 	//Un des champs obligatoires est vide
-	if(empty($identifiant) || empty($mail) || empty($password) || empty($confirm_password) || empty($nom) || empty($prenom) || empty($portable) || empty($pays)){
+	if(empty($identifiant) || empty($mail) || empty($password) || empty($confirm_password) || empty($nom) || empty($prenom) || empty($portable) || empty($dateNaissance)){
 		header("Location: ../signup.php?error=emptyfields&identifiant".$identifiant."$mail=".$mail); 
 		exit();
 	}
@@ -61,22 +70,26 @@ if(isset($_POST['signup_submit'])){
 
 
 			if(!mysqli_stmt_prepare($stmt,$sql)){
-				header("Location: ../signup.php?error=sqlerror");
+				header("Location: ../signup.php?error=sqlerrooor");
 				exit();
 			}//endif
 			else{
 
 				//EXecution de la requete
-				mysqli_query($db_connect,$sql);
+				if(!mysqli_query($db_connect,$sql)){
+				header("Location: ../signup.php?error=notAddedToDB");
+				exit();
+
+				}
 							
 			}//endelse
 
-			//Crée un panier aussi (pour l'id, on prend cun aléatoire)
+			//Crée un panier aussi (pour l'id, on prend un aléatoire)
 
 			$id=0;
 			$sql="SELECT id_panier FROM panier WHERE id_panier=$id";
 			if(!mysqli_stmt_prepare($stmt,$sql)){
-				header("Location: ../signup.php?error=sqlerror");
+				header("Location: ../signup.php?error=idPaniernotfound");
 				exit();
 			}//endif
 
@@ -89,14 +102,14 @@ if(isset($_POST['signup_submit'])){
 			
 
 			//Puis inserer l'id dans le panier fraîchement crée
-			$sql6="INSERT INTO `panier`(`id_panier`,`username_client`) VALUES($id,'$identifiant')";
+			$sql6="INSERT INTO `panier`(`id_panier`,`username_client`) VALUES('$id','$identifiant')";
 
 			if(mysqli_query($db_connect,$sql6)){
 				header("Location: ../signup.php?signup=success");
 				exit();
 			}
 			else{
-				header("Location: ../signup.php?error=sqlerror");
+				header("Location: ../signup.php?error=creationPanierFail");
 				exit();
 
 			}
