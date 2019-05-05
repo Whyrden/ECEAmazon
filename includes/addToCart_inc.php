@@ -84,7 +84,7 @@ require"charger_panier_inc.php";
 
 							}
 
-							header("Location: .../market.php?addToCart=success");
+							header("Location: ../market.php?addToCart=success");
 							exit();
 				
 
