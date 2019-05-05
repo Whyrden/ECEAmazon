@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!--Bootstraps css--> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">  
-
-  <!--Jquery first then Bootstraps js-->          
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>  
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-  <!--my CSS-->
-  <link rel="stylesheet" type="text/css" href="monstyle.css"> 
-</head>
-</html>
-
-
 <?php
 require "nav.php";
 ?>
 
-
+<main>
 <!--gestion des items du vendeur-->
 <h2>Ajouter un objet à la vente :</h2>
 
@@ -39,7 +23,7 @@ require "nav.php";
 
                             <div class="form-group">
                                 <label for="categorie">   Catégorie    </label><br>
-                                <select name="pays" id="pays">
+                                <select name="categorie">
                                     <option value="livre">Livre</option>
                                     <option value="musique">Musique</option>
                                     <option value="vetement">Vêtement</option>
@@ -63,13 +47,68 @@ require "nav.php";
          </div>
      </div>
 
-
-     <h2>Liste de vos objets en vente :</h2>
 </form>
 
+ <h2>Gérer vos objets en vente :</h2>
+
+<form class="inscrip form-horizontal" action="includes/vente_inc.php" method="POST">
+    <div class="container">
+        <div class="row">                
+                    <div class="col-md-10">
+                         <div class="form-group">
+                             <label for="suppr_item" class="control-label">Supprimer un objet :</label>
+                             <input type="number" name="suppr_submit" class="form-control form-control-sm" placeholder="numéro de l'objet à supprimer*">
+                         </div>
+                    </div>
+        </div>
+    </div>
+ <button type="submit" name="supprimer_submit">Supprimer cet objet</button>
+</form>
+
+</br></br></br>
+
+ <form class="inscrip form-horizontal" action="includes/vente_inc.php" method="POST">
+ <button type="submit" name="afficher_submit">Afficher vos objets en vente</button>
+</form> 
+
+ <table>
+
+    <tr>
+        <th>Article</th>
+        <th>Image</th>
+        <th>Catégorie</th>
+        <th>prix</th>
+        <th>Modèle</th>
+        <th>description</th>
+    </tr>
+
+        <?php
+            if(!empty($_SESSION['items'])){
+
+            foreach ($_SESSION['items'] as $key => $values) {
+
+                ?>
+
+                <tr>
+                    <td><?php echo $values['nom_item']; ?></td>
+                    <td><?php echo "vide"; ?></td>
+                    <td><?php echo $values['categorie']; ?></td>
+                    <td><?php echo $values['prix']; ?></td>
+                    <td><?php echo $values['modele']; ?></td>
+                    <td><?php echo $values['description']; ?></td>
+                </tr>
+
+        <?php
+            }
+
+        }
+        ?>
+</table>
 
 
 <br><br><br><br><br><br><br>
+</main>
+
 
 <?php
 require "footer.php";
