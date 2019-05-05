@@ -31,37 +31,47 @@ require "nav.php";
         <br/>
         <br/>
     
-    <form>
+    <form action="includes/livraison_inc.php" method="POST">
 	<div class="container">
 		<div class="row">
             
 			<div class="livraison">
-				<h4>Votre adresse de livraison</h4><br/>
+                <!--Creer un formulaire de livraison et vérifier que les coordonnées bancaires coorespondent à celles du client-->
+                <!--Pré remplir l'adresse de livraison par celui du client-->
+				    <h4>Votre adresse de livraison</h4><br/>
                 
 					<div class="form-group">
-                        <label for="name" class="control-label">Nom et prenom</label>
-						<input type="text" name="fullName" class="form-control form-control-sm" id="name" placeholder="Jane Doe">  
-                    </div>			
+                        <label for="name" class="control-label">Nom</label>
+						<input type="text" name="nom" class="form-control form-control-sm" id="name"  value="<?php if(isset($_SESSION['nom'])) echo $_SESSION['nom'];?>">  
+                    </div>	
+
+                    <div class="form-group">
+                        <label for="name" class="control-label">Prenom</label>
+                        <input type="text" name="prenom" class="form-control form-control-sm" value="<?php if(isset($_SESSION['prenom'])) echo $_SESSION['prenom'];?>">  
+                    </div>		
 					
                     <br>
 					<div class="form-group">
                         <label for="ad-l1" class="control-label">Adresse</label>
-						<input type="text" name="adresse1" class="form-control form-control-sm" id="ad-l1"placeholder="Adresse Ligne 1">
+						<input type="text" name="adresse1" class="form-control form-control-sm" id="ad-l1" value="<?php if(isset($_SESSION['adresse'])) echo $_SESSION['adresse'];?>">
                     </div>
                     <div class="form-group">
-						<input type="text" name="adresse2" class="form-control form-control-sm" placeholder="Adresse Ligne 2">
-                    </div>
-                    <div class="form-group">
-                        <label for="ville" class="control-label">Ville</label>
-						<input type="text" name="city" class="form-control form-control-sm" id="ville" placeholder="Ville">
+						<input type="text" name="adresse2" class="form-control form-control-sm">
                     </div>
                     <div class="form-group">
                         <label for="postalCode" class="control-label">Code Postal</label>
-						<input type="number" name="postal" class="form-control form-control-sm" id="postalCode" placeholder="code postal">
-                    </div><br>
+                        <input type="number" name="code_postal" class="form-control form-control-sm" id="postalCode" value="<?php if(isset($_SESSION['codePostal'])) echo $_SESSION['codePostal'];?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="ville" class="control-label">Ville</label>
+						<input type="text" name="ville" class="form-control form-control-sm" id="ville" value="<?php if(isset($_SESSION['ville'])) echo $_SESSION['ville'];?>">
+                    </div>
+                    <br>
+
                     <div class="form-group">
                         <label for="pays">   Pays    </label>
                         <select name="pays" id="pays">
+                            <option selected="<?php if(isset($_SESSION['pays'])) echo $_SESSION['pays'];?>">"<?php if(isset($_SESSION['pays'])) echo $_SESSION['pays'];?>"</option>
                             <option value="france">France</option>
                             <option value="espagne">Espagne</option>
                             <option value="italie">Italie</option>
@@ -70,9 +80,15 @@ require "nav.php";
                             <option value="etats-unis">États-Unis</option>
                             <option value="chine">Chine</option>
                             <option value="japon">Japon</option>
-                        </select>
-                
-                    </div>			
+                        </select>             
+                    </div>	
+
+                    <div class="form-group">
+                        <label for="telephone" class="control-label">Numéro de telephone</label>
+                        <input type="text" name="telephone" class="form-control form-control-sm" id="ville" value="<?php if(isset($_SESSION['telephone'])) echo $_SESSION['telephone'];?>">
+                    </div>
+
+
 		      </div>	
                     <br/>
                     <br/>
@@ -103,42 +119,34 @@ require "nav.php";
 
 					<div class="form-group">
                         <label for="cardNumber" class="control-label">Numéro de la carte</label>
-						<input type="number" name="numberCard" id="cardNumber" class="form-control form-control-sm" placeholder="numero de carte">
+						<input type="number" name="numberCard" id="cardNumber" class="form-control form-control-sm">
                     </div>
                 
                     <div class="form-group">
                         <label for="expCard" class="control-label">Date d'expiration</label>
-						<input type="month" name="exp" id="expCard" class="form-control form-control-sm" placeholder="date d'expiration">
+						<input type="month" name="exp" id="expCard" class="form-control form-control-sm">
                     </div>
                 
                     <div class="form-group">
                         <label for="writtenName" class="control-label">Nom sur la carte</label>
-						<input type="text" name="exp" id="writtenName" class="form-control form-control-sm" placeholder="Jane Doe">
+						<input type="text" name="nom_carte" id="writtenName" class="form-control form-control-sm">
                     </div>
                 
                     <div class="form-group">
                         <label for="cript" class="control-label">Code de sécurité</label>
-						<input type="number" name="cripto" id="cript" class="form-control form-control-sm" placeholder="cryptogramme">
+						<input type="number" name="cripto" id="cript" class="form-control form-control-sm">
                     </div>
-                        
-                        
-                        
+                                                                   
 					</div>
 
 					
                 </div>
-            </div>
-           
-					
-				
-				
-				
+            </div>							
 	</div>	
-        <br/>
-
-        
-         <button type="submit" class="btn btn-success livr" name="order"><a href="validationCommande.php">Commander !</a></button>
+        <br/>     
+         <input type="submit" class="btn btn-success livr" name="order" value="Commander!">
 	</form>
+
         <br/>
         <br/>
         <br/>

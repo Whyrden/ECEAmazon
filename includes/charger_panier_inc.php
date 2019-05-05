@@ -27,6 +27,8 @@ else{
 
 		else{
 				$resultat3=mysqli_query($db_connect, $sql3);
+
+				 
 				if($data3=mysqli_fetch_assoc($resultat3)){
 				$_SESSION['id_panier']=$data3['id_panier'];
 				$current_panier=$_SESSION['id_panier'];
@@ -34,7 +36,7 @@ else{
 				$_SESSION['proprietaire']=$data3['username_client'];
 				$_SESSION['prix_total']=$data3['prix_total'];
 				$_SESSION['quantite_totale']=$data3['quantite_totale'];
-				}	
+				}//endif panier trouvé	
 
 
 				//Puis charger toutes les commandes qui sont associées au panier trouvé
@@ -56,7 +58,8 @@ else{
 								 'quantite'=>$data4['quantite'],
 								 'prix_commande'=>$data4['prix'], //Prix d'une commande/achat =prix d'un article*quantité
 								 'categorie'=>$data4['categorie'],
-								 'id_panier'=>$data4['id_panier']);
+								 'id_panier'=>$data4['id_panier'],
+								 'image'=>$data4['image']);
 
 								$_SESSION['achats'][$i]=$achat_array;
 								$i++;
@@ -122,9 +125,10 @@ else{
 
 					}//end if $_SESSION['achats'] not empty
 
+					//Si aucun achat se trouve dans le panier, réinit le prix total et quantité à 0
 					else if(empty($_SESSION['achats'])){
-							header("Location: ../panier.php?achats=vide");
-							exit();
+							$sql="UPDATE panier SET prix_total=0, quantite_totale=0 WHERE id_panier='$current_panier'";
+							mysqli_query($db_connect,$sql);
 
 						}
 

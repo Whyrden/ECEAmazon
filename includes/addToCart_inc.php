@@ -5,11 +5,12 @@ require"charger_panier_inc.php";
 
 		if(isset($_POST['addToCart'])){
 			$current_panier=$_SESSION['id_panier']; 
-			if(isset($_POST['nom_item']) && isset($_POST['prix']) && isset($_POST['categorie']) && isset($_POST['quantite'])){
+			if(isset($_POST['nom_item']) && isset($_POST['prix']) && isset($_POST['categorie']) && isset($_POST['quantite']) && isset($_POST['image'])){
 				$nom_item=$_POST['nom_item'];
 				$prix=$_POST['prix'];
 				$categorie=$_POST['categorie'];
 				$quantite=$_POST['quantite'];
+				$image=$_POST['image'];
 			}
 
 			else{
@@ -37,7 +38,7 @@ require"charger_panier_inc.php";
 
 			//Ajout d'une commande dans le panier
 			//Attention le prix d'un achat est le prix de l'item fois sa quantité selectionnée
-			$sql1="INSERT INTO achats (`id_achat`,`nom_item`,`quantite`,`prix`,`categorie`,`id_panier`) VALUES($id,'$nom_item',$quantite,$quantite*$prix,'$categorie',$current_panier)";
+			$sql1="INSERT INTO achats (`id_achat`,`nom_item`,`quantite`,`prix`,`categorie`,`id_panier`,`image`) VALUES($id,'$nom_item',$quantite,$quantite*$prix,'$categorie',$current_panier,'$image')";
 
 			if(mysqli_query($db_connect,$sql1)){
 

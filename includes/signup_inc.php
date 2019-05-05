@@ -83,7 +83,7 @@ if(isset($_POST['signup_submit'])){
 			else{
 				$resultat=mysqli_query($db_connect,$sql);
 				while($data=mysqli_fetch_assoc($resultat)){
-					$id=rand(1,255);
+					$id=rand(1,1000);
 				}
 			}
 			

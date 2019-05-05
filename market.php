@@ -120,6 +120,7 @@ require "nav.php";
 	            <!--Crée un formulaire invisible pour envoyer les données (nom de l'item, quantite, prix, categorie) de l'article au panier-->
 	            <form action="includes/addToCart_inc.php" method="POST">
 
+	            	<input type="hidden" name="image" value="<?php if(!empty($value['image'])) echo $value['image']; ?>" class="img-article" height="312" width="208">
 	            	<input type="hidden" name="nom_item" value="<?php if(!empty($value['nom_item']))echo $value['nom_item'];?>">
 	                <input type="hidden" name="prix" value="<?php if(!empty($value['prix']))echo $value['prix'];?>">
 	                <input type="hidden" name="categorie" value="<?php if(!empty($value['categorie']))echo $value['categorie'];?>">
