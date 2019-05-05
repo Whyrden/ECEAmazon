@@ -51,7 +51,7 @@ if(isset($_POST['signupVendeur_submit'])){
 				}
 			}
 
-		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`description`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','$description')";
+		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`description`,`photo_profil`,`photo_fond`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','$description','boy.png','boy.png')";
 
 
 		//EXecution de la requete
