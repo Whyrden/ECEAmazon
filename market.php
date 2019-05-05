@@ -100,10 +100,11 @@ require "nav.php";
     <div class="container">
 		<div class="row">
             
-            <div class="col-sm-1"></div>
+            
             
 			<?php
 			if(!empty($_SESSION['items'])){
+                $ctp=0;
             foreach ($_SESSION['items'] as $key => $value) {
             	# code...
             ?>
@@ -124,20 +125,28 @@ require "nav.php";
 	            	<input type="hidden" name="nom_item" value="<?php if(!empty($value['nom_item']))echo $value['nom_item'];?>">
 	                <input type="hidden" name="prix" value="<?php if(!empty($value['prix']))echo $value['prix'];?>">
 	                <input type="hidden" name="categorie" value="<?php if(!empty($value['categorie']))echo $value['categorie'];?>">
+                    
+                    <?php $tmp=(string)$ctp;
+                    $maCle='q'.$tmp; ?>
+                    
 	 	            <div class="qt-box">
-	                    <button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins(1)"><img src="minus.png" height="15" width="15"/></button>
+	                    <?php echo '<button type="button" id="qt-moins" class="btn-qt" onClick="calcQuantiteMoins('.$ctp.')"><img src="minus.png" height="15" width="15"/></button>'?>
 	                    
-	                    <input type="text" value="1" class="quantite-art" id="q1" name="quantite">
+	                    <?php echo '<input type="text" value="1" class="quantite-art" id="'.$maCle.'"/>'?>
 	                    
-	                    <button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus(1)"><img src="plus.png" height="15" width="15"/></button>
+	                    <?php echo '<button type="button" id="qt-plus" class="btn-qt" onClick="calcQuantitePlus('.$ctp.')"><img src="plus.png" height="15" width="15"/></button>'?>
 	                </div>
+                    
+                    <?php
+                        $ctp++;
+                    ?>
 	                
 	               <button type="submit" class="btn btn-success bouton-article" name="addToCart">Ajouter au panier</button>
 
 	           	</form>
 
 	            		
-			</div> 
+			</div>
 
 
 			<?php

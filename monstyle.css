@@ -194,10 +194,16 @@ td {
 
 .roman-liv{
     width: 25%;
-    height: 480px;
+    height: 550px;
     color: slategrey;
     background-color: #D2D5D9;
     border-radius: 7px;
+}
+
+.roman-liv2{
+    
+    width: 25%;
+    height: 580px;
 }
 
 .best-sell{
