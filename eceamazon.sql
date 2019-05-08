@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 mai 2019 à 00:35
+-- Généré le :  mer. 08 mai 2019 à 21:04
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `achats` (
   `prix` int(11) NOT NULL,
   `id_panier` int(11) NOT NULL,
   `categorie` text,
+  `image` text,
   PRIMARY KEY (`id_achat`),
   KEY `id_panier` (`id_panier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -44,15 +45,11 @@ CREATE TABLE IF NOT EXISTS `achats` (
 -- Déchargement des données de la table `achats`
 --
 
-INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`, `categorie`) VALUES
-(0, 'Harry Potter', 1, 5, 1, 'livre'),
-(1, 'Harry Potter', 7, 35, 4, 'livre'),
-(2, 'DBZ', 2, 40, 4, 'livre'),
-(3, 'DDU DU DDU DU', 6, 65, 1, 'musique'),
-(4, 'Mein Kampf', 14, 65, 4, 'livre'),
-(373, 'Harry Potter', 4, 20, 1, 'Livre'),
-(803, 'Harry Potter', 2, 10, 1, 'Livre'),
-(885, 'Mein Kampf', 1, 30, 1, 'livre');
+INSERT INTO `achats` (`id_achat`, `nom_item`, `quantite`, `prix`, `id_panier`, `categorie`, `image`) VALUES
+(0, 'Harry Potter', 2, 10, 0, 'Livre', 'img/livre/harrypotter.jpg'),
+(307, 'Les trois mousquetaires', 3, 27, 0, 'livre', 'img/livre/lestroismousquetaires.jpg'),
+(685, 'SNSD GEE', 3, 90, 1, 'musique', 'img/musique/gee.jpg'),
+(696, 'Les Miserables', 3, 33, 1, 'livre', 'img/livre/lesmiserables');
 
 -- --------------------------------------------------------
 
@@ -98,8 +95,8 @@ CREATE TABLE IF NOT EXISTS `carte_bancaire` (
 --
 
 INSERT INTO `carte_bancaire` (`numero`, `type`, `expiration`, `code`, `username_client`) VALUES
-(1, 'cb', '2021-01-01', 0, 'Wyrden'),
-(2, 'cb', '2021-01-12', 1234, 'kevin');
+(1, 'visa', '2021-01-01', 4321, 'Wyrden'),
+(2, 'visa', '2021-01-12', 1234, 'kevin');
 
 -- --------------------------------------------------------
 
@@ -130,9 +127,8 @@ CREATE TABLE IF NOT EXISTS `clients` (
 
 INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adresse2`, `code_postal`, `ville`, `telephone`, `date_naissance`, `email`, `nom`, `prenom`) VALUES
 ('kevin', 'aze', 'espagne', 'xxx', NULL, 93120, 'LA COURNEUVE', 782618723, '2019-05-02', 'kevinkann@hotmail.fr', 'KANN', 'Kevin'),
-('oceane', 'aze', 'france', 'xxx', NULL, 93120, 'LA COURNEUVE', 101010101, '2019-05-03', 'kevinkann@hotmail.fr', 'KANN', 'Kevin'),
 ('tampon', 'azer', 'canada', 'xxx', NULL, 0, 'xxx', 101010101, '2019-05-03', 'tampon@gmail.com', 'tampon', 'tampon'),
-('Wyrden', 'salut', 'france', '00 rue de quelque part', 'en haut', 0, 'paris', 0, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis');
+('Wyrden', 'salut', 'france', '8 rue de machin', '...', 75015, 'paris', 101010101, '2019-04-10', 'alexis.saute@gmail.com', 'Saute', 'Alexis');
 
 -- --------------------------------------------------------
 
@@ -142,7 +138,7 @@ INSERT INTO `clients` (`username_client`, `password`, `pays`, `adresse1`, `adres
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
-  `id_item` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL AUTO_INCREMENT,
   `nom_item` text,
   `image` text,
   `categorie` text,
@@ -153,19 +149,20 @@ CREATE TABLE IF NOT EXISTS `items` (
   `username_vendeur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_item`),
   KEY `username_vendeur` (`username_vendeur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `items`
 --
 
 INSERT INTO `items` (`id_item`, `nom_item`, `image`, `categorie`, `description`, `nb_ventes`, `modele`, `prix`, `username_vendeur`) VALUES
-(1, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualite', NULL, 'Roman', 5, 'kvnknn'),
-(2, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualite', NULL, 'Roman', 5, 'kvnknn'),
-(4, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique legendaire', 0, 'pop', 30, 'kvnknn'),
-(5, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique legendaire', 0, 'pop', 30, 'kvnknn'),
-(6, 'Mein Kampf', 'img/livre/meinkampf.jpg', 'livre', 'Hitler retrace son combat contre la race juive et prone la grande Allemagne', NULL, NULL, 30, 'kvnknn'),
-(7, 'Shingeki no kyojin', 'img/livre/snk.jpeg', 'livre', 'Histoire de guerriers combattant des titans', NULL, 'manga', 7, 'kvnknn');
+(1, 'TWICE - FANCY', 'img/musique/fancy.jpg', 'musique', 'Im A ONCE', 0, 'KPOP', 50, 'kvnknn'),
+(2, 'Harry Potter', 'img/livre/harrypotter.jpg', 'Livre', 'Livre de haute qualite', 0, 'Roman', 5, 'kvnknn'),
+(4, 'SNSD GEE', 'img/musique/gee.jpg', 'musique', 'musique legendaire', 3, 'pop', 30, 'kvnknn'),
+(7, ' BOY WITH LUV', 'img/musique/boywithluv.jpg', 'musique', 'les best', 3, 'KPOP', 50, 'kvnknn'),
+(9, 'Asterix - Mission Cleoplatre', 'img/livre/missioncleopatre.jpg', 'livre', 'Meilleure BC francaise', 0, 'BD', 9, 'kvnknn'),
+(19, 'Les Miserables', 'img/livre/lesmiserables', 'livre', 'Roman de Victor Hugo', 3, 'Roman', 11, 'kvnknn'),
+(21, 'Les trois mousquetaires', 'img/livre/lestroismousquetaires.jpg', 'livre', 'Alexandre Dumas', 0, 'Roman', 9, 'kvnknn');
 
 -- --------------------------------------------------------
 
@@ -188,10 +185,9 @@ CREATE TABLE IF NOT EXISTS `panier` (
 --
 
 INSERT INTO `panier` (`id_panier`, `username_client`, `prix_total`, `quantite_totale`) VALUES
-(0, 'tampon', 15, 3),
-(1, 'kevin', 130, 14),
-(4, 'Wyrden', 140, 23),
-(36, 'oceane', NULL, NULL);
+(0, 'tampon', 37, 5),
+(1, 'kevin', 123, 6),
+(4, 'Wyrden', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -209,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `vendeurs` (
   `email` text NOT NULL,
   `nom` text,
   `prenom` text,
-  `username_admin` varchar(255) NOT NULL,
+  `username_admin` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`username_vendeur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -218,7 +214,8 @@ CREATE TABLE IF NOT EXISTS `vendeurs` (
 --
 
 INSERT INTO `vendeurs` (`username_vendeur`, `password`, `photo_profil`, `photo_fond`, `description`, `email`, `nom`, `prenom`, `username_admin`) VALUES
-('kvnknn', 'aze', NULL, NULL, 'Kevin le boss', 'kevinkann@ece.fr', 'Kann', 'Kevin', '');
+('alexis123', 'aze', 'boy.png', NULL, NULL, 'alexis@gmail.com', 'Alexis', 'Saute', 'Oceane'),
+('kvnknn', 'aze', 'boy.png', 'img_chania.jpg', 'Kevin le boss', 'kevinkann@ece.fr', 'Kann', 'Kevin', 'Oceane');
 
 --
 -- Contraintes pour les tables déchargées
