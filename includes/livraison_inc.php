@@ -2,9 +2,17 @@
 
 	session_start();
 
+	$quantite_totale=$_SESSION['quantite_totale'];
+	$prix_total=$_SESSION['prix_total'];
+
 	//Si non connecté, renvoyer au panier et inviter à se co
 	if(!isset($_SESSION['username_client'])){
 		header("Location: ../panier.php?error=noUser");
+		exit();
+	}
+
+	else if(isset($_SESSION["username_client"]) && $quantite_totale<=0 && $prix_total<=0){
+		header("Location:../panier.php?error=emptyCart");
 		exit();
 	}
 
@@ -48,17 +56,42 @@
 					if($data=mysqli_fetch_assoc($resultat)){
 						if($cardNumber==$data['numero'] && $code==$data['code'] && $exp=$data['expiration']){
 
-							//Vider le panier du client
-							$sql="DELETE FROM achats WHERE id_panier='$current_panier'";
+
+
+							//Mettre à jour le nbr de ventes puis vider le panier du client
+							$sql="UPDATE achats,items SET items.nb_ventes=items.nb_ventes+achats.quantite WHERE items.nom_item=achats.nom_item AND achats.id_panier='$current_panier'";
 
 							if(!mysqli_query($db_connect,$sql)){
-								header("Location: ../livraison.php?error=cartnotEmptied");
+								header("Location: ../livraison.php?error=nb_ventesnotupdated");
 								exit();
 								
 							}
+							else{ 
+								$sql2="UPDATE panier SET quantite_totale=0, prix_total=0 WHERE id_panier=$current_panier";
+								if(mysqli_query($db_connect,$sql2)){
 
-							header("Location: ../validationCommande.php");
-							exit();
+									//suppression du panier
+									$sql3="DELETE FROM achats WHERE id_panier='$current_panier'";
+
+									if(!mysqli_query($db_connect,$sql3)){
+										header("Location: ../livraison.php?error=cartNotEmptied");
+										exit();
+
+									}
+
+									else{
+										header("Location: ../validationCommande.php");
+										exit();
+									}
+								}
+
+								else{
+									header("Location: ../livraison.php?error=cartNotreinit");
+									exit();
+								}
+
+							}
+							
 
 						}//end Verif des données
 						else{
@@ -82,5 +115,6 @@
 		header("Location: ../livraison.php?chargementLivraison");
 		exit();
 	}
+
 
 ?>

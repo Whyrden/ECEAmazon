@@ -16,7 +16,7 @@ require "nav.php";
 
  $database = "eceamazon";
 
- $db_handle = mysqli_connect('localhost', 'root', 'root' );
+ $db_handle = mysqli_connect('localhost', 'root', '' );
  $db_found = mysqli_select_db($db_handle, $database);
     $i=0;
      $sql = "SELECT * FROM items";

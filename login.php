@@ -28,6 +28,11 @@ require "nav.php";
     		# code...
     	}
 
+    	else if($_GET['error']=='incorrectInfo'){
+    		 echo "<p class='ast'>Identifiant ou mot de passe incorrect. </p>";
+
+    	}
+
     }
     ?>
 	<div class="container">

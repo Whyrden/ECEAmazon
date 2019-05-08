@@ -47,7 +47,7 @@ require "nav.php";
                 if(isset($_SESSION['numero'])){
 
                 //Afficher les données de la cb
-                echo "Numéro de carte: xx".$_SESSION['numero']."xx",'<br>';
+                echo "Numéro de carte: 1".$_SESSION['numero']."xxxxxxxxxxxxxxxx04",'<br>';
                 echo "Type: ".$_SESSION['type'],'<br>';
                 echo "Date d'expiration: ".$_SESSION['expiration'],'<br>';
                 //echo "Code: ".$_SESSION['code'],'<br>'; //On n'affiche pas le code secret quand même oh !!!

@@ -32,6 +32,14 @@ require "nav.php";
                 </button>
                 </div>";
         }
+
+
+        if($_GET['error']=="emptyCart"){
+            echo "<div class='alert alert-danger' role='alert'>
+                    Votre panier est vide!
+                </div>";
+
+        }
     }
 ?>
 
@@ -100,6 +108,8 @@ require "nav.php";
         
     
     <button type="button" class="btn btn-success retour"><a href="includes/livraison_inc.php">Valider les achats</a></button>
+    <button type="button" class="btn btn-danger "><a href="includes/viderPanier_inc.php">Vider le panier</a></button>
+   
     
 </main>
 

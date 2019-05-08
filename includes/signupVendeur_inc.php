@@ -33,7 +33,7 @@ if(isset($_POST['signupVendeur_submit'])){
 
 //Ajouter à la database si formulaire correct
 	else{
-		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`photo_profil`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','boy.png')";
+		$sql="INSERT INTO `vendeurs`(`username_vendeur`,`password`,`email`,`nom`,`prenom`,`photo_profil`,`username_admin`) VALUES ('$identifiant','$password','$mail','$nom','$prenom','boy.png','Oceane')";
 		$stmt=mysqli_stmt_init($db_connect);
 
 

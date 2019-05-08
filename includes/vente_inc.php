@@ -41,7 +41,7 @@ if(isset($_POST['afficher_submit'])){
 						exit();
 					}
 
-if(isset($_POST['suppr_submit'])){
+else if(isset($_POST['suppr_submit'])){
 	$supprimer_item=$_POST['suppr_submit'];
 
 	$sqlsuppr ="DELETE from items WHERE id_item='$supprimer_item'";
@@ -82,7 +82,7 @@ if(isset($_POST['suppr_submit'])){
 }
 
 
-if(isset($_POST['item_submit'])){
+else if(isset($_POST['item_submit'])){
 
 
 	$nom_item=isset($_POST['nom_item'])? $_POST['nom_item']:"";
@@ -104,20 +104,27 @@ if(isset($_POST['item_submit'])){
 
 //Ajouter à la database si formulaire correct
 
-		$sql="INSERT INTO items`(nom_item`,`categorie`,`description`,`modele`,`prix`,`username_vendeur`) VALUES ('$nom_item','$categorie','$description','$modele','$prix','$vendeur')";
+
+
+		$sql2="INSERT INTO `items`(`nom_item`,`categorie`,`description`,`modele`,`prix`,`username_vendeur`,`nb_ventes`) VALUES ('$nom_item','$categorie','$description','$modele','$prix','$vendeur',0)";
 		$stmt=mysqli_stmt_init($db_connect);
 
 
-		if(!mysqli_stmt_prepare($stmt,$sql)){
-			header("Location: ../vente.php?error=sqlerror");
+		if(!mysqli_stmt_prepare($stmt,$sql2)){
+			header("Location: ../vente.php?error=sqlerrooor");
 			exit();
 		}
 		else{
 
 			//EXecution de la requete
-			if(mysqli_query($db_connect,$sql)){
+			if(mysqli_query($db_connect,$sql2)){
 			header("Location: ../vente.php?envente=success");
 			exit();
+			}
+
+			else{
+				header("Location: ../vente.php?error=addFAil");
+				exit();
 			}
 		}
 

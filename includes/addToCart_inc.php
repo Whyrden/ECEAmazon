@@ -18,7 +18,6 @@ require"charger_panier_inc.php";
 				exit();
 			}
 
-				
 			$id=0;
 			$sql="SELECT id_achat FROM achats WHERE id_achat=$id";
 			$stmt=mysqli_stmt_init($db_connect);
@@ -33,8 +32,6 @@ require"charger_panier_inc.php";
 					$id=rand(1,1000);
 				}
 			}
-
-
 
 			//Ajout d'une commande dans le panier
 			//Attention le prix d'un achat est le prix de l'item fois sa quantité selectionnée
